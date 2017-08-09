@@ -1,4 +1,4 @@
-<div class="modal fade c-content-login-form" id="signup-form" role="dialog">
+<div ng-controller="signUpController" class="modal fade c-content-login-form" id="signup-form" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content c-square">
             <div class="modal-header c-no-border">
@@ -10,15 +10,15 @@
                 <form>
                     <div class="form-group">
                         <label for="signup-email" class="hide">Email</label>
-                        <input type="email" class="form-control input-lg c-square" id="signup-email" placeholder="Email">
+                        <input ng-model="signup_information.email" type="email" class="form-control input-lg c-square" id="signup-email" placeholder="Email">
                     </div>
                     <div class="form-group">
-                        <label for="signup-username" class="hide">Username</label>
-                        <input type="email" class="form-control input-lg c-square" id="signup-username" placeholder="Username">
+                        <label for="signup-password" class="hide">Password</label>
+                        <input ng-model="signup_information.password" type="password" class="form-control input-lg c-square" id="signup-password" placeholder="Password">
                     </div>
                     <div class="form-group">
-                        <label for="signup-fullname" class="hide">Fullname</label>
-                        <input type="email" class="form-control input-lg c-square" id="signup-fullname" placeholder="Fullname">
+                        <label for="signup-password-confirmation" class="hide">Password Confirmation</label>
+                        <input ng-model="signup_information.password_confirmation" type="password" class="form-control input-lg c-square" id="signup-password-confirmation" placeholder="Password Confirmation">
                     </div>
                     <div class="form-group">
                         <label for="signup-country" class="hide">Country</label>
@@ -27,7 +27,7 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <button type="submit" class="btn c-theme-btn btn-md c-btn-uppercase c-btn-bold c-btn-square c-btn-login">Signup</button>
+                        <button ng-click="signup()" type="button" class="btn c-theme-btn btn-md c-btn-uppercase c-btn-bold c-btn-square c-btn-login">Signup</button>
                         <a href="javascript:;" class="c-btn-forgot" data-toggle="modal" data-target="#login-form" data-dismiss="modal">Back To Login</a>
                     </div>
                 </form>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
 <!--[if !IE]><!-->
-<html lang="en"  >
+<html ng-app="takeNGo" lang="en"  >
 <!--<![endif]-->
     <head>
         <meta charset="utf-8"/>
@@ -19,7 +19,7 @@
 
         <link rel="shortcut icon" href="favicon.ico"/>
     </head>
-    <body class="c-layout-header-fixed c-layout-header-mobile-fixed c-layout-header-fullscreen"> 
+    <body ng-controller="mainController" class="c-layout-header-fixed c-layout-header-mobile-fixed c-layout-header-fullscreen"> 
         @component('components.shared.header')
         @endcomponent
 
@@ -52,7 +52,22 @@
         });
         </script>
         <script type="text/javascript" src="{{asset('js/slider-min.js')}}"></script>
-        
+        <script src="https://www.gstatic.com/firebasejs/4.2.0/firebase.js"></script>
+        <script>
+            var config = {
+                apiKey: "AIzaSyDJ2tMx2N8vrErdm9D77Qukmxx1FI46h8E",
+                authDomain: "takengo-41627.firebaseapp.com",
+                databaseURL: "https://takengo-41627.firebaseio.com",
+                projectId: "takengo-41627",
+                storageBucket: "takengo-41627.appspot.com",
+                messagingSenderId: "508315576480"
+            };
+            firebase.initializeApp(config);
+        </script>
+        <script src="{{ URL::asset('app/lib/angular/angular.min.js')}}"></script>
+        <script src="{{ URL::asset('app/app.js')}}"></script>
+        <script src="{{ URL::asset('app/controllers/components/modals/sign-in.js')}}"></script>
+        <script src="{{ URL::asset('app/controllers/components/modals/sign-up.js')}}"></script>
         @yield('script')
     </body>
 </html>
