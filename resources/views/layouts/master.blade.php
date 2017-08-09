@@ -5,12 +5,15 @@
 <!--<![endif]-->
     <head>
         <meta charset="utf-8"/>
-        <title>JANGO | Ultimate Multipurpose Bootstrap HTML Theme - Home Version 14</title>
+        <title>Take N Go | Rent a car near you</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
         <meta http-equiv="Content-type" content="text/html; charset=utf-8">
-        <meta content="" name="description"/>
-        <meta content="" name="author"/>
+        <meta content="Take N Go is a car rental company which allows customers to find and book available cars nearby." 
+        name="description"/>
+        <meta content="Franky Gabriel Sanjaya – S3642810, Kendrick Kesley – S3642811, Nadya Safira – S3642868, Veronica Ong – S3642807, 
+        Yulita Putri Hartoyo – S3642813" name="author"/>
+        <meta content="Take N Go, car rental, car nearby, book a car, booking, cars" name="keywords"/>
         
         <link href="{{asset('css/build.css')}}" rel="stylesheet" type="text/css"/>
 
