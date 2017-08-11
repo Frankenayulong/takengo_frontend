@@ -46,7 +46,7 @@
 					 
 						>
                         <!-- <img class="c-slider-15-title" src="../../assets/base/img/layout/sliders/revo-slider/slider-15/title.png" alt=""> -->
-                        <h1 class="c-slider-15-title c-font-white" style="font-size:9em;">Take N Go</h1>
+                        <h1 class="c-slider-15-title c-font-white" style="font-size:9em;">Take N Go.</h1>
                     </div>
 
 					<!-- LAYER NR. 2 -->
