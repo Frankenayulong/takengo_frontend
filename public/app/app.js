@@ -12,7 +12,10 @@ app.controller('mainController', ['$scope', '$timeout', '$http', '$rootScope', '
         new_sign_up: false,
         email_verified: false,
         uid: '',
-        email: ''
+        email: '',
+        loading: {
+            sign_up: false
+        }
     }
     
     $scope.digest = function(a) {
@@ -37,6 +40,7 @@ app.controller('mainController', ['$scope', '$timeout', '$http', '$rootScope', '
     }
 
     firebase.auth().onAuthStateChanged(function(user) {
+        $rootScope.metadata.loading.sign_up = false;
         if (user) {
             // User is signed in.
             $rootScope.metadata = Object.assign($rootScope.metadata, {

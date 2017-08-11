@@ -24,13 +24,14 @@ app.controller('signUpController', ['$scope', '$rootScope', '$timeout', '$http',
     })
 
     $scope.signup = () => {
-        $rootScope.metadata.new_sign_up = true;
         const {email, password, password_confirmation} = $scope.signup_information;  
         if(password != password_confirmation){
             $scope.signup_error.password_confirmation = true;
             $scope.signup_error.message.password_confirmation = ['Password does not match'];
             return;
         }
+        $rootScope.metadata.loading.sign_up = true;
+        $rootScope.metadata.new_sign_up = true;
         $http.post(API_URL + 'register', {
             email: email,
             password: password,
@@ -56,11 +57,15 @@ app.controller('signUpController', ['$scope', '$rootScope', '$timeout', '$http',
                     .then((data) => {
                         //success deleting
                         console.log(data)
+                        $rootScope.metadata.loading.sign_up = false;
                     }, (error) => {
                         //error deleting. What to do?
                         console.log(error)
+                        $rootScope.metadata.loading.sign_up = false;
                     })
                 });
+            }else{
+                $rootScope.metadata.loading.sign_up = false;
             }
         }, (data)=>{
             if(data.status == 422){
@@ -77,6 +82,7 @@ app.controller('signUpController', ['$scope', '$rootScope', '$timeout', '$http',
                     $scope.signup_error.password_confirmation = true;
                     $scope.signup_error.message.password_confirmation = response.password_confirmation;
                 }
+                $rootScope.metadata.loading.sign_up = false;
                 $scope.digest();
             }
         });

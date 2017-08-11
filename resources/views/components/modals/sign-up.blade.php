@@ -1,6 +1,13 @@
 <div ng-controller="signUpController" class="modal fade c-content-login-form" id="signup-form" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content c-square">
+            <div style="position:absolute;height:100%;width:100%;" ng-show="metadata.loading.sign_up">
+                <div style="background:rgba(255,255,255,0.9);position:absolute;height:100%;width:100%;z-index:1"></div>
+                <div style="position:absolute;display:inline;margin:auto;left: 50%;top: 50%;transform: translate(-50%, -50%);z-index:2">
+                    @component('components.shared.spinner')
+                    @endcomponent
+                </div>
+            </div>
             <div class="modal-header c-no-border">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             </div>
