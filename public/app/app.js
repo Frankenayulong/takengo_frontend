@@ -1,5 +1,5 @@
 var app = angular.module('takeNGo', [])
-.constant('API_URL', 'http://api.takengo.dev/api/')
+.constant('API_URL', 'http://api.takengo.io/api/')
 .config(function ($httpProvider) {
     $httpProvider.defaults.withCredentials = true;
     //rest of route code
@@ -9,6 +9,7 @@ var app = angular.module('takeNGo', [])
 app.controller('mainController', ['$scope', '$timeout', '$http', '$rootScope', 'API_URL', function($scope, $timeout, $http, $rootScope, API_URL){
     $rootScope.metadata = {
         signed_in: false,
+        new_sign_up: false,
         email_verified: false,
         uid: '',
         email: ''
@@ -45,8 +46,17 @@ app.controller('mainController', ['$scope', '$timeout', '$http', '$rootScope', '
                 email_verified: user.emailVerified
             })
             $scope.modalFunc.closeAuth();
+            if($rootScope.metadata.new_sign_up){
+                $rootScope.metadata.new_sign_up = false;
+                $('#sign-up-success').modal('show');
+            }
             $scope.check_token();
             $scope.digest();
+            $http.post(API_URL + 'get_profile').then((data) => {
+                console.log(data);
+            }, (err) => {
+
+            })
         } else {
             // No user is signed in.
             console.log('no user signed in')
@@ -56,8 +66,10 @@ app.controller('mainController', ['$scope', '$timeout', '$http', '$rootScope', '
                 uid: '',
                 email: ''
             })
-            $http.post(API_URL + 'reset_auth').then(function(data){
+            $http.post(API_URL + 'reset_auth').then((data) => {
                 console.log(data);
+            }, (err) => {
+                //what to do?
             })
             $scope.digest();
         }

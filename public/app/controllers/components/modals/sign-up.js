@@ -1,4 +1,4 @@
-app.controller('signUpController', ['$scope', '$timeout', '$http', 'API_URL', function($scope, $timeout, $http, API_URL){
+app.controller('signUpController', ['$scope', '$rootScope', '$timeout', '$http', 'API_URL', function($scope, $rootScope, $timeout, $http, API_URL){
     
     $scope.signup_error = {
         email: false,
@@ -19,7 +19,12 @@ app.controller('signUpController', ['$scope', '$timeout', '$http', 'API_URL', fu
 
     $scope.reset_input();
 
+    $http.post(API_URL + 'token').then((data)=>{
+        console.log(data)
+    })
+
     $scope.signup = () => {
+        $rootScope.metadata.new_sign_up = true;
         const {email, password, password_confirmation} = $scope.signup_information;  
         if(password != password_confirmation){
             $scope.signup_error.password_confirmation = true;

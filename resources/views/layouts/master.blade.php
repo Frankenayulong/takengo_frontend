@@ -29,6 +29,9 @@
         @component('components.modals.sign-up')
         @endcomponent
 
+        @component('components.modals.sign-up-success')
+        @endcomponent
+
         @component('components.modals.sign-in')
         @endcomponent
 
