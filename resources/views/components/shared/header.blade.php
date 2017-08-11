@@ -16,14 +16,11 @@
 					<button class="c-topbar-toggler" type="button">
 						<i class="fa fa-ellipsis-v"></i>
 					</button>
-					<button class="c-search-toggler" type="button">
-						<i class="fa fa-search"></i>
-					</button>
 					<button class="c-cart-toggler" type="button">
 						<i class="icon-handbag"></i> <span class="c-cart-number c-theme-bg">2</span>
 					</button>
 				</div>
-                <nav class="c-mega-menu c-pull-right c-mega-menu-dark c-mega-menu-dark-mobile c-theme c-fonts-uppercase c-fonts-bold">
+                <nav class="c-mega-menu c-mega-menu-mobile c-fonts-uppercase c-fonts-sbold">
                     <ul class="nav navbar-nav c-theme-nav"> 
                         <li class="c-active">
                             <a href="javascript:;" class="c-link dropdown-toggle">Home</a>
