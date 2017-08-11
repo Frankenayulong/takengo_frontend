@@ -1,4 +1,4 @@
-<div class="modal fade c-content-login-form" id="login-form" role="dialog">
+<div ng-controller="signInController" class="modal fade c-content-login-form" id="login-form" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content c-square">
             <div class="modal-header c-no-border">
@@ -28,7 +28,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <button type="submit" class="btn c-theme-btn btn-md c-btn-uppercase c-btn-bold c-btn-square c-btn-login">Login</button>
+                        <button type="button" ng-click="signin()" class="btn c-theme-btn btn-md c-btn-uppercase c-btn-bold c-btn-square c-btn-login">Login</button>
                         <a href="javascript:;" data-toggle="modal" data-target="#forget-password-form" data-dismiss="modal" class="c-btn-forgot">Forgot Your Password ?</a>
                     </div>
                     <div class="clearfix">

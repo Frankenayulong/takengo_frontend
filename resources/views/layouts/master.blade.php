@@ -68,6 +68,7 @@
         <script src="{{ URL::asset('app/app.js')}}"></script>
         <script src="{{ URL::asset('app/controllers/components/modals/sign-in.js')}}"></script>
         <script src="{{ URL::asset('app/controllers/components/modals/sign-up.js')}}"></script>
+        <script src="{{ URL::asset('app/controllers/components/header.js')}}"></script>
         @yield('script')
     </body>
 </html>

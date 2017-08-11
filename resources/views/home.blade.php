@@ -418,47 +418,25 @@
 <script>
 	$(document).ready(function() {
 		var slider = $('.c-layout-revo-slider .tp-banner');
+
 		var cont = $('.c-layout-revo-slider .tp-banner-container');
 
 		var api = slider.show().revolution({
 			sliderType:"standard",
-			sliderLayout:"fullwidth",
+			sliderLayout:"fullscreen",
 			dottedOverlay:"none",
 			delay:15000,
 			navigation: {
 				keyboardNavigation:"off",
-				keyboard_direction: "horizontal",
 				mouseScrollNavigation:"off",
 				onHoverStop:"off",
 				touch:{
-					touchenabled:"on",
-					swipe_threshold: 75,
-					swipe_min_touches: 1,
-					swipe_direction: "horizontal",
+					touchenabled:"off",
 					drag_block_vertical: false
 				}
 				,
 				arrows: {
-					style:"dione",
-					enable:true,
-					hide_onmobile:true,
-					hide_under:600,
-					hide_onleave:true,
-					hide_delay:200,
-					hide_delay_mobile:1200,
-					tmp: '<div class="tp-arr-imgwrapper"><div class="tp-arr-imgholder"></div></div>',
-					left: {
-						h_align:"left",
-						v_align:"center",
-						h_offset:0,
-						v_offset:0
-					},
-					right: {
-						h_align:"right",
-						v_align:"center",
-						h_offset:0,
-						v_offset:0
-					}
+					enable:false,
 				}
 				,
 				bullets: {
@@ -498,6 +476,6 @@
 				disableFocusListener:false,
 			}
 		});
-	}); //ready
+	});
 </script>
 @endsection
