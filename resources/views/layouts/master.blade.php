@@ -34,10 +34,11 @@
 
         @component('components.modals.sign-in')
         @endcomponent
-
-        <div class="c-layout-page">
-            @yield('content')
-        </div>
+        <main>
+            <div class="c-layout-page">
+                @yield('content')
+            </div>
+        </main>
 
         @component('components.shared.footer')
         @endcomponent

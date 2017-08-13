@@ -7,6 +7,7 @@ filesExist = require('files-exist')
 
 gulp.task('css', function(){
     var css_files = [
+        'app.css',
         'spinner.css',
         'plugins/socicon/socicon.css',
         'plugins/bootstrap-social/bootstrap-social.css',
