@@ -1,4 +1,4 @@
-app.controller('signInController', ['$scope', '$rootScope', '$timeout', '$http', 'API_URL', function($scope, $rootScope, $timeout, $http, API_URL){
+app.controller('signInController', ['$scope', '$rootScope', '$timeout', '$http', 'ENV', function($scope, $rootScope, $timeout, $http, ENV){
 	$scope.signin_information = {
         email: '',
         password: ''

@@ -1,13 +1,20 @@
+var env = {};
+
+// Import variables if present (from env.js)
+if(window){  
+  Object.assign(env, window.__env);
+}
+
 var app = angular.module('takeNGo', [])
-// .constant('API_URL', 'http://api.takengo.io/api/')
-.constant('API_URL', 'http://api.takengo.dev/api/')
+// .constant('ENV.API_URL', 'http://api.takengo.io/api/')
+.constant('ENV', env)
 .config(function ($httpProvider) {
     $httpProvider.defaults.withCredentials = true;
     //rest of route code
 })
-//.constant('API_URL', 'http://api.takengo.io/');
+//.constant('ENV.API_URL', 'http://api.takengo.io/');
 
-app.controller('mainController', ['$scope', '$timeout', '$http', '$rootScope', 'API_URL', function($scope, $timeout, $http, $rootScope, API_URL){
+app.controller('mainController', ['$scope', '$timeout', '$http', '$rootScope', 'ENV', function($scope, $timeout, $http, $rootScope, ENV){
     $rootScope.metadata = {
         signed_in: false,
         new_sign_up: false,
@@ -69,7 +76,7 @@ app.controller('mainController', ['$scope', '$timeout', '$http', '$rootScope', '
                 fb_uid: '',
                 email: ''
             })
-            $http.post(API_URL + 'reset_auth').then((data) => {
+            $http.post(ENV.API_URL + 'reset_auth').then((data) => {
                 console.log(data);
             }, (err) => {
                 
@@ -79,7 +86,8 @@ app.controller('mainController', ['$scope', '$timeout', '$http', '$rootScope', '
     });
 
     $scope.check_token = () => {
-        $http.post(API_URL + 'token').then(function(data){
+        console.log(ENV.API_URL)
+        $http.post(ENV.API_URL + 'token').then(function(data){
             console.log('check_token');
             console.log(data);
             console.log('end of check_token');
@@ -90,7 +98,7 @@ app.controller('mainController', ['$scope', '$timeout', '$http', '$rootScope', '
         })
     }
     $scope.get_user_profile = () => {
-        $http.post(API_URL + 'get_profile').then((data) => {
+        $http.post(ENV.API_URL + 'get_profile').then((data) => {
             console.log('get_profile');
             console.log(data);
             console.log('end of get_profile');
@@ -102,7 +110,7 @@ app.controller('mainController', ['$scope', '$timeout', '$http', '$rootScope', '
     }
 
     $scope.register_uid = () => {
-        $http.post(API_URL + 'register/uid',{
+        $http.post(ENV.API_URL + 'register/uid',{
             fb_uid: $rootScope.metadata.fb_uid,
             email: $rootScope.metadata.email
         }).then((data) => {
@@ -116,6 +124,15 @@ app.controller('mainController', ['$scope', '$timeout', '$http', '$rootScope', '
         })
     }
 
+    $scope.signout = () => {
+        firebase.auth().signOut().then(function() {
+            
+        }).catch(function(error) {
+        // An error happened.
+        console.log(error)
+        });
+    }
+
     firebase.auth().getRedirectResult().then(function(result) {
         // This gives you a Facebook Access Token. You can use it to access the Facebook API.
         var token = result.credential.accessToken;
@@ -124,7 +141,7 @@ app.controller('mainController', ['$scope', '$timeout', '$http', '$rootScope', '
         console.log('facebook logging');
         console.log(user);
         console.log('end of facebook logging');
-        $http.post(API_URL + 'register/vendor', {
+        $http.post(ENV.API_URL + 'register/vendor', {
             email: user.email,
             fb_uid: user.uid
         }, {
@@ -135,6 +152,9 @@ app.controller('mainController', ['$scope', '$timeout', '$http', '$rootScope', '
         }, (err) => {
             console.log(err);
             $scope.digest();
+            if(err.status !== 422){
+                $scope.signout();
+            }
         })
         // ...
     }).catch(function(error) {

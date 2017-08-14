@@ -1,4 +1,4 @@
-app.controller('signUpController', ['$scope', '$rootScope', '$timeout', '$http', 'API_URL', function($scope, $rootScope, $timeout, $http, API_URL){
+app.controller('signUpController', ['$scope', '$rootScope', '$timeout', '$http', 'ENV', function($scope, $rootScope, $timeout, $http, ENV){
     
     $scope.signup_error = {
         email: false,
@@ -19,7 +19,7 @@ app.controller('signUpController', ['$scope', '$rootScope', '$timeout', '$http',
 
     $scope.reset_input();
 
-    $http.post(API_URL + 'token').then((data)=>{
+    $http.post(ENV.API_URL + 'token').then((data)=>{
         console.log(data)
     })
 
@@ -32,7 +32,7 @@ app.controller('signUpController', ['$scope', '$rootScope', '$timeout', '$http',
         }
         $rootScope.metadata.loading.sign_up = true;
         $rootScope.metadata.new_sign_up = true;
-        $http.post(API_URL + 'register', {
+        $http.post(ENV.API_URL + 'register', {
             email: email,
             password: password,
             password_confirmation: password_confirmation
@@ -47,7 +47,7 @@ app.controller('signUpController', ['$scope', '$rootScope', '$timeout', '$http',
                 firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
                     var errorCode = error.code;
                     var errorMessage = error.message;
-                    $http.post(API_URL + 'register/error', {
+                    $http.post(ENV.API_URL + 'register/error', {
                         email: email,
                         error_code: errorCode,
                         error_message: errorMessage
