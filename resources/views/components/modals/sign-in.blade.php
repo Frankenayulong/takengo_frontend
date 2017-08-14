@@ -37,13 +37,13 @@
                         </div>
                         <ul class="c-content-list-adjusted">
                             <li>
-                                <a class="btn btn-block c-btn-square btn-social btn-facebook">
+                                <a ng-click="signin_vendor('facebook')" href="javascript:;" class="btn btn-block c-btn-square btn-social btn-facebook">
                                   <i class="fa fa-facebook"></i>
                                   Facebook
                                 </a>
                             </li>
                             <li>
-                                <a class="btn btn-block c-btn-square btn-social btn-google">
+                                <a ng-click="signin_vendor('google')" class="btn btn-block c-btn-square btn-social btn-google">
                                   <i class="fa fa-google"></i>
                                   Google
                                 </a>
