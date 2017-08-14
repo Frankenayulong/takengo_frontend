@@ -25,7 +25,8 @@ app.controller('mainController', ['$scope', '$timeout', '$http', '$rootScope', '
         tng_uid: '',
         email: '',
         loading: {
-            sign_up: false
+            sign_up: false,
+            sign_in: false
         }
     }
     

@@ -15,7 +15,7 @@
             <div class="modal-body">
                 <h3 class="c-font-24 c-font-sbold">Create An Account</h3>
                 <p>Please fill in below form to create an account with us</p>
-                <form>
+                <form ng-submit="signup()">
                     <div class="form-group" ng-class="signup_error.email ? 'has-error' : ''">
                         <label for="signup-email" class="hide">Email</label>
                         <input ng-model="signup_information.email" type="email" class="form-control input-lg c-square" id="signup-email" placeholder="Email">
@@ -38,7 +38,7 @@
                         </span>
                     </div>
                     <div class="form-group">
-                        <button ng-click="signup()" type="button" class="btn c-theme-btn btn-md c-btn-uppercase c-btn-bold c-btn-square c-btn-login">Signup</button>
+                        <button type="submit" class="btn c-theme-btn btn-md c-btn-uppercase c-btn-bold c-btn-square c-btn-login">Signup</button>
                         <a href="javascript:;" class="c-btn-forgot" data-toggle="modal" data-target="#login-form" data-dismiss="modal">Back To Login</a>
                     </div>
                 </form>

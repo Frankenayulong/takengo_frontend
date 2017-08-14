@@ -3,9 +3,11 @@ app.controller('signUpController', ['$scope', '$rootScope', '$timeout', '$http',
     $scope.signup_error = {
         email: false,
         password_confirmation: false,
+        password: false,
         message: {
             email: [],
-            password_confirmation: []
+            password_confirmation: [],
+            password: []
         }
     }
 
