@@ -19,6 +19,7 @@ app.controller('mainController', ['$scope', '$timeout', '$http', '$rootScope', '
         signed_in: false,
         new_sign_up: false,
         email_verified: false,
+        vendor_callback: false,
         fb_uid: '',
         tng_uid: '',
         email: '',
@@ -49,6 +50,7 @@ app.controller('mainController', ['$scope', '$timeout', '$http', '$rootScope', '
     }
 
     firebase.auth().onAuthStateChanged(function(user) {
+        console.log('auth changed');
         $rootScope.metadata.loading.sign_up = false;
         if (user) {
             // User is signed in.
@@ -63,8 +65,11 @@ app.controller('mainController', ['$scope', '$timeout', '$http', '$rootScope', '
                 $rootScope.metadata.new_sign_up = false;
                 $('#sign-up-success').modal('show');
             }
-            $scope.register_uid();
-            $scope.check_token();
+            if($rootScope.metadata.vendor_callback){
+                $scope.register_uid();
+                $scope.check_token();
+                $rootScope.metadata.vendor_callback = false;
+            }
             $scope.get_user_profile();
             $scope.digest();
         } else {
@@ -134,28 +139,33 @@ app.controller('mainController', ['$scope', '$timeout', '$http', '$rootScope', '
     }
 
     firebase.auth().getRedirectResult().then(function(result) {
-        // This gives you a Facebook Access Token. You can use it to access the Facebook API.
-        var token = result.credential.accessToken;
-        // The signed-in user info.
-        var user = result.user;
-        console.log('facebook logging');
-        console.log(user);
-        console.log('end of facebook logging');
-        $http.post(ENV.API_URL + 'register/vendor', {
-            email: user.email,
-            fb_uid: user.uid
-        }, {
-            responseType: 'json'
-        }).then((data) => {
-            console.log(data)
-            $scope.digest();
-        }, (err) => {
-            console.log(err);
-            $scope.digest();
-            if(err.status !== 422){
-                $scope.signout();
-            }
-        })
+        console.log('vendor');
+        if(result.user){
+            $rootScope.metadata.vendor_callback = true;
+            // This gives you a Facebook Access Token. You can use it to access the Facebook API.
+            var token = result.credential.accessToken;
+            // The signed-in user info.
+            var user = result.user;
+            console.log('facebook logging');
+            console.log(user);
+            console.log('end of facebook logging');
+            $http.post(ENV.API_URL + 'register/vendor', {
+                email: user.email,
+                fb_uid: user.uid
+            }, {
+                responseType: 'json'
+            }).then((data) => {
+                console.log(data)
+                $scope.digest();
+            }, (err) => {
+                console.log(err);
+                $scope.digest();
+                if(err.status !== 422){
+                    $scope.signout();
+                }
+            })
+        }
+        
         // ...
     }).catch(function(error) {
         // Handle Errors here.

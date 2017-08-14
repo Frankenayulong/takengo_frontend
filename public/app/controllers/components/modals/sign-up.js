@@ -19,10 +19,6 @@ app.controller('signUpController', ['$scope', '$rootScope', '$timeout', '$http',
 
     $scope.reset_input();
 
-    $http.post(ENV.API_URL + 'token').then((data)=>{
-        console.log(data)
-    })
-
     $scope.signup = () => {
         const {email, password, password_confirmation} = $scope.signup_information;  
         if(password != password_confirmation){
