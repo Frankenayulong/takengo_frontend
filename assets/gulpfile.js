@@ -35,7 +35,6 @@ gulp.task('css', function(){
 
 gulp.task('js', function(){
     var js_files = [
-        'env.js',
         'plugins/jquery.min.js',
         'plugins/jquery-migrate.min.js',
         'plugins/bootstrap/js/bootstrap.js',

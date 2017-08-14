@@ -50,7 +50,7 @@ app.controller('mainController', ['$scope', '$timeout', '$http', '$rootScope', '
     }
 
     firebase.auth().onAuthStateChanged(function(user) {
-        console.log('auth changed');
+        ENV.DEBUG && console.log('auth changed');
         $rootScope.metadata.loading.sign_up = false;
         if (user) {
             // User is signed in.
@@ -74,7 +74,7 @@ app.controller('mainController', ['$scope', '$timeout', '$http', '$rootScope', '
             $scope.digest();
         } else {
             // No user is signed in.
-            console.log('no user signed in')
+            ENV.DEBUG && console.log('no user signed in')
             $rootScope.metadata = Object.assign($rootScope.metadata, {
                 signed_in: false,
                 email_verified: false,
@@ -82,7 +82,7 @@ app.controller('mainController', ['$scope', '$timeout', '$http', '$rootScope', '
                 email: ''
             })
             $http.post(ENV.API_URL + 'reset_auth').then((data) => {
-                console.log(data);
+                ENV.DEBUG && console.log(data);
             }, (err) => {
                 
             })
@@ -91,26 +91,26 @@ app.controller('mainController', ['$scope', '$timeout', '$http', '$rootScope', '
     });
 
     $scope.check_token = () => {
-        console.log(ENV.API_URL)
+        ENV.DEBUG && console.log(ENV.API_URL)
         $http.post(ENV.API_URL + 'token').then(function(data){
-            console.log('check_token');
-            console.log(data);
-            console.log('end of check_token');
+            ENV.DEBUG && console.log('check_token');
+            ENV.DEBUG && console.log(data);
+            ENV.DEBUG && console.log('end of check_token');
         }, (err) => {
-            console.log('check_token');
-            console.log(err);
-            console.log('end of check_token');
+            ENV.DEBUG && console.log('check_token');
+            ENV.DEBUG && console.log(err);
+            ENV.DEBUG && console.log('end of check_token');
         })
     }
     $scope.get_user_profile = () => {
         $http.post(ENV.API_URL + 'get_profile').then((data) => {
-            console.log('get_profile');
-            console.log(data);
-            console.log('end of get_profile');
+            ENV.DEBUG && console.log('get_profile');
+            ENV.DEBUG && console.log(data);
+            ENV.DEBUG && console.log('end of get_profile');
         }, (err) => {
-            console.log('get_profile');
-            console.log(err);
-            console.log('end of get_profile');
+            ENV.DEBUG && console.log('get_profile');
+            ENV.DEBUG && console.log(err);
+            ENV.DEBUG && console.log('end of get_profile');
         })
     }
 
@@ -119,13 +119,13 @@ app.controller('mainController', ['$scope', '$timeout', '$http', '$rootScope', '
             fb_uid: $rootScope.metadata.fb_uid,
             email: $rootScope.metadata.email
         }).then((data) => {
-            console.log('register_uid');
-            console.log(data);
-            console.log('end of register_uid');
+            ENV.DEBUG && console.log('register_uid');
+            ENV.DEBUG && console.log(data);
+            ENV.DEBUG && console.log('end of register_uid');
         }, (err) => {
-            console.log('register_uid');
-            console.log(err);
-            console.log('end of register_uid');
+            ENV.DEBUG && console.log('register_uid');
+            ENV.DEBUG && console.log(err);
+            ENV.DEBUG && console.log('end of register_uid');
         })
     }
 
@@ -134,31 +134,31 @@ app.controller('mainController', ['$scope', '$timeout', '$http', '$rootScope', '
             
         }).catch(function(error) {
         // An error happened.
-        console.log(error)
+        ENV.DEBUG && console.log(error)
         });
     }
 
     firebase.auth().getRedirectResult().then(function(result) {
-        console.log('vendor');
+        ENV.DEBUG && console.log('vendor');
         if(result.user){
             $rootScope.metadata.vendor_callback = true;
             // This gives you a Facebook Access Token. You can use it to access the Facebook API.
             var token = result.credential.accessToken;
             // The signed-in user info.
             var user = result.user;
-            console.log('facebook logging');
-            console.log(user);
-            console.log('end of facebook logging');
+            ENV.DEBUG && console.log('facebook logging');
+            ENV.DEBUG && console.log(user);
+            ENV.DEBUG && console.log('end of facebook logging');
             $http.post(ENV.API_URL + 'register/vendor', {
                 email: user.email,
                 fb_uid: user.uid
             }, {
                 responseType: 'json'
             }).then((data) => {
-                console.log(data)
+                ENV.DEBUG && console.log(data)
                 $scope.digest();
             }, (err) => {
-                console.log(err);
+                ENV.DEBUG && console.log(err);
                 $scope.digest();
                 if(err.status !== 422){
                     $scope.signout();
@@ -176,6 +176,6 @@ app.controller('mainController', ['$scope', '$timeout', '$http', '$rootScope', '
         // The firebase.auth.AuthCredential type that was used.
         var credential = error.credential;
         // ...
-        console.log(errorMessage);
+        ENV.DEBUG && console.log(errorMessage);
     });
 }])

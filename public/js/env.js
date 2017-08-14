@@ -9,5 +9,5 @@
 
   // Whether or not to enable debug mode
   // Setting this to false will disable console output
-  window.__env.ENABLE_DEBUG = true;
+  window.__env.DEBUG = true;
 }(this));

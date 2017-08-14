@@ -49,6 +49,7 @@
         <!--[if lt IE 9]>
         <script src="../../assets/global/plugins/excanvas.min.js"></script> 
         <![endif]-->
+        <script type="text/javascript" src="{{asset('js/env.js')}}"></script>
         <script type="text/javascript" src="{{asset('js/build-min.js')}}"></script>
         <script>
         $(document).ready(function() {    
