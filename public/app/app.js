@@ -20,6 +20,7 @@ app.controller('mainController', ['$scope', '$timeout', '$http', '$rootScope', '
         new_sign_up: false,
         email_verified: false,
         vendor_callback: false,
+        fb_signing: true,
         fb_uid: '',
         tng_uid: '',
         email: '',
@@ -51,6 +52,7 @@ app.controller('mainController', ['$scope', '$timeout', '$http', '$rootScope', '
 
     firebase.auth().onAuthStateChanged(function(user) {
         console.log('auth changed');
+        $rootScope.metadata.fb_signing = false;
         $rootScope.metadata.loading.sign_up = false;
         if (user) {
             // User is signed in.
@@ -68,14 +70,16 @@ app.controller('mainController', ['$scope', '$timeout', '$http', '$rootScope', '
             if(!$rootScope.metadata.vendor_callback){
                 $scope.register_uid().then(() => {
                     $scope.check_token().then(() => {
-                        $scope.get_user_profile().then(()=>{}).catch(()=>{})
-                    }).catch(()=>{})
+                        $scope.get_user_profile().then(()=>{}).catch(()=>{})  
+                    }).catch(()=>{
+                        console.log('signing out');
+                        $scope.signout();
+                    })
                 }).catch(()=>{});
                 
             }else{
                 $rootScope.metadata.vendor_callback = false;
             }
-            
             $scope.digest();
         } else {
             // No user is signed in.
@@ -97,11 +101,13 @@ app.controller('mainController', ['$scope', '$timeout', '$http', '$rootScope', '
 
     $scope.check_token = () => {
         return new Promise((resolve, reject) => {
-            $http.post(ENV.API_URL + 'token').then(function(data){
+            $http.post(ENV.API_URL + 'token',{
+                email: $rootScope.metadata.email
+            }).then(function(data){
                 console.log('check_token');
                 console.log(data);
                 console.log('end of check_token');
-                if(data.status == 'OK'){
+                if(data.data.status == 'OK'){
                     resolve();
                 }else{
                     reject();
@@ -116,11 +122,13 @@ app.controller('mainController', ['$scope', '$timeout', '$http', '$rootScope', '
     }
     $scope.get_user_profile = () => {
         return new Promise((resolve, reject) => {
-            $http.post(ENV.API_URL + 'get_profile').then((data) => {
+            $http.post(ENV.API_URL + 'get_profile',{
+                email: $rootScope.metadata.email
+            }).then((data) => {
                 console.log('get_profile');
                 console.log(data);
                 console.log('end of get_profile');
-                resolve();
+                resolve(data);
             }, (err) => {
                 console.log('get_profile');
                 console.log(err);
@@ -170,12 +178,9 @@ app.controller('mainController', ['$scope', '$timeout', '$http', '$rootScope', '
             }, (err) => {
                 console.log(err);
                 $scope.digest();
-                if(err.status !== 422){
-                    $scope.signout();
-                    reject();
-                }else{
-                    resolve();
-                }
+                console.log('register_vendor logout')
+                $scope.signout();
+                reject();
             })
         })
     }
@@ -194,14 +199,13 @@ app.controller('mainController', ['$scope', '$timeout', '$http', '$rootScope', '
             console.log('vendor');
             console.log(result.user);
             $rootScope.metadata.vendor_callback = true;
-            // This gives you a Facebook Access Token. You can use it to access the Facebook API.
-            var token = result.credential.accessToken;
             // The signed-in user info.
             var user = result.user;
-            console.log('facebook logging');
+            console.log('vendor logging');
             console.log(user);
-            console.log('end of facebook logging');
+            console.log('end of vendor logging');
             $scope.register_vendor(user).then(() => {
+                console.log('geting user profile from vendor')
                 $scope.get_user_profile();
                 $scope.digest();
             }).catch(()=>{});

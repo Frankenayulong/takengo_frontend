@@ -5,6 +5,7 @@
                 <div class="full-spinner-overlay"></div>
                 <div class="full-spinner-inner-container">
                     @component('components.shared.spinner')
+                        big
                     @endcomponent
                 </div>
             </div>

@@ -47,7 +47,7 @@
                             <a href="#" class="c-btn-icon c-cart-toggler"><i class="icon-notebook c-cart-icon"></i> <span class="c-cart-number c-theme-bg">1</span></a>
                         </li>
 
-                        <li ng-if="metadata.signed_in" class="c-menu-type-classic">
+                        <li ng-if="metadata.signed_in && !metadata.fb_signing" class="c-menu-type-classic">
                             <a href="javascript:;" class="c-link dropdown-toggle">
                             My Profile
                             <span class="c-arrow c-toggler"></span></a>
@@ -60,9 +60,14 @@
                                 </li>           
                             </ul>
                         </li>
-                         <li ng-if="!metadata.signed_in">
+                         <li ng-if="!metadata.signed_in && !metadata.fb_signing">
                             <a href="javascript:;" data-toggle="modal" data-target="#login-form" class="c-btn-border-opacity-04 c-btn btn-no-focus c-btn-header btn btn-sm c-btn-border-1x c-btn-white c-btn-circle c-btn-uppercase c-btn-sbold"><i class="icon-user"></i> Sign In</a>
                         </li> 
+                        <li ng-if="metadata.fb_signing">
+                            <a class="c-link">
+                            Please Wait...
+                            </a>
+                        </li>
                     </ul>
                 </nav>	
             </div>			
