@@ -33,7 +33,7 @@
                     </div>
                     <div class="clearfix">
                         <div class="c-content-divider c-divider-sm c-icon-bg c-bg-grey c-margin-b-20">
-                            <span>or signup with</span>
+                            <span>or signin with</span>
                         </div>
                         <ul class="c-content-list-adjusted">
                             <li>

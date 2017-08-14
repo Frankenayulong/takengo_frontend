@@ -36,7 +36,7 @@ app.controller('signUpController', ['$scope', '$rootScope', '$timeout', '$http',
             responseType: 'json'
         })
         .then((data)=>{
-            ENV.DEBUG && console.log(data);            
+            console.log(data);            
             let response = data.data;
             if(response.status == 'OK'){
                 $scope.reset_input();
@@ -52,11 +52,11 @@ app.controller('signUpController', ['$scope', '$rootScope', '$timeout', '$http',
                     })
                     .then((data) => {
                         //success deleting
-                        ENV.DEBUG && console.log(data)
+                        console.log(data)
                         $rootScope.metadata.loading.sign_up = false;
                     }, (error) => {
                         //error deleting. What to do?
-                        ENV.DEBUG && console.log(error)
+                        console.log(error)
                         $rootScope.metadata.loading.sign_up = false;
                     })
                 });

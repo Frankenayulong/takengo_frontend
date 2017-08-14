@@ -50,7 +50,7 @@ app.controller('mainController', ['$scope', '$timeout', '$http', '$rootScope', '
     }
 
     firebase.auth().onAuthStateChanged(function(user) {
-        ENV.DEBUG && console.log('auth changed');
+        console.log('auth changed');
         $rootScope.metadata.loading.sign_up = false;
         if (user) {
             // User is signed in.
@@ -65,16 +65,21 @@ app.controller('mainController', ['$scope', '$timeout', '$http', '$rootScope', '
                 $rootScope.metadata.new_sign_up = false;
                 $('#sign-up-success').modal('show');
             }
-            if($rootScope.metadata.vendor_callback){
-                $scope.register_uid();
-                $scope.check_token();
+            if(!$rootScope.metadata.vendor_callback){
+                $scope.register_uid().then(() => {
+                    $scope.check_token().then(() => {
+                        $scope.get_user_profile().then(()=>{}).catch(()=>{})
+                    }).catch(()=>{})
+                }).catch(()=>{});
+                
+            }else{
                 $rootScope.metadata.vendor_callback = false;
             }
-            $scope.get_user_profile();
+            
             $scope.digest();
         } else {
             // No user is signed in.
-            ENV.DEBUG && console.log('no user signed in')
+            console.log('no user signed in')
             $rootScope.metadata = Object.assign($rootScope.metadata, {
                 signed_in: false,
                 email_verified: false,
@@ -82,7 +87,7 @@ app.controller('mainController', ['$scope', '$timeout', '$http', '$rootScope', '
                 email: ''
             })
             $http.post(ENV.API_URL + 'reset_auth').then((data) => {
-                ENV.DEBUG && console.log(data);
+                console.log(data);
             }, (err) => {
                 
             })
@@ -91,41 +96,87 @@ app.controller('mainController', ['$scope', '$timeout', '$http', '$rootScope', '
     });
 
     $scope.check_token = () => {
-        ENV.DEBUG && console.log(ENV.API_URL)
-        $http.post(ENV.API_URL + 'token').then(function(data){
-            ENV.DEBUG && console.log('check_token');
-            ENV.DEBUG && console.log(data);
-            ENV.DEBUG && console.log('end of check_token');
-        }, (err) => {
-            ENV.DEBUG && console.log('check_token');
-            ENV.DEBUG && console.log(err);
-            ENV.DEBUG && console.log('end of check_token');
-        })
+        return new Promise((resolve, reject) => {
+            $http.post(ENV.API_URL + 'token').then(function(data){
+                console.log('check_token');
+                console.log(data);
+                console.log('end of check_token');
+                if(data.status == 'OK'){
+                    resolve();
+                }else{
+                    reject();
+                }
+            }, (err) => {
+                console.log('check_token');
+                console.log(err);
+                console.log('end of check_token');
+                reject();
+            })
+        })        
     }
     $scope.get_user_profile = () => {
-        $http.post(ENV.API_URL + 'get_profile').then((data) => {
-            ENV.DEBUG && console.log('get_profile');
-            ENV.DEBUG && console.log(data);
-            ENV.DEBUG && console.log('end of get_profile');
-        }, (err) => {
-            ENV.DEBUG && console.log('get_profile');
-            ENV.DEBUG && console.log(err);
-            ENV.DEBUG && console.log('end of get_profile');
+        return new Promise((resolve, reject) => {
+            $http.post(ENV.API_URL + 'get_profile').then((data) => {
+                console.log('get_profile');
+                console.log(data);
+                console.log('end of get_profile');
+                resolve();
+            }, (err) => {
+                console.log('get_profile');
+                console.log(err);
+                console.log('end of get_profile');
+                reject();
+            })
         })
     }
 
     $scope.register_uid = () => {
-        $http.post(ENV.API_URL + 'register/uid',{
-            fb_uid: $rootScope.metadata.fb_uid,
-            email: $rootScope.metadata.email
-        }).then((data) => {
-            ENV.DEBUG && console.log('register_uid');
-            ENV.DEBUG && console.log(data);
-            ENV.DEBUG && console.log('end of register_uid');
-        }, (err) => {
-            ENV.DEBUG && console.log('register_uid');
-            ENV.DEBUG && console.log(err);
-            ENV.DEBUG && console.log('end of register_uid');
+        return new Promise((resolve, reject) => {
+            $http.post(ENV.API_URL + 'register/uid',{
+                fb_uid: $rootScope.metadata.fb_uid,
+                email: $rootScope.metadata.email
+            }).then((data) => {
+                console.log('register_uid');
+                console.log(data);
+                console.log('end of register_uid');
+                resolve();
+            }, (err) => {
+                console.log('register_uid');
+                console.log(err);
+                console.log('end of register_uid');
+                if(err.status === 422){
+                    resolve();
+                }else{
+                    reject();
+                }
+            })
+        })
+    }
+
+    $scope.register_vendor = (user) => {
+        return new Promise((resolve, reject) => {
+            $http.post(ENV.API_URL + 'register/vendor', {
+                email: user.email,
+                fb_uid: user.uid
+            }, {
+                responseType: 'json'
+            }).then((data) => {
+                console.log(data)
+                if(data.data.status == 'OK'){
+                    resolve();
+                }else{
+                    reject();
+                }
+            }, (err) => {
+                console.log(err);
+                $scope.digest();
+                if(err.status !== 422){
+                    $scope.signout();
+                    reject();
+                }else{
+                    resolve();
+                }
+            })
         })
     }
 
@@ -134,36 +185,26 @@ app.controller('mainController', ['$scope', '$timeout', '$http', '$rootScope', '
             
         }).catch(function(error) {
         // An error happened.
-        ENV.DEBUG && console.log(error)
+        console.log(error)
         });
     }
 
     firebase.auth().getRedirectResult().then(function(result) {
-        ENV.DEBUG && console.log('vendor');
         if(result.user){
+            console.log('vendor');
+            console.log(result.user);
             $rootScope.metadata.vendor_callback = true;
             // This gives you a Facebook Access Token. You can use it to access the Facebook API.
             var token = result.credential.accessToken;
             // The signed-in user info.
             var user = result.user;
-            ENV.DEBUG && console.log('facebook logging');
-            ENV.DEBUG && console.log(user);
-            ENV.DEBUG && console.log('end of facebook logging');
-            $http.post(ENV.API_URL + 'register/vendor', {
-                email: user.email,
-                fb_uid: user.uid
-            }, {
-                responseType: 'json'
-            }).then((data) => {
-                ENV.DEBUG && console.log(data)
+            console.log('facebook logging');
+            console.log(user);
+            console.log('end of facebook logging');
+            $scope.register_vendor(user).then(() => {
+                $scope.get_user_profile();
                 $scope.digest();
-            }, (err) => {
-                ENV.DEBUG && console.log(err);
-                $scope.digest();
-                if(err.status !== 422){
-                    $scope.signout();
-                }
-            })
+            }).catch(()=>{});
         }
         
         // ...
@@ -176,6 +217,6 @@ app.controller('mainController', ['$scope', '$timeout', '$http', '$rootScope', '
         // The firebase.auth.AuthCredential type that was used.
         var credential = error.credential;
         // ...
-        ENV.DEBUG && console.log(errorMessage);
+        console.log(errorMessage);
     });
 }])
