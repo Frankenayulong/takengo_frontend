@@ -27,9 +27,8 @@ Route::get('/how-it-works', function () {
 Route::get('/contact-us', function () {
     return view('contact-us');
 });
-Route::get('/profile', function () {
-    return view('user-profile');
-});
+Route::get('/profile', 'ProfileController@show');
+Route::get('/profile/edit', 'ProfileController@edit');
 
 /*Links on footer*/
 Route::get('/faq', function () {
