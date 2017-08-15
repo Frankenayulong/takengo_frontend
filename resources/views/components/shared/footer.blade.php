@@ -24,7 +24,7 @@
 						<ul class="c-links">
 							<li><a href="{{url('/')}}">Home</a></li>
 							<li><a href="{{url('/about-us')}}">About</a></li>
-							<li><a href="{{url('/terms-and-conditions')}}">Terms and Condition</a></li>
+							<li><a href="{{url('/terms-and-conditions')}}">Terms and Conditions</a></li>
 							<li><a href="{{url('/faq')}}">FAQ</a></li>
 						</ul>
 					</div>
