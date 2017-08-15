@@ -11,6 +11,7 @@
                     Page Sub Title Goes Here			</h4>
             </div>
     </div><!-- END: LAYOUT/BREADCRUMBS/BREADCRUMBS-3 -->
+    </div>
     <!-- BEGIN: PAGE CONTENT -->
     <div class="c-content-box c-size-md ">
         <div class="container">
