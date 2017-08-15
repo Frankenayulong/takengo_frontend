@@ -79,5 +79,15 @@ gulp.task('slider', function(){
     .pipe(gulp.dest('../public/js'))
 })
 
-gulp.task('default', [ 'css', 'js', 'slider' ]);
+gulp.task('faq', function(){
+    var faq_files = [
+        'demos/default/js/scripts/pages/faq.js'
+    ];
+    return gulp.src(filesExist(faq_files))
+        .pipe(concat('faq.js'))
+        .pipe(minify())
+        .pipe(gulp.dest('../public/js'))
+})
+
+gulp.task('default', [ 'css', 'js', 'slider', 'faq' ]);
 module.exports = gulp;

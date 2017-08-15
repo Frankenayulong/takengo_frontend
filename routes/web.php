@@ -13,3 +13,7 @@
 Route::get('/', function () {
     return view('home');
 });
+
+Route::get('/faq', function () {
+    return view('faq');
+});

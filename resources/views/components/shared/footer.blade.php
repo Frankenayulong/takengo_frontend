@@ -6,7 +6,7 @@
 				<div class="col-md-3">
 					<div class="c-container c-first">
 						<div class="c-content-title-1">
-							<h3 class="c-font-uppercase c-font-bold c-font-white">JAN<span class="c-theme-font">GO</span></h3>
+							<h3 class="c-font-uppercase c-font-bold c-font-white">Take N Go</h3>
 							<div class="c-line-left hide"></div>
 							<p class="c-text">
 							Lorem ipsum dolor sit amet, consectetuer adipiscing elit, s
@@ -14,10 +14,10 @@
 							tation diam.</p>
 						</div>
 						<ul class="c-links">
-							<li><a href="#">Home</a></li>
+							<li><a href="{{url('/')}}">Home</a></li>
 							<li><a href="#">About</a></li>
-							<li><a href="#">Terms</a></li>
-							<li><a href="#">Contact</a></li>
+							<li><a href="#">Terms and Condition</a></li>
+							<li><a href="{{url('/faq')}}">FAQ</a></li>
 						</ul>
 					</div>
 				</div>
