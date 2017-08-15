@@ -3,7 +3,7 @@
 	<div class="c-prefooter">
 		<div class="container">
 			<div class="row">
-				<div class="col-md-3">
+				<div class="col-md-4">
 					<div class="c-container c-first">
 						<div class="c-content-title-1">
 							<h3 class="c-font-uppercase c-font-bold c-font-white">Take N Go</h3>
@@ -13,64 +13,24 @@
 							ed elit diam nonummy ad minim veniam quis nostrud exerci et 
 							tation diam.</p>
 						</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="c-container">
+						<div class="c-content-title-1">
+							<h3 class="c-font-uppercase c-font-bold c-font-white">Site Map</h3>
+							<div class="c-line-left hide"></div>
+						</div>
 						<ul class="c-links">
 							<li><a href="{{url('/')}}">Home</a></li>
-							<li><a href="#">About</a></li>
-							<li><a href="#">Terms and Condition</a></li>
+							<li><a href="{{url('/about-us')}}">About</a></li>
+							<li><a href="{{url('/terms-and-conditions')}}">Terms and Condition</a></li>
 							<li><a href="{{url('/faq')}}">FAQ</a></li>
 						</ul>
 					</div>
 				</div>
-				<div class="col-md-3">
-					<div class="c-container">
-						<div class="c-content-title-1">
-							<h3 class="c-font-uppercase c-font-bold c-font-white">Latest Posts</h3>
-							<div class="c-line-left hide"></div>
-						</div>
-						<div class="c-blog">
-							<div class="c-post">
-								<div class="c-post-img"><img src="../../assets/base/img/content/stock/9.jpg" alt="" class="img-responsive"/></div>
-								<div class="c-post-content">
-									<h4 class="c-post-title"><a href="#">Ready to Launch</a></h4>
-									<p class="c-text">Lorem ipsum dolor sit amet ipsum sit, consectetuer adipiscing elit sit amet</p>
-								</div>
-							</div>
-							<div class="c-post c-last">
-								<div class="c-post-img"><img src="../../assets/base/img/content/stock/14.jpg" alt="" class="img-responsive"/></div>
-								<div class="c-post-content">
-									<h4 class="c-post-title"><a href="#">Dedicated Support</a></h4>
-									<p class="c-text">Lorem ipsum dolor ipsum sit ipsum amet, consectetuer sit adipiscing elit ipsum elit elit ipsum elit</p>
-								</div>
-							</div>
-							<a href="#" class="btn btn-md c-btn-border-1x c-theme-btn c-btn-uppercase c-btn-square c-btn-bold c-read-more hide">Read More</a>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-3">
-					<div class="c-container">
-						<div class="c-content-title-1">
-							<h3 class="c-font-uppercase c-font-bold c-font-white">Latest Works</h3>
-							<div class="c-line-left hide"></div>
-						</div>
-						<ul class="c-works">
-							<li class="c-first"><a href="#"><img src="../../assets/base/img/content/stock/015.jpg" alt="" class="img-responsive"/></a></li>
-							<li><a href="#"><img src="../../assets/base/img/content/stock/012.jpg" class="img-responsive" alt=""/></a></li>
-							<li class="c-last"><a href="#"><img src="../../assets/base/img/content/stock/12.jpg" alt="" class="img-responsive"/></a></li>
-						</ul>
-						<ul class="c-works">
-							<li class="c-first"><a href="#"><img src="../../assets/base/img/content/stock/014.jpg" class="img-responsive" alt=""/></a></li>
-							<li><a href="#"><img src="../../assets/base/img/content/stock/011.jpg" class="img-responsive" alt=""/></a></li>
-							<li class="c-last"><a href="#"><img src="../../assets/base/img/content/stock/15.jpg" class="img-responsive" alt=""/></a></li>
-						</ul>
-						<ul class="c-works">
-							<li class="c-first"><a href="#"><img src="../../assets/base/img/content/stock/015.jpg" class="img-responsive" alt=""/></a></li>
-							<li><a href="#"><img src="../../assets/base/img/content/stock/013.jpg" class="img-responsive" alt=""/></a></li>
-							<li class="c-last"><a href="#"><img src="../../assets/base/img/content/stock/13.jpg" class="img-responsive" alt=""/></a></li>
-						</ul>
-						<a href="#" class="btn btn-md c-btn-border-1x c-theme-btn c-btn-uppercase c-btn-square c-btn-bold c-read-more hide">View More</a>
-					</div>
-				</div>
-				<div class="col-md-3">
+
+				<div class="col-md-4">
 					<div class="c-container c-last">
 						<div class="c-content-title-1">
 							<h3 class="c-font-uppercase c-font-bold c-font-white">Find us</h3>
