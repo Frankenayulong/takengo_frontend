@@ -3,21 +3,22 @@
 @section('content')
 
     <!-- BEGIN: LAYOUT/BREADCRUMBS/BREADCRUMBS-3 -->
-    <div class="c-layout-breadcrumbs-1 c-bgimage c-subtitle c-fonts-uppercase c-fonts-bold c-bg-img-center" style="background-image: url(../../assets/base/img/content/backgrounds/bg-96.jpg)">
+    <div class="c-layout-breadcrumbs-1 c-bgimage c-subtitle c-fonts-uppercase c-fonts-bold c-bg-img-center" style="background-image: url(../../assets/base/img/content/banner2.png); background-position:center 90%; background-size:cover;">
         <div class="container">
             <div class="c-page-title c-pull-left">
                 <h3 class="c-font-uppercase c-font-bold c-font-dark c-font-20 c-font-slim">FAQ</h3>
                 <h4 class="c-font-dark c-font-slim">
                     Page Sub Title Goes Here			</h4>
             </div>
+            <!-- breadcrumbs
             <ul class="c-page-breadcrumbs c-theme-nav c-pull-right c-fonts-regular">
                 <li><a href="#" class="c-font-dark">Pages</a></li>
                 <li class="c-font-dark">/</li>
                 <li><a href="page-faq.html" class="c-font-dark">FAQ</a></li>
                 <li class="c-font-dark">/</li>
                 <li class="c-state_active c-font-dark">Jango Components</li>
-
             </ul>
+            -->
         </div>
     </div><!-- END: LAYOUT/BREADCRUMBS/BREADCRUMBS-3 -->
     <!-- BEGIN: PAGE CONTENT -->

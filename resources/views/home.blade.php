@@ -199,161 +199,34 @@
 	</div> 
 </div><!-- END: CONTENT/MISC/SERVICES-1 -->
 
-<!-- BEGIN: CONTENT/FEATURES/FEATURES-16-2 -->
-<div id="feature-16-2" class="c-content-feature-16 c-bg-img-center" style="background-image: url(../../assets/base/img/content/shop4/104.jpg)">
+<!-- BEGIN: CONTENT/STATS/COUNTER-3 -->
+<div class="c-content-box c-size-md c-bg-parallax" style="background-image: url(../../assets/base/img/content/backgrounds/bg-29.jpg)">
 	<div class="container">
-		<div class="row">
-			<div class="col-md-5 col-xs-12">
-				<div class="c-feature-16-container c-bg-dark c-bg-opacity-4">
-					<div class="c-feature-16-line c-theme-bg"></div>
-					<h2 class="c-feature-16-title c-font-bold c-font-uppercase c-font-white">Start your business with JANGO</h2>
-					<p class="c-feature-16-desc c-font-grey">
-						Lorem ipsum dolor sit amet, consectetuer
-						adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore
-						magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud
-						exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo
-						consequat. Lorem ipsum dolor sit amet, consectetuer
-					</p>
-					<a class="c-feature-15-btn btn c-btn btn-lg c-theme-btn c-font-uppercase c-font-bold c-btn-square" href="https://themeforest.net/item/jango-highly-flexible-component-based-html5-template/11987314" alt="Purchase JANGO">Purchase Now</a>
-				</div>
-			</div>
-		</div>
-	</div>
-</div><!-- END: CONTENT/FEATURES/FEATURES-16-2 -->
-
-<!-- BEGIN: CONTENT/STATS/COUNTER-1 -->
-<div class="c-content-box c-size-md c-bg-white">
-	<div class="container">
-		<div class="c-content-counter-1 c-opt-1">
+		<div class="c-content-counter-1">
 			<div class="c-content-title-1">
-				<h3 class="c-center c-font-uppercase c-font-bold">We never stop improving</h3>
-				<div class="c-line-center"></div>
+				<h3 class="c-center c-font-uppercase c-font-white c-font-bold">We never stop improving</h3>
+				<div class="c-line-center c-bg-white"></div>
 			</div>
-			<div class="row">
+			<div class="row c-margin-t-60">
 				<div class="col-md-4">
-					<div class="c-counter c-theme-border c-font-bold c-theme-font" data-counter="counterup">201</div>
-					<h4 class="c-title c-first c-font-uppercase c-font-bold">Current Pages</h4>
-					<p class="c-content">..and growing. We will never stop improving and updating JANGO. Expect more.</p>
-				</div>
-				<div class="col-md-4">
-					<div class="c-counter c-theme-border c-font-bold c-theme-font" data-counter="counterup">3841</div>
-					<h4 class="c-title c-font-uppercase c-font-bold">Satisfied Customers</h4>
-					<p class="c-content">Our Professional and dedicated team are on stand by to server your every concern.</p>
+					<div class="c-counter c-font-white c-bordered c-border-red c-font-white" data-counter="counterup">130</div>
+					<h4 class="c-title c-first c-font-white c-font-uppercase c-font-bold">Current Pages</h4>
+					<p class="c-content c-font-white c-opacity-08">..and growing. We will never stop improving and updating JANGO. Expect more.</p>
 				</div>
 				<div class="col-md-4">
-					<div class="c-counter c-theme-border c-font-bold c-theme-font" data-counter="counterup">110,865</div>
-					<h4 class="c-title c-font-uppercase c-font-bold">Total Downloads</h4>
-					<p class="c-content">Join the community of over 110,865 users.</p>
+					<div class="c-counter c-font-white c-bordered c-border-blue c-font-white" data-counter="counterup">35,500</div>
+					<h4 class="c-title c-font-white c-font-uppercase c-font-bold">Satisfied Customers</h4>
+					<p class="c-content c-font-white c-opacity-08">Our Professional and dedicated team are on stand by to server your every concern.</p>
 				</div>
-			</div>
-		</div>
-	</div> 
-</div>
-<!-- END: CONTENT/STATS/COUNTER-1 -->
-
-<!-- BEGIN: CONTENT/PRICING/PRICING-6 -->
-<div class="c-content-box c-size-md" style="background-color: #3b3f62">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12">
-				<div class="c-content-title-1 c-title-pricing-1">
-					<h3 class="c-font-green">
-						<span class="c-font-thin c-font-white">Competitive Pricing</span> All What You Need
-					</h3>
-					<div class="c-row c-try">
-						<button class="btn btn-md c-btn-square c-btn-red c-btn-uppercase c-btn-bold">TRY IT FOR FREE</button>
-					</div>
+				<div class="col-md-4">
+					<div class="c-counter c-font-white c-bordered c-border-green c-font-white" data-counter="counterup">101,865</div>
+					<h4 class="c-title c-font-white c-font-uppercase c-font-bold">Total Downloads</h4>
+					<p class="c-content c-font-white c-opacity-08">Join the community of over 101,865 users.</p>
 				</div>
-			</div>
-		</div>
-
-		<div class="row">
-			<div class="c-content-pricing-1 c-opt-2">
-
-				<div class="col-md-3 c-sm-hidden">
-					<div class="c-content c-column-odd c-padding-adjustment">
-						<div class="c-row c-type c-font-20 c-align-left">Product Features</div>
-						<div class="c-row c-title c-font-17">End Products</div>
-						<div class="c-row c-title c-font-17">Standard Features</div>
-						<div class="c-row c-title c-font-17">Free Issues</div>
-						<div class="c-row c-title c-font-17">Paid Issues</div>
-						<div class="c-row c-empty">&nbsp;</div>
-						<div class="c-row c-empty">&nbsp;</div>
-					</div>
-				</div>
-
-				<div class="col-md-3 col-sm-4">
-					<div class="c-content c-column-even c-padding-adjustment">
-						<div class="c-row c-type c-font-20">Starter</div>
-						<div class="c-row c-font-17">
-							10 <span class="c-sub-title">End Products</span>
-						</div>
-						<div class="c-row">
-							<i class="fa fa-check c-font-20"></i> <span class="c-sub-title">Standard Features</span>
-						</div>
-						<div class="c-row">
-							<i class="fa fa-times c-font-20"></i> <span class="c-sub-title">Free Issues</span>
-						</div>
-						<div class="c-row">
-							<i class="fa fa-times c-font-20"></i> <span class="c-sub-title">Paid Issues</span>
-						</div>
-						<div class="c-row c-price">
-							<span class="c-dollar c-font-20">$</span> <span class="c-font-30 c-font-bold">49</span>
-						</div>
-						<div class="c-row c-purchase">
-							<button class="btn btn-md c-btn-square c-btn-border-2x c-btn-green c-btn-uppercase c-btn-bold">PURCHASE</button>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-md-3 col-sm-4">
-					<div class="c-content c-column-odd c-padding-adjustment">
-						<div class="c-row c-type c-font-20">Community</div>
-						<div class="c-row c-font-17">100 <span class="c-sub-title">End Products</span></div>
-						<div class="c-row">
-							<i class="fa fa-check c-font-20"></i> <span class="c-sub-title">Standard Features</span>
-						</div>
-						<div class="c-row">
-							<i class="fa fa-check c-font-20"></i> <span class="c-sub-title">Free Issues</span>
-						</div>
-						<div class="c-row">
-							<i class="fa fa-check c-font-20"></i> <span class="c-sub-title">Paid Issues</span>
-						</div>
-						<div class="c-row c-price">
-							<span class="c-dollar c-font-20">$</span> <span class="c-font-30 c-font-bold">99</span>
-						</div>
-						<div class="c-row c-purchase">
-							<button class="btn btn-md c-btn-square c-btn-border-2x c-btn-green c-btn-uppercase c-btn-bold">PURCHASE</button>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-md-3 col-sm-4">
-					<div class="c-content c-column-even">
-						<div class="c-row c-type c-font-20">Professional</div>
-						<div class="c-row c-font-17">Unlimited <span class="c-sub-title">End Products</span></div>
-						<div class="c-row">
-							<i class="fa fa-check c-font-20"></i> <span class="c-sub-title">Standard Features</span>
-						</div>
-						<div class="c-row">
-							<i class="fa fa-check c-font-20"></i> <span class="c-sub-title">Free Issues</span>
-						</div>
-						<div class="c-row">
-							<i class="fa fa-check c-font-20"></i> <span class="c-sub-title">Paid Issues</span>
-						</div>
-						<div class="c-row c-price">
-							<span class="c-dollar c-font-20">$</span> <span class="c-font-30 c-font-bold">149</span>
-						</div>
-						<div class="c-row c-purchase">
-							<button class="btn btn-md c-btn-square c-btn-border-2x c-btn-green c-btn-uppercase c-btn-bold">PURCHASE</button>
-						</div>
-					</div>
-				</div>
-
 			</div>
 		</div>
 	</div>
-</div><!-- END: CONTENT/PRICING/PRICING-6 -->
+</div><!-- END: CONTENT/STATS/COUNTER-3 -->
 
 <!-- BEGIN: CONTENT/SLIDERS/CLIENT-LOGOS-2 -->
 <div class="c-content-box c-size-md c-bg-white">
@@ -369,43 +242,43 @@
 
 			<!-- Begin: Owlcarousel -->
 
-			<div class="owl-carousel owl-theme c-theme owl-bordered1 c-owl-nav-center" data-items="6" data-desktop-items="4" data-desktop-small-items="3" data-tablet-items="3" data-mobile-small-items="2" data-slide-speed="5000" data-rtl="false"> 
+			<div class="owl-carousel owl-theme c-theme owl-bordered1 c-owl-nav-center" data-items="6" data-desktop-items="4" data-desktop-small-items="3" data-tablet-items="3" data-mobile-small-items="2" data-slide-speed="5000" data-rtl="false">
 			 	<div class="item">
 			  		<a href="#"><img src="../../assets/base/img/content/client-logos/client1.jpg" alt=""/></a>
 			  	</div>
 			  	<div class="item">
 			  		<a href="#"><img src="../../assets/base/img/content/client-logos/client2.jpg" alt=""/></a>
-			  	</div>	
+			  	</div>
 			  	<div class="item">
 			  		<a href="#"><img src="../../assets/base/img/content/client-logos/client3.jpg" alt=""/></a>
-			  	</div>	
+			  	</div>
 			  	<div class="item">
 			  		<a href="#"><img src="../../assets/base/img/content/client-logos/client4.jpg" alt=""/></a>
-			  	</div>	
+			  	</div>
 			  	<div class="item">
 			  		<a href="#"><img src="../../assets/base/img/content/client-logos/client5.jpg" alt=""/></a>
-			  	</div>	
+			  	</div>
 			  	<div class="item">
 			  		<a href="#"><img src="../../assets/base/img/content/client-logos/client6.jpg" alt=""/></a>
 			  	</div>
 			  	<div class="item">
 			  		<a href="#"><img src="../../assets/base/img/content/client-logos/client5.jpg" alt=""/></a>
-			  	</div>	
+			  	</div>
 			  	<div class="item">
 			  		<a href="#"><img src="../../assets/base/img/content/client-logos/client6.jpg" alt=""/></a>
 			  	</div>
 			  	<div class="item">
 			  		<a href="#"><img src="../../assets/base/img/content/client-logos/client5.jpg" alt=""/></a>
-			  	</div>	
+			  	</div>
 			  	<div class="item">
 			  		<a href="#"><img src="../../assets/base/img/content/client-logos/client6.jpg" alt=""/></a>
 			  	</div>
 			  	<div class="item">
 			  		<a href="#"><img src="../../assets/base/img/content/client-logos/client5.jpg" alt=""/></a>
-			  	</div>	
+			  	</div>
 			  	<div class="item">
 			  		<a href="#"><img src="../../assets/base/img/content/client-logos/client6.jpg" alt=""/></a>
-			  	</div>				 
+			  	</div>
 			</div>
 	        <!-- End-->
 	    </div>
