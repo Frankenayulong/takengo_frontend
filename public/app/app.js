@@ -46,7 +46,7 @@ app.controller('mainController', ['$scope', '$timeout', '$http', '$rootScope', '
     $scope.modalFunc = {
         closeAuth: () => {
             $('#signup-form').modal('hide');
-            $('#signin-form').modal('hide');
+            $('#login-form').modal('hide');
             $('#forget-password-form').modal('hide');
         }
     }
@@ -54,8 +54,11 @@ app.controller('mainController', ['$scope', '$timeout', '$http', '$rootScope', '
     firebase.auth().onAuthStateChanged(function(user) {
         console.log('auth changed');
         $rootScope.metadata.fb_signing = false;
-        $rootScope.metadata.loading.sign_up = false;
+        
         if (user) {
+            user.getIdToken().then(token=>{
+                console.log(token)
+            })
             // User is signed in.
             $rootScope.metadata = Object.assign($rootScope.metadata, {
                 signed_in: true,
@@ -68,16 +71,29 @@ app.controller('mainController', ['$scope', '$timeout', '$http', '$rootScope', '
                 $rootScope.metadata.new_sign_up = false;
                 $('#sign-up-success').modal('show');
             }
+            
             if(!$rootScope.metadata.vendor_callback){
-                $scope.register_uid().then(() => {
-                    $scope.check_token().then(() => {
-                        $scope.get_user_profile().then(()=>{}).catch(()=>{})  
-                    }).catch(()=>{
-                        console.log('signing out');
-                        $scope.signout();
-                    })
-                }).catch(()=>{});
-                
+                if($rootScope.metadata.loading.sign_up){
+                    $scope.register_uid(user).then(() => {
+                        $scope.sign_in_cycle(user).then(()=>{
+                            $rootScope.metadata.loading.sign_up = false;
+                        }).catch(()=>{
+                            $rootScope.metadata.loading.sign_up = false;
+                        })
+                    }).catch(()=>{});
+                }else{
+                    $scope.server_login(user).then(() => {
+                        console.log('server_login next');
+                        console.log(user);
+                        $scope.sign_in_cycle(user).then(()=>{
+                            console.log('sign_in_cycle success');
+                            $rootScope.metadata.loading.sign_in = false;
+                        }).catch(()=>{
+                            console.log('sign_in_cycle fail')
+                            $rootScope.metadata.loading.sign_in = false;
+                        })
+                    }).catch(()=>{});
+                }
             }else{
                 $rootScope.metadata.vendor_callback = false;
             }
@@ -100,10 +116,28 @@ app.controller('mainController', ['$scope', '$timeout', '$http', '$rootScope', '
         }
     });
 
-    $scope.check_token = () => {
+    $scope.sign_in_cycle = (user) => {
+        return new Promise((resolve, reject) => {
+            console.log(user.uid);
+            $scope.check_token(user).then(() => {
+                console.log('check_token success');
+                $scope.get_user_profile().then(()=>{
+                    resolve();
+                }).catch(()=>{
+                    reject();
+                })  
+            }).catch(()=>{
+                console.log('signing out');
+                $scope.signout();
+                reject();
+            })
+        })
+    }
+
+    $scope.check_token = (user) => {
         return new Promise((resolve, reject) => {
             $http.post(ENV.API_URL + 'token',{
-                email: $rootScope.metadata.email
+                email: user.email
             }).then(function(data){
                 console.log('check_token');
                 console.log(data);
@@ -114,16 +148,16 @@ app.controller('mainController', ['$scope', '$timeout', '$http', '$rootScope', '
                     reject();
                 }
             }, (err) => {
-                console.log('check_token');
+                console.log('check_token err');
                 console.log(err);
-                console.log('end of check_token');
+                console.log('end of check_token err');
                 reject();
             })
         })        
     }
     $scope.get_user_profile = () => {
         return new Promise((resolve, reject) => {
-            $http.post(ENV.API_URL + 'get_profile',{
+            $http.post(ENV.API_URL + 'profile',{
                 email: $rootScope.metadata.email
             }).then((data) => {
                 console.log('get_profile');
@@ -139,11 +173,11 @@ app.controller('mainController', ['$scope', '$timeout', '$http', '$rootScope', '
         })
     }
 
-    $scope.register_uid = () => {
+    $scope.register_uid = (user) => {
         return new Promise((resolve, reject) => {
             $http.post(ENV.API_URL + 'register/uid',{
-                fb_uid: $rootScope.metadata.fb_uid,
-                email: $rootScope.metadata.email
+                fb_uid: user.uid,
+                email: user.email
             }).then((data) => {
                 console.log('register_uid');
                 console.log(data);
@@ -167,8 +201,6 @@ app.controller('mainController', ['$scope', '$timeout', '$http', '$rootScope', '
             $http.post(ENV.API_URL + 'register/vendor', {
                 email: user.email,
                 fb_uid: user.uid
-            }, {
-                responseType: 'json'
             }).then((data) => {
                 console.log(data)
                 if(data.data.status == 'OK'){
@@ -193,6 +225,30 @@ app.controller('mainController', ['$scope', '$timeout', '$http', '$rootScope', '
         // An error happened.
         console.log(error)
         });
+    }
+
+    $scope.server_login = (user) => {
+        return new Promise((resolve, reject) => {
+            $http.post(ENV.API_URL + 'login', {
+                email: user.email,
+                fb_uid: user.uid
+            }).then((data) => {
+                console.log(data)
+                console.log('server_login')
+                if(data.data.status == 'OK'){
+                    console.log('server_login OK');
+                    resolve();
+                }else{
+                    reject();
+                }
+            }, (err) => {
+                console.log(err);
+                $scope.digest();
+                console.log('login_attempt logout')
+                $scope.signout();
+                reject();
+            })
+        })
     }
 
     firebase.auth().getRedirectResult().then(function(result) {
