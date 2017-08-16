@@ -3,7 +3,11 @@ var minifyCSS = require('gulp-csso');
 var concatCss = require('gulp-concat-css');
 var concat = require('gulp-concat');
 var minify = require('gulp-minify');
-filesExist = require('files-exist')
+filesExist = require('files-exist');
+var uglifyjs = require('uglify-es');
+var composer = require('gulp-uglify/composer');
+
+var uglify = composer(uglifyjs, console);
 
 gulp.task('css', function(){
     var css_files = [
@@ -37,6 +41,7 @@ gulp.task('css', function(){
 gulp.task('js', function(){
     var js_files = [
         'plugins/jquery.min.js',
+        'plugins/moment.min.js',
         'plugins/jquery-migrate.min.js',
         'plugins/bootstrap/js/bootstrap.js',
         'plugins/jquery.easing.min.js',
@@ -63,14 +68,38 @@ gulp.task('js', function(){
         'base/js/app.js',
         'system.js',
         'plugins/caleran.min.js',
-        'plugins/caleran.obf.js',
-        'plugins/moment.min.js',
+        'plugins/caleran.obf.js'
     ];
     return gulp.src(filesExist(js_files))
     .pipe(concat('build.js'))
-    .pipe(minify())
+    .pipe(uglify())
     .pipe(gulp.dest('../public/js'))
 })
+
+// gulp.task('angular-lib', function(){
+//     var angular_files = [
+//         // 'plugins/angular/angular.min.js',
+//         'plugins/slim/slim.angular.js'
+//     ];
+//     return gulp.src(filesExist(angular_files))
+//     .pipe(concat('ng-lib-min.js'))
+//     .pipe(uglify())
+//     .pipe(gulp.dest('../public/js'))
+// })
+
+// gulp.task('angular', function(){
+//     var angular_files = [
+//         'app/app.js',
+//         'app/controllers/components/modals/sign-in.js',
+//         'app/controllers/components/modals/sign-up.js',
+//         'app/controllers/components/header.js'
+//     ];
+//     return gulp.src(filesExist(angular_files))
+//     .pipe(concat('ng-min.js'))
+//     .pipe(uglify())
+//     .pipe(gulp.dest('../public/js'))
+// })
+
 
 gulp.task('slider', function(){
     var slider_files = [

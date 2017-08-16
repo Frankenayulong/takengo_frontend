@@ -5,14 +5,11 @@ if(window){
   Object.assign(env, window.__env);
 }
 
-var app = angular.module('takeNGo', [])
-// .constant('ENV.API_URL', 'http://api.takengo.io/api/')
+var app = angular.module('takeNGo', ['slim'])
 .constant('ENV', env)
 .config(function ($httpProvider) {
     $httpProvider.defaults.withCredentials = true;
-    //rest of route code
-})
-//.constant('ENV.API_URL', 'http://api.takengo.io/');
+});
 
 app.controller('mainController', ['$scope', '$timeout', '$http', '$rootScope', 'ENV', function($scope, $timeout, $http, $rootScope, ENV){
     $rootScope.metadata = {
@@ -25,7 +22,7 @@ app.controller('mainController', ['$scope', '$timeout', '$http', '$rootScope', '
             sign_up: false,
             sign_in: false
         }
-    }
+    };
     
     $scope.digest = function(a) {
         var waitForRenderAndDoSomething = function() {
@@ -46,7 +43,7 @@ app.controller('mainController', ['$scope', '$timeout', '$http', '$rootScope', '
             $('#login-form').modal('hide');
             $('#forget-password-form').modal('hide');
         }
-    }
+    };
 
     $scope.authenticate = {};
 
@@ -62,7 +59,7 @@ app.controller('mainController', ['$scope', '$timeout', '$http', '$rootScope', '
                     email: user.email,
                     uid: user.uid,
                     email_verified: userStatus.verified
-                })
+                });
                 $scope.digest();
                 console.log($rootScope.metadata);
             }).catch(() => {
@@ -85,8 +82,8 @@ app.controller('mainController', ['$scope', '$timeout', '$http', '$rootScope', '
                 console.log(err);
                 console.log('end of get_profile');
                 reject();
-            })
-        })
+            });
+        });
     }
 
     $scope.authenticate.check_token = () => {
@@ -105,8 +102,8 @@ app.controller('mainController', ['$scope', '$timeout', '$http', '$rootScope', '
                 console.log(err);
                 console.log('end of check_token err');
                 reject();
-            })
-        })
+            });
+        });
     }
 
     $scope.authenticate.sign_out = () => {
@@ -117,14 +114,14 @@ app.controller('mainController', ['$scope', '$timeout', '$http', '$rootScope', '
             email_verified: false,
             tng_uid: '',
             email: ''
-        })
+        });
         $http.post(ENV.API_URL + 'reset_auth').then((data) => {
             console.log(data);
         }, (err) => {
             
-        })
+        });
         $scope.digest();
     }
 
     $scope.authenticate.check();
-}])
+}]);

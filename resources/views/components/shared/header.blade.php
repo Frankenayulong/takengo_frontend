@@ -4,9 +4,9 @@
 			<div class="c-navbar-wrapper clearfix">
 				<div class="c-brand c-pull-left">
 					<a href="index.html" class="c-logo">
-						<img src="../../assets/base/img/layout/logos/takengo.png" alt="JANGO" class="c-desktop-logo">
-						<img src="../../assets/base/img/layout/logos/takengo.png" alt="JANGO" class="c-desktop-logo-inverse">
-						<img src="../../assets/base/img/layout/logos/takengo.png" alt="JANGO" class="c-mobile-logo">
+						<img src="{{asset('assets/base/img/layout/logos/logo-3.png')}}" alt="JANGO" class="c-desktop-logo">
+						<img src="{{asset('assets/base/img/layout/logos/logo-3.png')}}" alt="JANGO" class="c-desktop-logo-inverse">
+						<img src="{{asset('assets/base/img/layout/logos/logo-3.png')}}" alt="JANGO" class="c-mobile-logo">
 					</a>
 					<button class="c-hor-nav-toggler" type="button" data-target=".c-mega-menu">
 					<span class="c-line"></span>
