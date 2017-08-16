@@ -47,7 +47,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a ng-click="signin_vendor('google')" class="btn btn-block c-btn-square btn-social btn-google">
+                                <a href="http://api.takengo.dev/auth/google" class="btn btn-block c-btn-square btn-social btn-google">
                                   <i class="fa fa-google"></i>
                                   Google
                                 </a>
