@@ -9,6 +9,7 @@ gulp.task('css', function(){
     var css_files = [
         'app.css',
         'spinner.css',
+        'plugins/caleran.min.css',
         'plugins/socicon/socicon.css',
         'plugins/bootstrap-social/bootstrap-social.css',
         'plugins/font-awesome/css/font-awesome.css',
@@ -35,7 +36,6 @@ gulp.task('css', function(){
 
 gulp.task('js', function(){
     var js_files = [
-        'system.js',
         'plugins/jquery.min.js',
         'plugins/jquery-migrate.min.js',
         'plugins/bootstrap/js/bootstrap.js',
@@ -60,7 +60,11 @@ gulp.task('js', function(){
         'plugins/js-cookie/js.cookie.js',
         'base/js/components.js',
         'base/js/components-shop.js',
-        'base/js/app.js'
+        'base/js/app.js',
+        'system.js',
+        'plugins/caleran.min.js',
+        'plugins/caleran.obf.js',
+        'plugins/moment.min.js',
     ];
     return gulp.src(filesExist(js_files))
     .pipe(concat('build.js'))

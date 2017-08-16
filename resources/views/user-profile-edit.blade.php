@@ -46,65 +46,63 @@
 			<div class="col-md-12">	
 				{!! Form::model($user, ['route' => 'profile.submit', 'class' => 'c-shop-form-1']) !!}
 					<div class="row">
-						<div class="form-group col-sm-12 col-lg-6">
-							{!! Form::label('first_name', 'First Name', ['class' => 'control-label c-font-14']) !!}
-							{!! Form::text('first_name', null,
-								['required',
-									'class'=>'form-control c-square c-theme',
-									'placeholder'=>'First Name']) !!}
-									<span class="help-block c-font-red">{{$errors->first('first_name')}}</span>
-						</div>
-						<div class="form-group col-sm-12 col-lg-6">
-							{!! Form::label('last_name', 'Last Name', ['class' => 'control-label c-font-14']) !!}
-							{!! Form::text('last_name', null,
-								['required',
-									'class'=>'form-control c-square c-theme',
-									'placeholder'=>'Last Name']) !!}
-									<span class="help-block c-font-red">{{$errors->first('last_name')}}</span>
-						</div>
-						<div class="form-group col-sm-12 col-lg-6">
-							{!! Form::label('phone', 'Phone', ['class' => 'control-label c-font-14']) !!}
-							{!! Form::text('phone', null,
-								['class'=>'form-control c-square c-theme',
-									'placeholder'=>'Phone']) !!}
-									<span class="help-block c-font-red">{{$errors->first('phone')}}</span>
-						</div>
-						<div class="form-group col-sm-12 col-lg-6">
-							{!! Form::label('preferred_contact', 'Preferred Contact Method', ['class' => 'control-label c-font-14']) !!}
-							<div class="c-radio-inline">
-								<div class="c-radio c-radio-small">
-									{!! Form::radio('preferred_contact', 'EMAIL', false, ['class' => 'c-radio', 'id' => 'contact1']) !!}
-									<label for="contact1">
-										<span></span>
-										<span class="check"></span>
-										<span class="box"></span> Email
-									</label>
-								</div>
-								<div class="c-radio c-radio-small">
-									{!! Form::radio('preferred_contact', 'PHONE', false, ['class' => 'c-radio', 'id' => 'contact2']) !!}
-									<label for="contact2">
-										<span></span>
-										<span class="check"></span>
-										<span class="box"></span> Phone
-									</label>
-								</div>
-								<div class="c-radio c-radio-small">
-									{!! Form::radio('preferred_contact', 'TEXT', false, ['class' => 'c-radio', 'id' => 'contact3']) !!}
-									<label for="contact3">
-										<span></span>
-										<span class="check"></span>
-										<span class="box"></span> Text
-									</label>
-								</div>
+						<div class="row">
+							<div class="form-group col-sm-12 col-lg-6">
+								{!! Form::label('first_name', 'First Name', ['class' => 'control-label c-font-14']) !!}
+								{!! Form::text('first_name', null,
+									['required',
+										'class'=>'form-control c-square c-theme',
+										'placeholder'=>'First Name']) !!}
+										<span class="help-block c-font-red">{{$errors->first('first_name')}}</span>
 							</div>
-							<span class="help-block c-font-red">{{$errors->first('preferred_contact')}}</span>
+							<div class="form-group col-sm-12 col-lg-6">
+								{!! Form::label('last_name', 'Last Name', ['class' => 'control-label c-font-14']) !!}
+								{!! Form::text('last_name', null,
+									['required',
+										'class'=>'form-control c-square c-theme',
+										'placeholder'=>'Last Name']) !!}
+										<span class="help-block c-font-red">{{$errors->first('last_name')}}</span>
+							</div>
 						</div>
-						<div class="form-group col-sm-12 col-lg-6">
-							{!! Form::label('operating_system', 'Operating System', ['class' => 'control-label c-font-14']) !!}
-							{!! Form::text('operating_system', null,
-								['class'=>'form-control c-square c-theme',
-									'placeholder'=>'Operating System Being Used']) !!}
-									<span class="help-block c-font-red">{{$errors->first('operating_system')}}</span>
+						<div class="row">
+							<div class="form-group col-sm-12 col-lg-6">
+								{!! Form::label('gender', 'Gender', ['class' => 'control-label c-font-14']) !!}
+								<div class="c-radio-inline">
+									<div class="c-radio c-radio-small">
+										{!! Form::radio('gender', 'M', false, ['class' => 'c-radio', 'id' => 'gender1']) !!}
+										<label for="gender1">
+											<span></span>
+											<span class="check"></span>
+											<span class="box"></span> Boy
+										</label>
+									</div>
+									<div class="c-radio c-radio-small">
+										{!! Form::radio('gender', 'F', false, ['class' => 'c-radio', 'id' => 'gender2']) !!}
+										<label for="gender2">
+											<span></span>
+											<span class="check"></span>
+											<span class="box"></span> Girl
+										</label>
+									</div>
+								</div>
+								<span class="help-block c-font-red">{{$errors->first('gender')}}</span>
+							</div>
+							<div class="form-group col-sm-12 col-lg-6">
+								{!! Form::label('phone', 'Phone', ['class' => 'control-label c-font-14']) !!}
+								{!! Form::text('phone', null,
+									['class'=>'form-control c-square c-theme',
+										'placeholder'=>'Phone']) !!}
+										<span class="help-block c-font-red">{{$errors->first('phone')}}</span>
+							</div>
+						</div>
+						<div class="row">
+							<div class="form-group col-sm-12 col-lg-6">
+								{!! Form::label('operating_system', 'Operating System', ['class' => 'control-label c-font-14']) !!}
+								{!! Form::text('operating_system', null,
+									['class'=>'form-control c-square c-theme',
+										'placeholder'=>'Operating System Being Used']) !!}
+										<span class="help-block c-font-red">{{$errors->first('operating_system')}}</span>
+							</div>
 						</div>
 					</div>
 

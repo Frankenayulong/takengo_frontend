@@ -12,3 +12,25 @@ main {
     padding-top: 100px!important;
     padding-bottom:40px!important;
 }
+
+.c-radio.c-radio-small label>.box{
+    top: 5px !important;
+    height: 15px !important;
+    width: 15px !important;
+}
+
+.c-radio.c-radio-small label{
+    padding-left: 20px !important;
+    font-size: 14px !important;
+}
+
+.c-radio.c-radio-small{
+    margin-bottom:0 !important;
+}
+
+.c-radio.c-radio-small label>.check{
+    top: 8px !important;
+    left: 3px !important;
+    width: 9px !important;
+    height: 9px !important;
+}
