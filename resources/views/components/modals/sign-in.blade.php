@@ -41,13 +41,13 @@
                         </div>
                         <ul class="c-content-list-adjusted">
                             <li>
-                                <a ng-click="signin_vendor('facebook')" href="javascript:;" class="btn btn-block c-btn-square btn-social btn-facebook">
+                                <a href="http://api.takengo.dev/auth/redirect/facebook" href="javascript:;" class="btn btn-block c-btn-square btn-social btn-facebook">
                                   <i class="fa fa-facebook"></i>
                                   Facebook
                                 </a>
                             </li>
                             <li>
-                                <a href="http://api.takengo.dev/auth/google" class="btn btn-block c-btn-square btn-social btn-google">
+                                <a href="http://api.takengo.dev/auth/redirect/google" class="btn btn-block c-btn-square btn-social btn-google">
                                   <i class="fa fa-google"></i>
                                   Google
                                 </a>
