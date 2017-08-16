@@ -29,6 +29,7 @@ Route::get('/contact-us', function () {
 });
 Route::get('/profile', 'ProfileController@show');
 Route::get('/profile/edit', 'ProfileController@edit');
+Route::put('/profile/edit', 'ProfileController@update')->name('profile.submit');
 
 /*Links on footer*/
 Route::get('/faq', function () {

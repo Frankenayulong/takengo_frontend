@@ -11,6 +11,11 @@ class ProfileController extends Controller
     }
 
     public function edit(){
-        return view('user-profile-edit');
+        $user = [];
+        return view('user-profile-edit')->with('user', $user);
+    }
+
+    public function update(){
+        return redirect('/');
     }
 }
