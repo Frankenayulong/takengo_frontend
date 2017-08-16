@@ -23,30 +23,23 @@ app.controller('signInController', ['$scope', '$rootScope', '$timeout', '$http',
     $scope.signin = () => {
         const {email, password} = $scope.signin_information; 
         $rootScope.metadata.loading.sign_in = true;
-        console.log(email);
-        console.log(password);
-        firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
-            // Handle Errors here.
-            var errorCode = error.code;
-            var errorMessage = error.message;
-            console.log(errorMessage)
-            // ...
+        $http.post(ENV.API_URL + 'login', {
+            email: email,
+            password: password
+        }, {
+            responseType: 'json'
+        })
+        .then((data)=>{
+            console.log(data);            
             $rootScope.metadata.loading.sign_in = false;
+            $scope.authenticate.check();
+            $scope.modalFunc.closeAuth();
+        }, (data)=>{
+            let response = data.data;
             $scope.signin_error.error = true;
             $scope.signin_error.message.error = ['Invalid email or password!'];
+            $rootScope.metadata.loading.sign_in = false;
             $scope.digest();
         });
-    }
-    
-    $scope.signin_vendor = (vendor = 'facebook') => {
-        var provider = null;
-        if(vendor == 'facebook'){
-            provider = new firebase.auth.FacebookAuthProvider();
-        }else if(vendor == 'google'){
-            provider = new firebase.auth.GoogleAuthProvider();
-        }else{
-            return;
-        }
-        firebase.auth().signInWithRedirect(provider);
     }
 }])

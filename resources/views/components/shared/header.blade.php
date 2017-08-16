@@ -56,7 +56,7 @@
                                     <a href="{{url('/profile')}}">Dashboard</a>
                                 </li>
                                 <li class="dropdown-submenu">
-                                    <a href="javascript:;" ng-click="signout()">Logout</a>
+                                    <a href="javascript:;" ng-click="authenticate.sign_out()">Logout</a>
                                 </li>           
                             </ul>
                         </li>
