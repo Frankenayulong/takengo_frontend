@@ -41,13 +41,13 @@
                         </div>
                         <ul class="c-content-list-adjusted">
                             <li>
-                                <a href="http://api.takengo.dev/auth/redirect/facebook" href="javascript:;" class="btn btn-block c-btn-square btn-social btn-facebook">
+                                <a href="{{config('api.api_base_url')}}/auth/redirect/facebook" href="javascript:;" class="btn btn-block c-btn-square btn-social btn-facebook">
                                   <i class="fa fa-facebook"></i>
                                   Facebook
                                 </a>
                             </li>
                             <li>
-                                <a href="http://api.takengo.dev/auth/redirect/google" class="btn btn-block c-btn-square btn-social btn-google">
+                                <a href="{{config('api.api_base_url')}}/auth/redirect/google" class="btn btn-block c-btn-square btn-social btn-google">
                                   <i class="fa fa-google"></i>
                                   Google
                                 </a>
