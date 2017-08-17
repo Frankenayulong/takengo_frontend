@@ -9,9 +9,8 @@
 							<h3 class="c-font-uppercase c-font-bold c-font-white">Take N Go</h3>
 							<div class="c-line-left hide"></div>
 							<p class="c-text">
-							Lorem ipsum dolor sit amet, consectetuer adipiscing elit, s
-							ed elit diam nonummy ad minim veniam quis nostrud exerci et 
-							tation diam.</p>
+							Take N Go is a car rental company which allows the users to easily
+							book a car and pick it up at their nearest location.</p>
 						</div>
 					</div>
 				</div>
