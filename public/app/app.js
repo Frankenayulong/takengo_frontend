@@ -52,13 +52,12 @@ app.controller('mainController', ['$scope', '$timeout', '$http', '$rootScope', '
             $scope.modalFunc.closeAuth();
             $scope.authenticate.get_profile().then((data)=>{
                 var user = (data.data || {}).user;
-                var userStatus = JSON.parse(user.status);
                 $rootScope.metadata.signing = false;
                 $rootScope.metadata = Object.assign($rootScope.metadata, {
                     signed_in: true,
                     email: user.email,
                     uid: user.uid,
-                    email_verified: userStatus.verified
+                    email_verified: user.s_verified
                 });
                 $scope.digest();
                 console.log($rootScope.metadata);
@@ -78,7 +77,7 @@ app.controller('mainController', ['$scope', '$timeout', '$http', '$rootScope', '
                 console.log('end of get_profile');
                 resolve(data);
             }, (err) => {
-                console.log('get_profile');
+                console.log('err get_profile');
                 console.log(err);
                 console.log('end of get_profile');
                 reject();

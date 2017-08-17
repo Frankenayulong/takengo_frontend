@@ -94,24 +94,6 @@ app.controller('profileEditController', ['$scope', '$rootScope', '$http', 'ENV',
             }
         });
     }
-
-    setTimeout(()=>{
-        $http.put(ENV.API_URL + 'profile/edit', {})
-        .then((data)=>{
-            console.log('vero');
-            console.log(data);     
-        }, (data)=>{
-            console.log(data);
-        });
-    
-        $http.post(ENV.API_URL + 'user/document/upload/4', {})
-        .then((data)=>{
-            console.log('nduttt');
-            console.log(data);     
-        }, (data)=>{
-            console.log(data);
-        });
-    }, 2000)
 }]);
 
 app.controller('profileDocumentController', ['$scope', '$rootScope', '$http', 'ENV', function($scope, $rootScope, $http, ENV){
