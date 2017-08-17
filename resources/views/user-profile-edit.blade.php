@@ -44,7 +44,7 @@
 		
 		<div class="row" style="margin-left:0;margin-right:0;">
 			<div class="col-md-12">	
-				{!! Form::model($user, ['route' => 'profile.submit', 'class' => 'c-shop-form-1']) !!}
+				{!! Form::model($user, ['route' => 'profile.submit', 'class' => 'c-shop-form-1', 'method' => 'PUT']) !!}
 					<div class="c-content-title-1 c-title-md">
 						<h3 class="c-center c-font-uppercase c-font-bold">Personal Information</h3>
 						<div class="c-line-center c-bg-theme"></div>
@@ -187,7 +187,8 @@
 			<div class="c-line-left c-bg-theme"></div>
 		</div>
 		<div class="row">
-			<div class="col-sm-12 col-lg-6">
+			<div class="form-group col-sm-12 col-lg-6">
+			<label class="control-label c-font-17">Upload your driver license below</label>
 			<slim id="driver-license-slim" data-ratio="16:9"
                 data-size="200,400"
                 data-service="slim.api_url"
