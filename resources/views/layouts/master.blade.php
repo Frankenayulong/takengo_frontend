@@ -14,6 +14,7 @@
         <meta content="Franky Gabriel Sanjaya – S3642810, Kendrick Kesley – S3642811, Nadya Safira – S3642868, Veronica Ong – S3642807, 
         Yulita Putri Hartoyo – S3642813" name="author"/>
         <meta content="Take N Go, car rental, car nearby, book a car, booking, cars" name="keywords"/>
+        <meta name="csrf-token" content="{{ csrf_token() }}">
         
         <link href="{{asset('css/plugins/slim.min.css')}}" rel="stylesheet" type="text/css"/>
         <link href="{{asset('css/build.css')}}" rel="stylesheet" type="text/css"/>
