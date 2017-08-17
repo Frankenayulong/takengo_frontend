@@ -22,11 +22,11 @@ class VerifyCsrfToken extends BaseVerifier
       {
         if ( \Session::token() != $request->input('_token'))
         {
-            return response([
-                'session' => \Session::token(),
-                '_token' => $request->input('_token'),
-                'domain' => config('session.domain')
-            ]);
+            // return response([
+            //     'session' => \Session::token(),
+            //     '_token' => $request->input('_token'),
+            //     'domain' => config('session.domain')
+            // ]);
           return redirect()->guest('/')
           ->with('global', 'Expired token found. Redirecting to /');
         }

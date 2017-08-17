@@ -14,21 +14,4 @@ class ProfileController extends Controller
         $user = [];
         return view('user-profile-edit')->with('user', $user);
     }
-
-    public function update(Request $request){
-        $this->validate($request, [
-            'first_name' => '',
-            'last_name' => '',
-            'gender' => '',
-            'phone' => '',
-            'birth_date' => '',
-            'address' => '',
-            'city' => '',
-            'state' => '',
-            'post_code'
-        ]);
-        return $request->all();
-        
-        return redirect('/');
-    }
 }

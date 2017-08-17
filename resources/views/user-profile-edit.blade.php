@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-<div ng-controller="profileEditController" class="c-layout-breadcrumbs-1 c-bgimage-full  c-centered  c-fonts-uppercase c-fonts-bold   c-bg-img-center" style="background-image: url({{asset('assets/base/img/content/backgrounds/bg-48.jpg')}})">
+<div class="c-layout-breadcrumbs-1 c-bgimage-full  c-centered  c-fonts-uppercase c-fonts-bold   c-bg-img-center" style="background-image: url({{asset('assets/base/img/content/backgrounds/bg-48.jpg')}})">
     <div class="container">
         <div class="c-page-title c-pull-left">
             <h3 class="c-font-uppercase c-font-bold c-font-white c-font-20 c-font-slim c-opacity-09">Edit Profile</h3>
@@ -44,7 +44,7 @@
 		
 		<div class="row" style="margin-left:0;margin-right:0;">
 			<div class="col-md-12">	
-				{!! Form::model($user, ['route' => 'profile.submit', 'class' => 'c-shop-form-1', 'method' => 'PUT']) !!}
+				<form ng-controller="profileEditController" class="c-shop-form-1" ng-submit="save_profile()">
 					<div class="c-content-title-1 c-title-md">
 						<h3 class="c-center c-font-uppercase c-font-bold">Personal Information</h3>
 						<div class="c-line-center c-bg-theme"></div>
@@ -56,16 +56,22 @@
 								{!! Form::text('first_name', null,
 									['required',
 										'class'=>'form-control c-square c-theme',
-										'placeholder'=>'First Name']) !!}
-										<span class="help-block c-font-red">{{$errors->first('first_name')}}</span>
+										'placeholder'=>'First Name',
+										'ng-model' => 'profile_form.first_name']) !!}
+								<span ng-if="profile_error.first_name" class="help-block c-font-red">
+									<strong ng-repeat="item in profile_error.message.first_name | limitTo:1">@{{item}}</strong>
+								</span>
 							</div>
 							<div class="form-group col-sm-12 col-lg-6">
 								{!! Form::label('last_name', 'Last Name', ['class' => 'control-label c-font-14']) !!}
 								{!! Form::text('last_name', null,
 									['required',
 										'class'=>'form-control c-square c-theme',
-										'placeholder'=>'Last Name']) !!}
-										<span class="help-block c-font-red">{{$errors->first('last_name')}}</span>
+										'placeholder'=>'Last Name',
+										'ng-model' => 'profile_form.last_name']) !!}
+								<span ng-if="profile_error.last_name" class="help-block c-font-red">
+									<strong ng-repeat="item in profile_error.message.last_name | limitTo:1">@{{item}}</strong>
+								</span>
 							</div>
 						</div>
 						<div class="row">
@@ -74,7 +80,11 @@
 									{!! Form::label('gender', 'Gender', ['class' => 'control-label c-font-14']) !!}
 									<div class="c-radio-inline">
 										<div class="c-radio c-radio-small">
-											{!! Form::radio('gender', 'M', false, ['class' => 'c-radio', 'id' => 'gender1']) !!}
+											{!! Form::radio('gender', 'M', false, [
+											'class' => 'c-radio', 
+											'id' => 'gender1',
+											'ng-model' => 'profile_form.gender'
+											]) !!}
 											<label for="gender1">
 												<span></span>
 												<span class="check"></span>
@@ -82,7 +92,11 @@
 											</label>
 										</div>
 										<div class="c-radio c-radio-small">
-											{!! Form::radio('gender', 'F', false, ['class' => 'c-radio', 'id' => 'gender2']) !!}
+											{!! Form::radio('gender', 'F', false, [
+											'class' => 'c-radio', 
+											'id' => 'gender2',
+											'ng-model' => 'profile_form.gender'
+											]) !!}
 											<label for="gender2">
 												<span></span>
 												<span class="check"></span>
@@ -90,14 +104,20 @@
 											</label>
 										</div>
 									</div>
-									<span class="help-block c-font-red">{{$errors->first('gender')}}</span>
+									<span ng-if="profile_error.gender" class="help-block c-font-red">
+										<strong ng-repeat="item in profile_error.message.gender | limitTo:1">@{{item}}</strong>
+									</span>
 								</div>
 								<div class="form-group">
 									{!! Form::label('phone', 'Phone', ['class' => 'control-label c-font-14']) !!}
 									{!! Form::text('phone', null,
 										['class'=>'form-control c-square c-theme',
-											'placeholder'=>'Phone']) !!}
-											<span class="help-block c-font-red">{{$errors->first('phone')}}</span>
+											'placeholder'=>'Phone',
+											'ng-model' => 'profile_form.phone'
+											]) !!}
+									<span ng-if="profile_error.phone" class="help-block c-font-red">
+										<strong ng-repeat="item in profile_error.message.phone | limitTo:1">@{{item}}</strong>
+									</span>
 								</div>
 							</div>
 							
@@ -107,8 +127,11 @@
 								{!! Form::text('birth_date', null,
 									['class'=>'form-control c-square c-theme',
 										'placeholder'=>'Birth Date',
-										'id' => 'caleran-header']) !!}
-										<span class="help-block c-font-red">{{$errors->first('birth_date')}}</span>
+										'id' => 'caleran-header',
+										'ng-model' => 'profile_form.birth_date']) !!}
+								<span ng-if="profile_error.birth_date" class="help-block c-font-red">
+									<strong ng-repeat="item in profile_error.message.birth_date | limitTo:1">@{{item}}</strong>
+								</span>
 							</div>
 						</div>
 					</div>
@@ -128,16 +151,20 @@
 									['class'=>'form-control c-square c-theme noresize',
 										'placeholder'=>'Enter your home address..',
 										'rows' => 4]) !!}
-										<span class="help-block c-font-red">{{$errors->first('address')}}</span>
+								<span ng-if="profile_error.address" class="help-block c-font-red">
+									<strong ng-repeat="item in profile_error.message.address | limitTo:1">@{{item}}</strong>
+								</span>
 							</div>
 						</div>
 						<div class="row">
 							<div class="form-group col-sm-12 col-lg-6">
-								{!! Form::label('city', 'Suburb', ['class' => 'control-label c-font-14']) !!}
-								{!! Form::text('city', null,
+								{!! Form::label('suburb', 'Suburb', ['class' => 'control-label c-font-14']) !!}
+								{!! Form::text('suburb', null,
 									['class'=>'form-control c-square c-theme',
 										'placeholder'=>'Suburb']) !!}
-										<span class="help-block c-font-red">{{$errors->first('city')}}</span>
+								<span ng-if="profile_error.suburb" class="help-block c-font-red">
+									<strong ng-repeat="item in profile_error.message.suburb | limitTo:1">@{{item}}</strong>
+								</span>
 							</div>
 							<div class="form-group col-sm-12 col-lg-6">
 								{!! Form::label('state', 'State', ['class' => 'control-label c-font-14']) !!}
@@ -153,6 +180,9 @@
 									'WA' => 'Western Australia'
 									], null,
 									['class' => 'form-control  c-square c-theme']) !!}
+								<span ng-if="profile_error.state" class="help-block c-font-red">
+									<strong ng-repeat="item in profile_error.message.state | limitTo:1">@{{item}}</strong>
+								</span>
 							</div>
 						</div>
 						<div class="row">
@@ -161,7 +191,9 @@
 								{!! Form::text('post_code', null,
 									['class'=>'form-control c-square c-theme',
 										'placeholder'=>'Post Code']) !!}
-										<span class="help-block c-font-red">{{$errors->first('post_code')}}</span>
+								<span ng-if="profile_error.post_code" class="help-block c-font-red">
+									<strong ng-repeat="item in profile_error.message.post_code | limitTo:1">@{{item}}</strong>
+								</span>
 							</div>
 						</div>
 						
@@ -178,39 +210,30 @@
 							</div>
 						</div>
 					</div>
-				{!! Form::close() !!}
+				</form>
 			</div>
 		</div>
-
-		<div class="c-content-title-1 c-title-md" style="margin-top:40px;">
-			<h3 class="c-left c-font-uppercase c-font-bold">Required Documents</h3>
-			<div class="c-line-left c-bg-theme"></div>
-		</div>
-		<div class="row">
-			<div class="form-group col-sm-12 col-lg-6">
-			<label class="control-label c-font-17">Upload your driver license below</label>
-			<slim id="driver-license-slim" data-ratio="16:9"
-                data-size="200,400"
-                data-service="slim.api_url"
-                data-filter-sharpen="20"
-                data-post="output"
-                data-did-upload="slim.upload"
-                data-did-init="slim.init">
-              <input type="file" name="picture"/>
-          </slim>
+		<div ng-controller="profileDocumentController">
+			<div class="c-content-title-1 c-title-md" style="margin-top:40px;">
+				<h3 class="c-left c-font-uppercase c-font-bold">Required Documents</h3>
+				<div class="c-line-left c-bg-theme"></div>
+			</div>
+			<div class="row">
+				<div class="form-group col-sm-12 col-lg-6">
+				<label class="control-label c-font-17">Upload your driver license below</label>
+					<slim id="driver-license-slim" data-ratio="16:9"
+						data-size="200,400"
+						data-service="slim.api_url"
+						data-filter-sharpen="20"
+						data-post="output"
+						data-did-upload="slim.upload"
+						data-did-init="slim.init">
+						<input type="file" name="picture"/>
+					</slim>
+				</div>
 			</div>
 		</div>
+		
 	</div>
 </div>
-@endsection
-
-@section('script')
-<script type="text/javascript">$("#caleran-header").caleran({
-	singleDate: true,
-	calendarCount: 1,
-	showHeader: false,
-    showFooter: false,
-	autoCloseOnSelect: true,
-	format: 'DD MMMM YYYY'
-});</script>
 @endsection
