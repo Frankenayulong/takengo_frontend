@@ -14,7 +14,9 @@
         <meta content="Franky Gabriel Sanjaya – S3642810, Kendrick Kesley – S3642811, Nadya Safira – S3642868, Veronica Ong – S3642807, 
         Yulita Putri Hartoyo – S3642813" name="author"/>
         <meta content="Take N Go, car rental, car nearby, book a car, booking, cars" name="keywords"/>
+        <meta name="csrf-token" content="{{ csrf_token() }}">
         
+        <link href="{{asset('css/plugins/slim.min.css')}}" rel="stylesheet" type="text/css"/>
         <link href="{{asset('css/build.css')}}" rel="stylesheet" type="text/css"/>
 
         <link rel="shortcut icon" href="favicon.ico"/>
@@ -58,10 +60,13 @@
         </script>
         <script type="text/javascript" src="{{asset('js/slider-min.js')}}"></script>
         <script src="{{ URL::asset('app/lib/angular/angular.min.js')}}"></script>
+        <script src="{{ URL::asset('app/lib/slim/slim.angular.js')}}"></script>
         <script src="{{ URL::asset('app/app.js')}}"></script>
         <script src="{{ URL::asset('app/controllers/components/modals/sign-in.js')}}"></script>
         <script src="{{ URL::asset('app/controllers/components/modals/sign-up.js')}}"></script>
         <script src="{{ URL::asset('app/controllers/components/header.js')}}"></script>
+        <script src="{{ URL::asset('app/controllers/pages/profile_edit.js')}}"></script>
+        <script src="{{ URL::asset('app/lib/ngGeolocation/ngGeolocation.min.js') }}"></script>
         @yield('script')
     </body>
 </html>

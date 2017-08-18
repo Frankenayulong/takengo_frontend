@@ -9,7 +9,7 @@ app.controller('signUpController', ['$scope', '$rootScope', '$timeout', '$http',
             password_confirmation: [],
             password: []
         }
-    }
+    };
 
     $scope.reset_input = () => {
         $scope.signup_information = {
@@ -17,7 +17,7 @@ app.controller('signUpController', ['$scope', '$rootScope', '$timeout', '$http',
             password: '',
             password_confirmation: ''
         };
-    }
+    };
 
     $scope.reset_input();
 
@@ -33,8 +33,6 @@ app.controller('signUpController', ['$scope', '$rootScope', '$timeout', '$http',
             email: email,
             password: password,
             password_confirmation: password_confirmation
-        }, {
-            responseType: 'json'
         })
         .then((data)=>{
             console.log(data);            
@@ -63,4 +61,4 @@ app.controller('signUpController', ['$scope', '$rootScope', '$timeout', '$http',
         });
         
     }
-}])
+}]);

@@ -9,14 +9,14 @@ app.controller('signInController', ['$scope', '$rootScope', '$timeout', '$http',
             password: [],
             error: []
         }
-    }
+    };
 
     $scope.reset_input = () => {
         $scope.signin_information = {
             email: '',
             password: ''
         };
-    }
+    };
 
     $scope.reset_input();
 
@@ -26,8 +26,6 @@ app.controller('signInController', ['$scope', '$rootScope', '$timeout', '$http',
         $http.post(ENV.API_URL + 'login', {
             email: email,
             password: password
-        }, {
-            responseType: 'json'
         })
         .then((data)=>{
             console.log(data);            
@@ -42,4 +40,4 @@ app.controller('signInController', ['$scope', '$rootScope', '$timeout', '$http',
             $scope.digest();
         });
     }
-}])
+}]);
