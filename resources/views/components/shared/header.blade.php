@@ -4,12 +4,9 @@
 			<div class="c-navbar-wrapper clearfix">
 				<div class="c-brand c-pull-left">
 					<a href="index.html" class="c-logo">
-<<<<<<< HEAD
 						<img src="{{asset('assets/base/img/layout/logos/logo.png')}}" alt="Take N Go Logo" class="c-desktop-logo" style="height:40px; width:90px; margin-top:-10px">
 						<img src="{{asset('assets/base/img/layout/logos/logo.png')}}" alt="Take N Go Logo" class="c-desktop-logo-inverse" style="height:40px; width:90px; margin-top:-10px">
 						<img src="{{asset('assets/base/img/layout/logos/logo.png')}}" alt="Take N Go Logo" class="c-mobile-logo" style="height:40px; width:90px; margin-top:-10px">
-=======
->>>>>>> a0f70b1b672575de504ed2ab59150b051e054504
 					</a>
 					<button class="c-hor-nav-toggler" type="button" data-target=".c-mega-menu">
 					<span class="c-line"></span>
