@@ -1,10 +1,14 @@
 app.controller('signUpController', ['$scope', '$rootScope', '$timeout', '$http', 'ENV', function($scope, $rootScope, $timeout, $http, ENV){
     
     $scope.signup_error = {
+        first_name: false,
+        last_name: false,
         email: false,
         password_confirmation: false,
         password: false,
         message: {
+            first_name: [],
+            last_name: [],
             email: [],
             password_confirmation: [],
             password: []
@@ -13,6 +17,8 @@ app.controller('signUpController', ['$scope', '$rootScope', '$timeout', '$http',
 
     $scope.reset_input = () => {
         $scope.signup_information = {
+            first_name: '',
+            last_name: '',
             email: '',
             password: '',
             password_confirmation: ''
@@ -22,7 +28,7 @@ app.controller('signUpController', ['$scope', '$rootScope', '$timeout', '$http',
     $scope.reset_input();
 
     $scope.signup = () => {
-        const {email, password, password_confirmation} = $scope.signup_information;  
+        const {first_name, last_name, email, password, password_confirmation} = $scope.signup_information;  
         if(password != password_confirmation){
             $scope.signup_error.password_confirmation = true;
             $scope.signup_error.message.password_confirmation = ['Password does not match'];
@@ -30,6 +36,8 @@ app.controller('signUpController', ['$scope', '$rootScope', '$timeout', '$http',
         }
         $rootScope.metadata.loading.sign_up = true;
         $http.post(ENV.API_URL + 'register', {
+            first_name: first_name,
+            last_name: last_name,
             email: email,
             password: password,
             password_confirmation: password_confirmation
@@ -43,6 +51,15 @@ app.controller('signUpController', ['$scope', '$rootScope', '$timeout', '$http',
         }, (data)=>{
             if(data.status == 422){
                 let response = data.data;
+                console.log(response);
+                if(response.first_name){
+                    $scope.signup_error.first_name = true;
+                    $scope.signup_error.message.first_name = response.first_name;
+                }
+                if(response.last_name){
+                    $scope.signup_error.last_name = true;
+                    $scope.signup_error.message.last_name = response.last_name;
+                }
                 if(response.email){
                     $scope.signup_error.email = true;
                     $scope.signup_error.message.email = response.email;

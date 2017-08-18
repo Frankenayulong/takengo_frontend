@@ -11,7 +11,7 @@
             <ul class="c-page-breadcrumbs c-theme-nav c-pull-right c-fonts-regular">
                 <li><a href="{{url('/')}}" class="c-font-white">Home</a></li>
                 <li class="c-font-white">/</li>
-                <li class="c-state_active c-font-white">My Profile</li>
+                <li class="c-state_active c-font-white">Dashboard</li>
             </ul>
         </div>
     </div>

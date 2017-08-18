@@ -16,6 +16,20 @@
                 <h3 class="c-font-24 c-font-sbold">Create An Account</h3>
                 <p>Please fill in below form to create an account with us</p>
                 <form ng-submit="signup()">
+                    <div class="form-group" ng-class="signup_error.first_name ? 'has-error' : ''">
+                        <label for="signup-first-name" class="hide">First Name</label>
+                        <input ng-model="signup_information.first_name" type="text" class="form-control input-lg c-square" id="signup-first-name" placeholder="First Name">
+                        <span ng-if="signup_error.first_name" class="help-block">
+                            <strong ng-repeat="item in signup_error.message.first_name | limitTo:1">@{{item}}</strong>
+                        </span>
+                    </div>
+                    <div class="form-group" ng-class="signup_error.last_name ? 'has-error' : ''">
+                        <label for="signup-last-name" class="hide">Last Name</label>
+                        <input ng-model="signup_information.last_name" type="text" class="form-control input-lg c-square" id="signup-last-name" placeholder="Last Name">
+                        <span ng-if="signup_error.last_name" class="help-block">
+                            <strong ng-repeat="item in signup_error.message.last_name | limitTo:1">@{{item}}</strong>
+                        </span>
+                    </div>
                     <div class="form-group" ng-class="signup_error.email ? 'has-error' : ''">
                         <label for="signup-email" class="hide">Email</label>
                         <input ng-model="signup_information.email" type="email" class="form-control input-lg c-square" id="signup-email" placeholder="Email">

@@ -22,9 +22,7 @@ app.controller('mainController', ['$scope', '$timeout', '$http', '$rootScope', '
             sign_up: false,
             sign_in: false
         },
-        auth: {
-
-        }
+        auth: {}
     };
 
     $geolocation.getCurrentPosition({
@@ -107,10 +105,12 @@ app.controller('mainController', ['$scope', '$timeout', '$http', '$rootScope', '
                 console.log(data);
                 console.log('end of check_token');
                 if(data.data.status == 'OK'){
+                    console.log(data.data);
                     $rootScope.metadata.auth = {
                         uid: data.data.uid,
                         token: data.data.token,
-                        email: data.data.email
+                        email: data.data.email,
+                        first_name: data.data.first_name
                     }
                     resolve();
                 }else{

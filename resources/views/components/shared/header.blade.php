@@ -49,11 +49,14 @@
 
                         <li ng-if="metadata.signed_in && !metadata.signing" class="c-menu-type-classic">
                             <a href="javascript:;" class="c-link dropdown-toggle">
-                            My Profile
+                            @{{metadata.auth.first_name || 'My Profile'}}
                             <span class="c-arrow c-toggler"></span></a>
                             <ul class="dropdown-menu c-menu-type-classic c-pull-left">
                                 <li class="dropdown-submenu">
-                                    <a href="{{url('/profile')}}">Dashboard</a>
+                                    <a href="{{url('/dashboard')}}">Dashboard</a>
+                                </li>
+                                <li class="dropdown-submenu">
+                                    <a href="{{url('/profile')}}">My Profile</a>
                                 </li>
                                 <li class="dropdown-submenu">
                                     <a href="javascript:;" ng-click="authenticate.sign_out()">Logout</a>
