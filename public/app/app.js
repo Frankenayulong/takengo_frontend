@@ -21,6 +21,9 @@ app.controller('mainController', ['$scope', '$timeout', '$http', '$rootScope', '
         loading: {
             sign_up: false,
             sign_in: false
+        },
+        auth: {
+
         }
     };
 
@@ -77,7 +80,13 @@ app.controller('mainController', ['$scope', '$timeout', '$http', '$rootScope', '
 
     $scope.authenticate.get_profile = () => {
         return new Promise((resolve, reject) => {
-            $http.post(ENV.API_URL + 'profile').then((data) => {
+            $http.post(ENV.API_URL + 'profile', {}, {
+                headers:{
+                    'X-TKNG-UID': $rootScope.metadata.auth.uid,
+                    'X-TKNG-TKN': $rootScope.metadata.auth.token,
+                    'X-TKNG-EM': $rootScope.metadata.auth.email
+                }
+            }).then((data) => {
                 console.log('get_profile');
                 console.log(data);
                 console.log('end of get_profile');
@@ -98,6 +107,11 @@ app.controller('mainController', ['$scope', '$timeout', '$http', '$rootScope', '
                 console.log(data);
                 console.log('end of check_token');
                 if(data.data.status == 'OK'){
+                    $rootScope.metadata.auth = {
+                        uid: data.data.uid,
+                        token: data.data.token,
+                        email: data.data.email
+                    }
                     resolve();
                 }else{
                     reject();
@@ -128,5 +142,7 @@ app.controller('mainController', ['$scope', '$timeout', '$http', '$rootScope', '
         $scope.digest();
     }
 
-    $scope.authenticate.check();
+    $scope.digest(() => {
+        $scope.authenticate.check();
+    })
 }]);

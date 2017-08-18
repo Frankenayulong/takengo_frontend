@@ -150,7 +150,8 @@
 								{!! Form::textarea('address', null,
 									['class'=>'form-control c-square c-theme noresize',
 										'placeholder'=>'Enter your home address..',
-										'rows' => 4]) !!}
+										'rows' => 4,
+										'ng-model' => 'profile_form.address']) !!}
 								<span ng-if="profile_error.address" class="help-block c-font-red">
 									<strong ng-repeat="item in profile_error.message.address | limitTo:1">@{{item}}</strong>
 								</span>
@@ -161,7 +162,8 @@
 								{!! Form::label('suburb', 'Suburb', ['class' => 'control-label c-font-14']) !!}
 								{!! Form::text('suburb', null,
 									['class'=>'form-control c-square c-theme',
-										'placeholder'=>'Suburb']) !!}
+										'placeholder'=>'Suburb',
+										'ng-model' => 'profile_form.suburb']) !!}
 								<span ng-if="profile_error.suburb" class="help-block c-font-red">
 									<strong ng-repeat="item in profile_error.message.suburb | limitTo:1">@{{item}}</strong>
 								</span>
@@ -179,7 +181,8 @@
 									'VIC' => 'Victoria',
 									'WA' => 'Western Australia'
 									], null,
-									['class' => 'form-control  c-square c-theme']) !!}
+									['class' => 'form-control  c-square c-theme',
+									'ng-model' => 'profile_form.state']) !!}
 								<span ng-if="profile_error.state" class="help-block c-font-red">
 									<strong ng-repeat="item in profile_error.message.state | limitTo:1">@{{item}}</strong>
 								</span>
@@ -190,7 +193,8 @@
 								{!! Form::label('post_code', 'Post Code', ['class' => 'control-label c-font-14']) !!}
 								{!! Form::text('post_code', null,
 									['class'=>'form-control c-square c-theme',
-										'placeholder'=>'Post Code']) !!}
+										'placeholder'=>'Post Code',
+										'ng-model' => 'profile_form.post_code']) !!}
 								<span ng-if="profile_error.post_code" class="help-block c-font-red">
 									<strong ng-repeat="item in profile_error.message.post_code | limitTo:1">@{{item}}</strong>
 								</span>
@@ -226,6 +230,7 @@
 						data-service="slim.api_url"
 						data-filter-sharpen="20"
 						data-post="output"
+						data-will-request="slim.will_request"
 						data-did-upload="slim.upload"
 						data-did-init="slim.init">
 						<input type="file" name="picture"/>

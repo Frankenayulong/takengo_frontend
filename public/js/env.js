@@ -2,7 +2,7 @@
   window.__env = window.__env || {};
 
   // API url
-  window.__env.API_URL = 'http://api.takengo.dev/api/';
+  window.__env.API_URL = 'https://api.takengo.dev/api/';
 
   // Base url
   window.__env.BASE_URL = '/';

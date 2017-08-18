@@ -50,8 +50,13 @@ app.controller('profileEditController', ['$scope', '$rootScope', '$http', 'ENV',
     });
 
     $scope.save_profile = () => {
-        var birth_date = $scope.profile_form.birth_date;
-        $http.put(ENV.API_URL + 'profile/edit', $scope.profile_form)
+        $http.put(ENV.API_URL + 'profile/edit', $scope.profile_form,{
+            headers:{
+                'X-TKNG-UID': $rootScope.metadata.auth.uid,
+                'X-TKNG-TKN': $rootScope.metadata.auth.token,
+                'X-TKNG-EM': $rootScope.metadata.auth.email
+            }
+        })
         .then((data)=>{
             console.log(data);     
         }, (data)=>{
@@ -69,6 +74,10 @@ app.controller('profileEditController', ['$scope', '$rootScope', '$http', 'ENV',
                 if(response.gender){
                     $scope.profile_error.gender = true;
                     $scope.profile_error.message.gender = response.gender;
+                }
+                if(response.phone){
+                    $scope.profile_error.phone = true;
+                    $scope.profile_error.message.phone = response.phone;
                 }
                 if(response.birth_date){
                     $scope.profile_error.birth_date = true;
@@ -107,7 +116,12 @@ app.controller('profileDocumentController', ['$scope', '$rootScope', '$http', 'E
             // current slim data object and slim reference
             console.log(data);
         },
-
+        will_request: function(xhr){
+            xhr.setRequestHeader('X-TKNG-UID', $rootScope.metadata.auth.uid);
+            xhr.setRequestHeader('X-TKNG-TKN', $rootScope.metadata.auth.token);
+            xhr.setRequestHeader('X-TKNG-EM', $rootScope.metadata.auth.email);
+            console.log($rootScope.metadata.auth.uid)
+        },
         upload: function (error, data, response) {
             console.log(error, data, response);
         }
