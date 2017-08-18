@@ -66,6 +66,7 @@
         <script src="{{ URL::asset('app/controllers/components/modals/sign-up.js')}}"></script>
         <script src="{{ URL::asset('app/controllers/components/header.js')}}"></script>
         <script src="{{ URL::asset('app/controllers/pages/profile_edit.js')}}"></script>
+        <script src="{{ URL::asset('app/lib/ngGeolocation/ngGeolocation.min.js') }}"></script>
         @yield('script')
     </body>
 </html>

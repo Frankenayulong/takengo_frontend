@@ -98,7 +98,7 @@ app.controller('profileEditController', ['$scope', '$rootScope', '$http', 'ENV',
 
 app.controller('profileDocumentController', ['$scope', '$rootScope', '$http', 'ENV', function($scope, $rootScope, $http, ENV){
     $scope.slim = {
-        api_url: ENV.API_URL + 'user/document/upload/4',
+        api_url: ENV.API_URL + 'user/document/upload',
         // called when slim has initialized
         init: function (data, slim) {
             // slim instance reference

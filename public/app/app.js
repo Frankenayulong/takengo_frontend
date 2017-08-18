@@ -5,13 +5,13 @@ if(window){
   Object.assign(env, window.__env);
 }
 
-var app = angular.module('takeNGo', ['slim'])
+var app = angular.module('takeNGo', ['slim', 'ngGeolocation'])
 .constant('ENV', env)
 .config(function ($httpProvider) {
     $httpProvider.defaults.withCredentials = true;
 });
 
-app.controller('mainController', ['$scope', '$timeout', '$http', '$rootScope', 'ENV', function($scope, $timeout, $http, $rootScope, ENV){
+app.controller('mainController', ['$scope', '$timeout', '$http', '$rootScope', 'ENV', '$geolocation', function($scope, $timeout, $http, $rootScope, ENV, $geolocation){
     $rootScope.metadata = {
         signed_in: false,
         email_verified: false,
@@ -23,6 +23,12 @@ app.controller('mainController', ['$scope', '$timeout', '$http', '$rootScope', '
             sign_in: false
         }
     };
+
+    $geolocation.getCurrentPosition({
+        timeout: 60000
+     }).then(function(position) {
+        console.log(position)
+     });
     
     $scope.digest = function(a) {
         var waitForRenderAndDoSomething = function() {
