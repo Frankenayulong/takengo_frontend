@@ -5,13 +5,13 @@ if(window){
   Object.assign(env, window.__env);
 }
 
-var app = angular.module('takeNGo', ['slim', 'ngGeolocation'])
+var app = angular.module('takeNGo', ['slim', 'ngGeolocation', 'ngCookies'])
 .constant('ENV', env)
 .config(function ($httpProvider) {
     $httpProvider.defaults.withCredentials = true;
 });
 
-app.controller('mainController', ['$scope', '$timeout', '$http', '$rootScope', 'ENV', '$geolocation', function($scope, $timeout, $http, $rootScope, ENV, $geolocation){
+app.controller('mainController', ['$scope', '$timeout', '$http', '$rootScope', 'ENV', '$geolocation', '$cookies', function($scope, $timeout, $http, $rootScope, ENV, $geolocation, $cookies){
     $rootScope.metadata = {
         signed_in: false,
         email_verified: false,
@@ -57,6 +57,11 @@ app.controller('mainController', ['$scope', '$timeout', '$http', '$rootScope', '
     $scope.authenticate.check = () => {
         $scope.authenticate.check_token().then(()=>{
             $scope.modalFunc.closeAuth();
+            // $scope.authenticate.register_auth().then(()=>{
+            //     console.log('register auth success');
+            // }).catch(()=>{
+            //     console.log('register auth fail');
+            // })
             $scope.authenticate.get_profile().then((data)=>{
                 var user = (data.data || {}).user;
                 $rootScope.metadata.signing = false;
@@ -112,17 +117,38 @@ app.controller('mainController', ['$scope', '$timeout', '$http', '$rootScope', '
                         email: data.data.email,
                         first_name: data.data.first_name
                     }
+                    $cookies.put('fe_uid', data.data.uid);
+                    $cookies.put('fe_token', data.data.token);
+                    $cookies.put('fe_email', data.data.email);
                     resolve();
                 }else{
                     reject();
                 }
             }, (err) => {
                 console.log('check_token err');
-                console.log(err);
+                console.log(err.data);
                 console.log('end of check_token err');
                 reject();
             });
         });
+    }
+
+    $scope.authenticate.register_auth = () => {
+        return new Promise((resolve, reject) => {
+            $http.post('/register-auth',{},{
+                headers: {
+                    'X-TKNG-UID': $rootScope.metadata.auth.uid,
+                    'X-TKNG-TKN': $rootScope.metadata.auth.token,
+                    'X-TKNG-EM': $rootScope.metadata.auth.email
+                }
+            }).then((data) => {
+                resolve();
+                console.log(data);
+            }, (err) => {
+                console.log(err);
+                reject();
+            });
+        })
     }
 
     $scope.authenticate.sign_out = () => {
@@ -142,7 +168,7 @@ app.controller('mainController', ['$scope', '$timeout', '$http', '$rootScope', '
         $scope.digest();
     }
 
-    $scope.digest(() => {
-        $scope.authenticate.check();
+    $(document).ready(()=>{
+        setTimeout($scope.authenticate.check, 500)
     })
 }]);

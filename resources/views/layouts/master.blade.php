@@ -60,6 +60,7 @@
         </script>
         <script type="text/javascript" src="{{asset('js/slider-min.js')}}"></script>
         <script src="{{ URL::asset('app/lib/angular/angular.min.js')}}"></script>
+        <script src="{{ URL::asset('app/lib/angular/angular-cookies.min.js')}}"></script>
         <script src="{{ URL::asset('app/lib/slim/slim.angular.js')}}"></script>
         <script src="{{ URL::asset('app/app.js')}}"></script>
         <script src="{{ URL::asset('app/controllers/components/modals/sign-in.js')}}"></script>

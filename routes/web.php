@@ -28,6 +28,7 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('/contact-us', function () {
         return view('contact-us');
     });
+    Route::get('/dashboard', 'ProfileController@dashboard');
     Route::get('/profile', 'ProfileController@show');
     Route::get('/profile/edit', 'ProfileController@edit');
     Route::put('/profile/edit', 'ProfileController@update')->name('profile.submit');
