@@ -3,7 +3,7 @@
 @section('content')
 
     <!-- START BREADCRUMBS -->
-    <div class="c-layout-breadcrumbs-1 c-bgimage-full  c-centered  c-fonts-uppercase c-fonts-bold   c-bg-img-center" style="background-image: url({{asset('assets/base/img/content/backgrounds/bg-47.jpg')}})">
+    <div class="c-layout-breadcrumbs-1 c-bgimage-full c-centered c-fonts-uppercase c-fonts-bold c-bg-img-center" style="background-image: url({{asset('assets/base/img/content/banner1.jpg')}}); background-size:cover; background-position:center center">
         <div class="container">
             <div class="c-page-title c-pull-left">
                 <h2 class="c-font-uppercase c-font-bold c-font-white c-font-35 c-font-slim c-opacity-09">About Us</h2>
@@ -36,28 +36,25 @@
                             <div class="c-overlay-wrapper">
                                 <div class="c-overlay-content">
                                     <a href="#"><i class="icon-link"></i></a>
-                                    <a href="../../assets/base/img/content/team/team10.jpg" data-lightbox="fancybox" data-fancybox-group="gallery-2">
+                                    <a href="{{asset('assets/base/img/content/franky.jpg')}}" data-lightbox="fancybox" data-fancybox-group="gallery-2">
                                         <i class="icon-magnifier"></i>
                                     </a>
                                 </div>
                             </div>
-                            <img src="../../assets/base/img/content/team/team10.jpg" class="img-responsive c-overlay-object" alt="">
+                            <img src="{{asset('assets/base/img/content/franky.jpg')}}" class="img-responsive c-overlay-object" alt="Franky Gabriel Sanjaya" style="height:330px">
                         </div>
                         <div class="c-body">
                             <div class="c-head">
-                                <div class="c-name c-font-uppercase c-font-bold">Randy JANGO</div>
+                                <div class="c-name c-font-uppercase c-font-bold">Franky G. Sanjaya</div>
                                 <ul class="c-socials c-theme-ul">
-                                    <li><a href="#"><i class="icon-social-twitter"></i></a></li>
                                     <li><a href="#"><i class="icon-social-facebook"></i></a></li>
-                                    <li><a href="#"><i class="icon-social-dribbble"></i></a></li>
                                 </ul>
                             </div>
                             <div class="c-position">
-                                CEO, JANGO Inc.
+                                S3642810
                             </div>
                             <p>
-                                Lorem ipsum dolor sit amet, dolor nemo amet elit.
-                                Nulla nemo consequuntur.
+                                Loves sleeping
                             </p>
                         </div>
                     </div>
@@ -66,28 +63,25 @@
                             <div class="c-overlay-wrapper">
                                 <div class="c-overlay-content">
                                     <a href="#"><i class="icon-link"></i></a>
-                                    <a href="../../assets/base/img/content/team/team9.jpg" data-lightbox="fancybox" data-fancybox-group="gallery-2">
+                                    <a href="{{asset('assets/base/img/content/kendrick.jpg')}}" data-lightbox="fancybox" data-fancybox-group="gallery-2">
                                         <i class="icon-magnifier"></i>
                                     </a>
                                 </div>
                             </div>
-                            <img src="../../assets/base/img/content/team/team9.jpg" class="img-responsive c-overlay-object" alt="">
+                            <img src="{{asset('assets/base/img/content/kendrick.jpg')}}" class="img-responsive c-overlay-object" alt="Kendrick Kesley" style="height:330px">
                         </div>
                         <div class="c-body">
                             <div class="c-head">
-                                <div class="c-name c-font-uppercase c-font-bold">Mary Jane</div>
+                                <div class="c-name c-font-uppercase c-font-bold">Kendrick Kesley</div>
                                 <ul class="c-socials c-theme-ul">
-                                    <li><a href="#"><i class="icon-social-twitter"></i></a></li>
                                     <li><a href="#"><i class="icon-social-facebook"></i></a></li>
-                                    <li><a href="#"><i class="icon-social-dribbble"></i></a></li>
                                 </ul>
                             </div>
                             <div class="c-position">
-                                CFO, JANGO Inc.
+                                S3642811
                             </div>
                             <p>
-                                Lorem ipsum dolor sit amet, dolor nemo amet elit.
-                                Nulla nemo consequuntur.
+                                Loves coding
                             </p>
                         </div>
                     </div>
@@ -96,28 +90,25 @@
                             <div class="c-overlay-wrapper">
                                 <div class="c-overlay-content">
                                     <a href="#"><i class="icon-link"></i></a>
-                                    <a href="../../assets/base/img/content/team/team7.jpg" data-lightbox="fancybox" data-fancybox-group="gallery-2">
+                                    <a href="{{asset('assets/base/img/content/nadya.jpg')}}" data-lightbox="fancybox" data-fancybox-group="gallery-2">
                                         <i class="icon-magnifier"></i>
                                     </a>
                                 </div>
                             </div>
-                            <img src="../../assets/base/img/content/team/team7.jpg" class="img-responsive c-overlay-object" alt="">
+                            <img src="{{asset('assets/base/img/content/nadya.jpg')}}" class="img-responsive c-overlay-object" alt="Nadya Safira" style="height:330px">
                         </div>
                         <div class="c-body">
                             <div class="c-head">
-                                <div class="c-name c-font-uppercase c-font-bold">Beard Mcbeardson</div>
+                                <div class="c-name c-font-uppercase c-font-bold">Nadya Safira</div>
                                 <ul class="c-socials c-theme-ul">
-                                    <li><a href="#"><i class="icon-social-twitter"></i></a></li>
                                     <li><a href="#"><i class="icon-social-facebook"></i></a></li>
-                                    <li><a href="#"><i class="icon-social-dribbble"></i></a></li>
                                 </ul>
                             </div>
                             <div class="c-position">
-                                CTO, JANGO Inc.
+                                S3642868
                             </div>
                             <p>
-                                Lorem ipsum dolor sit amet, dolor nemo amet elit.
-                                Nulla nemo consequuntur.
+                                Loves traveling
                             </p>
                         </div>
                     </div>
@@ -126,28 +117,25 @@
                             <div class="c-overlay-wrapper">
                                 <div class="c-overlay-content">
                                     <a href="#"><i class="icon-link"></i></a>
-                                    <a href="../../assets/base/img/content/team/team11.jpg" data-lightbox="fancybox" data-fancybox-group="gallery-2">
+                                    <a href="{{asset('assets/base/img/content/veronica.jpg')}}" data-lightbox="fancybox" data-fancybox-group="gallery-2">
                                         <i class="icon-magnifier"></i>
                                     </a>
                                 </div>
                             </div>
-                            <img src="../../assets/base/img/content/team/team11.jpg" class="img-responsive c-overlay-object" alt="">
+                            <img src="{{asset('assets/base/img/content/veronica.jpg')}}" class="img-responsive c-overlay-object" alt="Veronica Ong" style="height:330px">
                         </div>
                         <div class="c-body">
                             <div class="c-head">
-                                <div class="c-name c-font-uppercase c-font-bold">Sara Conner</div>
+                                <div class="c-name c-font-uppercase c-font-bold">Veronica Ong</div>
                                 <ul class="c-socials c-theme-ul">
-                                    <li><a href="#"><i class="icon-social-twitter"></i></a></li>
                                     <li><a href="#"><i class="icon-social-facebook"></i></a></li>
-                                    <li><a href="#"><i class="icon-social-dribbble"></i></a></li>
                                 </ul>
                             </div>
                             <div class="c-position">
-                                Director, JANGO Inc.
+                                S3642807
                             </div>
                             <p>
-                                Lorem ipsum dolor sit amet, dolor nemo amet elit.
-                                Nulla nemo consequuntur.
+                                Loves eating
                             </p>
                         </div>
                     </div>
@@ -156,31 +144,29 @@
                             <div class="c-overlay-wrapper">
                                 <div class="c-overlay-content">
                                     <a href="#"><i class="icon-link"></i></a>
-                                    <a href="../../assets/base/img/content/team/team12.jpg" data-lightbox="fancybox" data-fancybox-group="gallery-2">
+                                    <a href="{{asset('assets/base/img/content/yulita.jpg')}}" data-lightbox="fancybox" data-fancybox-group="gallery-2">
                                         <i class="icon-magnifier"></i>
                                     </a>
                                 </div>
                             </div>
-                            <img src="../../assets/base/img/content/team/team12.jpg" class="img-responsive c-overlay-object" alt="">
+                            <img src="{{asset('assets/base/img/content/yulita.jpg')}}" class="img-responsive c-overlay-object" alt="Yulita Putri Hartoyo" style="height:330px">
                         </div>
                         <div class="c-body">
                             <div class="c-head">
-                                <div class="c-name c-font-uppercase c-font-bold">Jim Book</div>
+                                <div class="c-name c-font-uppercase c-font-bold">Yulita P. Hartoyo</div>
                                 <ul class="c-socials c-theme-ul">
-                                    <li><a href="#"><i class="icon-social-twitter"></i></a></li>
                                     <li><a href="#"><i class="icon-social-facebook"></i></a></li>
-                                    <li><a href="#"><i class="icon-social-dribbble"></i></a></li>
                                 </ul>
                             </div>
                             <div class="c-position">
-                                Director, JANGO Inc.
+                                S3642813
                             </div>
                             <p>
-                                Lorem ipsum dolor sit amet, dolor nemo amet elit.
-                                Nulla nemo consequuntur.
+                                Loves playing games
                             </p>
                         </div>
                     </div>
+
                 </div>
                 <!-- End-->
             </div>
@@ -188,7 +174,7 @@
         </div>
     </div><!-- END: CONTENT/SLIDERS/TEAM-2 -->
     <!-- BEGIN: FEATURES 13.2 -->
-    <div class="c-content-box c-size-md c-no-padding c-bg-img-center" style="background-image: url(../../assets/base/img/content/backgrounds/bg-2.jpg)">
+    <div class="c-content-box c-size-md c-no-padding c-bg-img-center" style="background-image: url({{asset('assets/base/img/content/photo.png')}})">
         <div class="c-content-feature-13">
             <div class="row c-reset">
                 <div class="col-md-6 col-md-offset-6 c-bg-white">
