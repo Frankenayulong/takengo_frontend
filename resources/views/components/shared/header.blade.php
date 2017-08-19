@@ -29,10 +29,10 @@
                             <a href="javascript:;" class="c-link dropdown-toggle">Our Cars<span class="c-arrow c-toggler"></span></a>
                             <ul class="dropdown-menu c-menu-type-classic c-pull-left">
                                 <li class="dropdown-submenu">
-                                    <a href="{{url('/car-brands')}}">Brands</a>
+                                    <a href="{{url('/brands')}}">Brands</a>
                                 </li>
                                 <li class="dropdown-submenu">
-                                    <a href="{{url('/car-collections')}}">Collections</a>
+                                    <a href="{{url('/collections')}}">Collections</a>
                                 </li>           
                             </ul>
                         </li>
