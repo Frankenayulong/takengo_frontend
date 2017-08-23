@@ -62,6 +62,8 @@
         <script src="{{ URL::asset('app/lib/angular/angular.min.js')}}"></script>
         <script src="{{ URL::asset('app/lib/angular/angular-cookies.min.js')}}"></script>
         <script src="{{ URL::asset('app/lib/slim/slim.angular.js')}}"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCk4jGn1h6CtPzKYczwwvv5IwEgomxgmwA"></script>
+        <script src="{{ URL::asset('app/lib/ngMap/ng-map.min.js')}}"></script>
         <script src="{{ URL::asset('app/app.js')}}"></script>
         <script src="{{ URL::asset('app/controllers/components/modals/sign-in.js')}}"></script>
         <script src="{{ URL::asset('app/controllers/components/modals/sign-up.js')}}"></script>

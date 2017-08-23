@@ -134,9 +134,3 @@
     }
 </style>
 @endsection
-
-@section('script')
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCk4jGn1h6CtPzKYczwwvv5IwEgomxgmwA"></script>
-<script src="{{ URL::asset('app/lib/ngMap/ng-map.min.js')}}"></script>
-
-@endsection
