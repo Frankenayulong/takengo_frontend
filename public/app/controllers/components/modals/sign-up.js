@@ -27,6 +27,19 @@ app.controller('signUpController', ['$scope', '$rootScope', '$timeout', '$http',
 
     $scope.reset_input();
 
+    var reset_error = () => {
+        $scope.signup_error.first_name = false;
+        $scope.signup_error.message.first_name = [];
+        $scope.signup_error.last_name = false;
+        $scope.signup_error.message.last_name = [];
+        $scope.signup_error.email = false;
+        $scope.signup_error.message.email = [];
+        $scope.signup_error.password = false;
+        $scope.signup_error.message.password = [];
+        $scope.signup_error.password_confirmation = false;
+        $scope.signup_error.message.password_confirmation = [];
+    }
+
     $scope.signup = () => {
         const {first_name, last_name, email, password, password_confirmation} = $scope.signup_information;  
         if(password != password_confirmation){
@@ -45,6 +58,11 @@ app.controller('signUpController', ['$scope', '$rootScope', '$timeout', '$http',
         .then((data)=>{
             console.log(data);            
             $rootScope.metadata.loading.sign_up = false;
+            
+            //RESET INPUT & ERRORS
+            $scope.reset_input();
+            reset_error();
+
             $scope.authenticate.check();
             $scope.modalFunc.closeAuth();
             $('#sign-up-success').modal('show');

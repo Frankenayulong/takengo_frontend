@@ -78,15 +78,17 @@
                     big
                 @endcomponent
             </div>
+            <div class="row c-center" style="margin-top:30px" ng-if="!carsCollectionCtrl.loading.retrieve && (carsCollectionCtrl.error.retrieve || cars.length == 0)">
+                <img src="{{asset('assets/system_images/empty_collection.png')}}"/>
+            </div>
             <!-- Car collections -->
-            <div class="row" style="margin-top:30px" ng-show="!carsCollectionCtrl.loading.retrieve">
+            <div class="row" style="margin-top:30px" ng-show="!carsCollectionCtrl.loading.retrieve && !carsCollectionCtrl.error.retrieve && cars.length > 0">
                 <div class="col-md-3 col-sm-6 c-margin-b-20" ng-repeat="item in cars">
                     <div class="c-content-product-2 c-bg-white">
                         <div class="c-content-overlay">
                             <div class="c-label c-label-left c-font-uppercase c-font-white c-font-13 c-font-bold" ng-class="item.transition_mode == 'AUTO' ? 'c-bg-green' : 'c-bg-red'">@{{item.transition_mode == 'AUTO' ? 'A/T' : 'M/T'}}</div>
                             <div class="c-label c-label-right c-bg-blue c-font-uppercase c-font-white c-font-13 c-font-bold" ng-if="item.distance">@{{(item.distance || 0) / 1000 | number : 2}} km away</div>
-
-                            <div class="c-bg-img-center c-overlay-object" data-height="height" style="height: 270px; background-image: url(../../assets/base/img/content/shop2/93.jpg);"></div>
+                            <div class="c-bg-img-center c-overlay-object" data-height="height" style="height: 270px; background-image: url(@{{carsCollectionCtrl.api_url + 'img/cars/' + item.cid}});"></div>
                         </div>
                         <div class="c-info">
                             <p class="c-title c-font-18 c-font-slim">@{{item.name}}</p>

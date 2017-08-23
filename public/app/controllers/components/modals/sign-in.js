@@ -18,6 +18,11 @@ app.controller('signInController', ['$scope', '$rootScope', '$timeout', '$http',
         };
     };
 
+    var reset_error = () => {
+        $scope.signin_error.error = false;
+        $scope.signin_error.message.error = [];
+    }
+
     $scope.reset_input();
 
     $scope.signin = () => {
@@ -30,6 +35,10 @@ app.controller('signInController', ['$scope', '$rootScope', '$timeout', '$http',
         .then((data)=>{
             console.log(data);            
             $rootScope.metadata.loading.sign_in = false;
+
+            //RESET INPUT & ERRORS
+            $scope.reset_input();
+            reset_error();
             $scope.authenticate.check();
             $scope.modalFunc.closeAuth();
         }, (data)=>{

@@ -18,7 +18,8 @@ app.controller('carsCollectionController', ['$scope', '$rootScope', '$http', 'EN
             }
         },
         current_page: page,
-        last_page: -1
+        last_page: -1,
+        api_url: ENV.API_URL
     }
 
     var location_unregister = $scope.$watch('metadata.current_location_retrieved', function(newVal, oldVal){
@@ -27,6 +28,11 @@ app.controller('carsCollectionController', ['$scope', '$rootScope', '$http', 'EN
             location_unregister();
         }
     })
+
+    var reset_error = () => {
+        $scope.carsCollectionCtrl.error.retrieve = false;
+        $scope.carsCollectionCtrl.error.message.retrieve = [];
+    }
 
     $scope.retrieve = () => {
         var parsedParams = parseParams();
@@ -40,6 +46,8 @@ app.controller('carsCollectionController', ['$scope', '$rootScope', '$http', 'EN
             $scope.cars = response.data;
             $scope.carsCollectionCtrl.last_page = response.last_page;
             $scope.carsCollectionCtrl.current_page = response.current_page;
+            
+            reset_error();
             $scope.carsCollectionCtrl.loading.retrieve = false;
             if($scope.carsCollectionCtrl.last_page < $scope.carsCollectionCtrl.current_page){
                 $scope.carsCollectionCtrl.current_page = $scope.carsCollectionCtrl.last_page;
@@ -48,7 +56,7 @@ app.controller('carsCollectionController', ['$scope', '$rootScope', '$http', 'EN
             }
             $scope.digest();
         }, (data)=>{
-            console.log9data
+            console.log(data)
             let response = data.data;
             $scope.carsCollectionCtrl.error.retrieve = true;
             $scope.carsCollectionCtrl.error.message.retrieve = ['Error fetching cars'];
