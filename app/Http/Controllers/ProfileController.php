@@ -10,7 +10,6 @@ class ProfileController extends Controller
 {
     public function show(Request $request){
         $user = [];
-        
         if($request->cookie('fe_token') === null || $request->cookie('fe_email') === null || $request->cookie('fe_uid') === null){
             return response()->json([
                 'status' => 'nocookie'
