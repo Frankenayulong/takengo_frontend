@@ -20,9 +20,19 @@ app.controller('carsCollectionController', ['$scope', '$rootScope', '$http', 'EN
         current_page: page,
         last_page: -1
     }
+
+    var location_unregister = $scope.$watch('metadata.current_location_retrieved', function(newVal, oldVal){
+        if(newVal != oldVal && newVal === true){
+            $scope.retrieve();
+            location_unregister();
+        }
+    })
+
     $scope.retrieve = () => {
         var parsedParams = parseParams();
         $scope.carsCollectionCtrl.loading.retrieve = true;
+        console.log('RETRIEVING CARS');
+        console.log('GET URL: ', ENV.API_URL + 'cars?' + parsedParams);
         $http.get(ENV.API_URL + 'cars?' + parsedParams)
         .then((data)=>{
             console.log(data.data); 
@@ -49,11 +59,20 @@ app.controller('carsCollectionController', ['$scope', '$rootScope', '$http', 'EN
 
     var parseParams = () => {
         var p = "";
+        var pCount = 0;
         if($scope.carsCollectionCtrl.current_page > 1){
-            p += ("page=" + $scope.carsCollectionCtrl.current_page)
+            p += ("page=" + $scope.carsCollectionCtrl.current_page);
+            pCount++;
+        }
+        if($rootScope.metadata.current_location !== null){
+            if(pCount > 0){
+                p += "&";
+            }
+            p += ("lat="+$rootScope.metadata.current_location.latitude);
+            p += "&";
+            p += ("long="+$rootScope.metadata.current_location.longitude);
+            pCount++;
         }
         return p;
     }
-    
-    $scope.retrieve();
 }]);

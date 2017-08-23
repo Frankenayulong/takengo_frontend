@@ -43,7 +43,8 @@ app.controller('mainController', ['$scope', '$timeout', '$http', '$rootScope', '
             sign_in: false
         },
         auth: {},
-        current_location: {latitude: 0, longitude: 0, timestamp: 0}
+        current_location: null,
+        current_location_retrieved: false
     };
 
     $geolocation.watchPosition({
@@ -59,6 +60,7 @@ app.controller('mainController', ['$scope', '$timeout', '$http', '$rootScope', '
             longitude: args.coords.longitude,
             timestamp: args.timestamp
         };
+        $rootScope.metadata.current_location_retrieved = true;
         console.log($rootScope.metadata.current_location);
         $scope.digest();
     })

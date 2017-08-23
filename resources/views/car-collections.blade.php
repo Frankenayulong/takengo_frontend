@@ -84,7 +84,7 @@
                     <div class="c-content-product-2 c-bg-white">
                         <div class="c-content-overlay">
                             <div class="c-label c-label-left c-font-uppercase c-font-white c-font-13 c-font-bold" ng-class="item.transition_mode == 'AUTO' ? 'c-bg-green' : 'c-bg-red'">@{{item.transition_mode == 'AUTO' ? 'A/T' : 'M/T'}}</div>
-                            <div class="c-label c-label-right c-bg-blue c-font-uppercase c-font-white c-font-13 c-font-bold">@{{item.distance / 1000 | number : 2}} km away</div>
+                            <div class="c-label c-label-right c-bg-blue c-font-uppercase c-font-white c-font-13 c-font-bold" ng-if="item.distance">@{{(item.distance || 0) / 1000 | number : 2}} km away</div>
 
                             <div class="c-bg-img-center c-overlay-object" data-height="height" style="height: 270px; background-image: url(../../assets/base/img/content/shop2/93.jpg);"></div>
                         </div>
