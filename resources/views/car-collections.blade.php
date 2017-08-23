@@ -2,6 +2,7 @@
 
 @section('content')
 
+<div ng-controller="carsCollectionController">
     <!-- START BREADCRUMBS -->
     <div class="c-layout-breadcrumbs-1 c-bgimage-full  c-centered  c-fonts-uppercase c-fonts-bold   c-bg-img-center" style="background-image: url({{asset('assets/base/img/content/banner2.jpg')}}); background-size:cover; background-position:center center">
         <div class="container">
@@ -16,7 +17,6 @@
         </div>
     </div>
     <!-- END BREADCRUMBS -->
-
     <div class="c-content-box c-size-md c-overflow-hide c-bs-grid-small-space c-bg-grey-1">
         <div class="container">
             <div class="row">
@@ -73,78 +73,24 @@
                     </div>
                 </div>
             </div>
+            <div class="row c-center" style="margin-top:30px" ng-show="carsCollectionCtrl.loading.retrieve">
+                @component('components.shared.spinner')
+                    big
+                @endcomponent
+            </div>
             <!-- Car collections -->
-            <div class="row" style="margin-top:30px">
-                <div class="col-md-3 col-sm-6 c-margin-b-20">
+            <div class="row" style="margin-top:30px" ng-show="!carsCollectionCtrl.loading.retrieve">
+                <div class="col-md-3 col-sm-6 c-margin-b-20" ng-repeat="item in cars">
                     <div class="c-content-product-2 c-bg-white">
                         <div class="c-content-overlay">
-                            <div class="c-label c-bg-red c-font-uppercase c-font-white c-font-13 c-font-bold">Sale</div>
-                            <div class="c-label c-label-right c-theme-bg c-font-uppercase c-font-white c-font-13 c-font-bold">New</div>
+                            <div class="c-label c-label-left c-font-uppercase c-font-white c-font-13 c-font-bold" ng-class="item.transition_mode == 'AUTO' ? 'c-bg-green' : 'c-bg-red'">@{{item.transition_mode == 'AUTO' ? 'A/T' : 'M/T'}}</div>
+                            <div class="c-label c-label-right c-bg-blue c-font-uppercase c-font-white c-font-13 c-font-bold">@{{item.distance / 1000 | number : 2}} km away</div>
 
                             <div class="c-bg-img-center c-overlay-object" data-height="height" style="height: 270px; background-image: url(../../assets/base/img/content/shop2/93.jpg);"></div>
                         </div>
                         <div class="c-info">
-                            <p class="c-title c-font-18 c-font-slim">Smartphone & Handset</p>
-                            <p class="c-price c-font-16 c-font-slim">$548 &nbsp;
-                                <span class="c-font-16 c-font-line-through c-font-red">$600</span>
-                            </p>
-                        </div>
-                        <div class="btn-group btn-group-justified" role="group">
-                            <div class="btn-group c-border-top" role="group">
-                                <a href="shop-product-wishlist.html" class="btn btn-lg c-btn-white c-btn-uppercase c-btn-square c-font-grey-3 c-font-white-hover c-bg-red-2-hover c-btn-product">Book Now</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6 c-margin-b-20">
-                    <div class="c-content-product-2 c-bg-white">
-                        <div class="c-content-overlay">
-
-                            <div class="c-bg-img-center c-overlay-object" data-height="height" style="height: 270px; background-image: url(../../assets/base/img/content/shop2/95.jpg);"></div>
-                        </div>
-                        <div class="c-info">
-                            <p class="c-title c-font-18 c-font-slim">Canvas Shoes</p>
-                            <p class="c-price c-font-16 c-font-slim">$548 &nbsp;
-                                <span class="c-font-16 c-font-line-through c-font-red">$600</span>
-                            </p>
-                        </div>
-                        <div class="btn-group btn-group-justified" role="group">
-                            <div class="btn-group c-border-top" role="group">
-                                <a href="shop-product-wishlist.html" class="btn btn-lg c-btn-white c-btn-uppercase c-btn-square c-font-grey-3 c-font-white-hover c-bg-red-2-hover c-btn-product">Book Now</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6 c-margin-b-20">
-                    <div class="c-content-product-2 c-bg-white">
-                        <div class="c-content-overlay">
-
-                            <div class="c-bg-img-center c-overlay-object" data-height="height" style="height: 270px; background-image: url(../../assets/base/img/content/shop2/91.jpg);"></div>
-                        </div>
-                        <div class="c-info">
-                            <p class="c-title c-font-18 c-font-slim">Shoes & Tie</p>
-                            <p class="c-price c-font-16 c-font-slim">$548 &nbsp;
-                                <span class="c-font-16 c-font-line-through c-font-red">$600</span>
-                            </p>
-                        </div>
-                        <div class="btn-group btn-group-justified" role="group">
-                            <div class="btn-group c-border-top" role="group">
-                                <a href="shop-product-wishlist.html" class="btn btn-lg c-btn-white c-btn-uppercase c-btn-square c-font-grey-3 c-font-white-hover c-bg-red-2-hover c-btn-product">Book Now</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6 c-margin-b-20">
-                    <div class="c-content-product-2 c-bg-white">
-                        <div class="c-content-overlay">
-                            <div class="c-label c-theme-bg c-font-uppercase c-font-white c-font-13 c-font-bold">New</div>
-
-                            <div class="c-bg-img-center c-overlay-object" data-height="height" style="height: 270px; background-image: url(../../assets/base/img/content/shop2/88.jpg);"></div>
-                        </div>
-                        <div class="c-info">
-                            <p class="c-title c-font-18 c-font-slim">Smartphone & Handset</p>
-                            <p class="c-price c-font-16 c-font-slim">$548 &nbsp;
-                                <span class="c-font-16 c-font-line-through c-font-red">$600</span>
+                            <p class="c-title c-font-18 c-font-slim">@{{item.name}}</p>
+                            <p class="c-price c-font-16 c-font-slim">$@{{item.price}}
                             </p>
                         </div>
                         <div class="btn-group btn-group-justified" role="group">
@@ -168,8 +114,5 @@
             </div>
         </div>
     </div><!-- END: CONTENT/SHOPS/SHOP-2-1 -->
-
-
-
-
+</div>
 @endsection

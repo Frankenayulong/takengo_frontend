@@ -11,6 +11,13 @@ var app = angular.module('takeNGo', ['slim', 'ngGeolocation', 'ngCookies'])
     $httpProvider.defaults.withCredentials = true;
 });
 
+app.config(['$locationProvider', function($locationProvider) {
+    $locationProvider.html5Mode({
+        enabled: true,
+        requireBase: false
+    });
+}]);
+
 app.controller('mainController', ['$scope', '$timeout', '$http', '$rootScope', 'ENV', '$geolocation', '$cookies', function($scope, $timeout, $http, $rootScope, ENV, $geolocation, $cookies){
     $scope.digest = function(a) {
         var waitForRenderAndDoSomething = function() {
