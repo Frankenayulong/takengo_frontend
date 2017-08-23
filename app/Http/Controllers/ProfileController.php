@@ -29,7 +29,10 @@ class ProfileController extends Controller
             ]
         ]);
         $response = json_decode((string)$result->getBody());
-        return view('user-profile')->with('user', $response->user);
+        return view('user-profile')->with([
+            'user' => $response->user,
+            'unspecified_field' => 'Unspecified'
+        ]);
     }
 
     public function edit(){
