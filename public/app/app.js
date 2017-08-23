@@ -32,6 +32,10 @@ app.controller('mainController', ['$scope', '$timeout', '$http', '$rootScope', '
         return $timeout(waitForRenderAndDoSomething);
     };
 
+    $scope.range = function(n) {
+        return new Array(n);
+    };
+
     $rootScope.metadata = {
         signed_in: false,
         email_verified: false,

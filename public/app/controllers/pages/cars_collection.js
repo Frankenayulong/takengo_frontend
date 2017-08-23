@@ -18,7 +18,11 @@ app.controller('carsCollectionController', ['$scope', '$rootScope', '$http', 'EN
             }
         },
         current_page: page,
-        last_page: -1,
+        last_page: 0,
+        pagination: {
+            next: false,
+            prev: false
+        },
         api_url: ENV.API_URL
     }
 
@@ -34,6 +38,21 @@ app.controller('carsCollectionController', ['$scope', '$rootScope', '$http', 'EN
         $scope.carsCollectionCtrl.error.message.retrieve = [];
     }
 
+    $scope.changePage = (page = 1) => {
+        if(page > $scope.carsCollectionCtrl.last_page){
+            page = $scope.carsCollectionCtrl.last_page;
+        }else if(isNaN(page)){
+            page = 1;
+        }
+        $scope.carsCollectionCtrl.current_page = page;
+        if(page != $scope.carsCollectionCtrl.current_page){
+            $location.search('page', $scope.carsCollectionCtrl.current_page);
+            $scope.retrieve();
+        }else{
+            console.log("It's the same page!");
+        }
+    }
+
     $scope.retrieve = () => {
         var parsedParams = parseParams();
         $scope.carsCollectionCtrl.loading.retrieve = true;
@@ -46,6 +65,8 @@ app.controller('carsCollectionController', ['$scope', '$rootScope', '$http', 'EN
             $scope.cars = response.data;
             $scope.carsCollectionCtrl.last_page = response.last_page;
             $scope.carsCollectionCtrl.current_page = response.current_page;
+            $scope.carsCollectionCtrl.pagination.next = response.next_page_url !== null;
+            $scope.carsCollectionCtrl.pagination.prev = response.prev_page_url !== null;
             
             reset_error();
             $scope.carsCollectionCtrl.loading.retrieve = false;
