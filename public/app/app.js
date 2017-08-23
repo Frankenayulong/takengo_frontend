@@ -12,25 +12,6 @@ var app = angular.module('takeNGo', ['slim', 'ngGeolocation', 'ngCookies'])
 });
 
 app.controller('mainController', ['$scope', '$timeout', '$http', '$rootScope', 'ENV', '$geolocation', '$cookies', function($scope, $timeout, $http, $rootScope, ENV, $geolocation, $cookies){
-    $rootScope.metadata = {
-        signed_in: false,
-        email_verified: false,
-        signing: true,
-        tng_uid: '',
-        email: '',
-        loading: {
-            sign_up: false,
-            sign_in: false
-        },
-        auth: {}
-    };
-
-    $geolocation.getCurrentPosition({
-        timeout: 60000
-     }).then(function(position) {
-        console.log(position)
-     });
-    
     $scope.digest = function(a) {
         var waitForRenderAndDoSomething = function() {
             if ($http.pendingRequests.length > 0) {
@@ -43,6 +24,37 @@ app.controller('mainController', ['$scope', '$timeout', '$http', '$rootScope', '
         };
         return $timeout(waitForRenderAndDoSomething);
     };
+
+    $rootScope.metadata = {
+        signed_in: false,
+        email_verified: false,
+        signing: true,
+        tng_uid: '',
+        email: '',
+        loading: {
+            sign_up: false,
+            sign_in: false
+        },
+        auth: {},
+        current_location: {latitude: 0, longitude: 0, timestamp: 0}
+    };
+
+    $geolocation.watchPosition({
+        timeout: 60000,
+        maximumAge: 250,
+        enableHighAccuracy: true
+    });
+    console.log($geolocation)
+
+    $scope.$on('$geolocation.position.changed', function(events, args){
+        $rootScope.metadata.current_location = {
+            latitude: args.coords.latitude,
+            longitude: args.coords.longitude,
+            timestamp: args.timestamp
+        };
+        console.log($rootScope.metadata.current_location);
+        $scope.digest();
+    })
 
     $scope.modalFunc = {
         closeAuth: () => {
