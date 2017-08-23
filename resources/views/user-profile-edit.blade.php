@@ -57,7 +57,8 @@
 									['required',
 										'class'=>'form-control c-square c-theme',
 										'placeholder'=>'First Name',
-										'ng-model' => 'profile_form.first_name']) !!}
+										'ng-model' => 'profile_form.first_name',
+										'ng-init' => "profile_form.first_name = '$user->first_name'"]) !!}
 								<span ng-if="profile_error.first_name" class="help-block c-font-red">
 									<strong ng-repeat="item in profile_error.message.first_name | limitTo:1">@{{item}}</strong>
 								</span>
@@ -68,7 +69,8 @@
 									['required',
 										'class'=>'form-control c-square c-theme',
 										'placeholder'=>'Last Name',
-										'ng-model' => 'profile_form.last_name']) !!}
+										'ng-model' => 'profile_form.last_name',
+										'ng-init' => "profile_form.last_name = '$user->last_name'"]) !!}
 								<span ng-if="profile_error.last_name" class="help-block c-font-red">
 									<strong ng-repeat="item in profile_error.message.last_name | limitTo:1">@{{item}}</strong>
 								</span>
@@ -83,7 +85,8 @@
 											{!! Form::radio('gender', 'M', false, [
 											'class' => 'c-radio', 
 											'id' => 'gender1',
-											'ng-model' => 'profile_form.gender'
+											'ng-model' => 'profile_form.gender',
+											'ng-init' => "profile_form.gender = '$user->gender'"
 											]) !!}
 											<label for="gender1">
 												<span></span>
@@ -113,7 +116,8 @@
 									{!! Form::text('phone', null,
 										['class'=>'form-control c-square c-theme',
 											'placeholder'=>'Phone',
-											'ng-model' => 'profile_form.phone'
+											'ng-model' => 'profile_form.phone',
+											'ng-init' => "profile_form.phone = '$user->phone'"
 											]) !!}
 									<span ng-if="profile_error.phone" class="help-block c-font-red">
 										<strong ng-repeat="item in profile_error.message.phone | limitTo:1">@{{item}}</strong>
@@ -151,7 +155,8 @@
 									['class'=>'form-control c-square c-theme noresize',
 										'placeholder'=>'Enter your home address..',
 										'rows' => 4,
-										'ng-model' => 'profile_form.address']) !!}
+										'ng-model' => 'profile_form.address',
+										'ng-init' => "profile_form.address = '$user->address'"]) !!}
 								<span ng-if="profile_error.address" class="help-block c-font-red">
 									<strong ng-repeat="item in profile_error.message.address | limitTo:1">@{{item}}</strong>
 								</span>
@@ -163,7 +168,8 @@
 								{!! Form::text('suburb', null,
 									['class'=>'form-control c-square c-theme',
 										'placeholder'=>'Suburb',
-										'ng-model' => 'profile_form.suburb']) !!}
+										'ng-model' => 'profile_form.suburb',
+										'ng-init' => "profile_form.suburb = '$user->suburb'"]) !!}
 								<span ng-if="profile_error.suburb" class="help-block c-font-red">
 									<strong ng-repeat="item in profile_error.message.suburb | limitTo:1">@{{item}}</strong>
 								</span>
@@ -182,7 +188,8 @@
 									'WA' => 'Western Australia'
 									], null,
 									['class' => 'form-control  c-square c-theme',
-									'ng-model' => 'profile_form.state']) !!}
+									'ng-model' => 'profile_form.state',
+									'ng-init' => "profile_form.state = '$user->state'"]) !!}
 								<span ng-if="profile_error.state" class="help-block c-font-red">
 									<strong ng-repeat="item in profile_error.message.state | limitTo:1">@{{item}}</strong>
 								</span>
@@ -194,7 +201,8 @@
 								{!! Form::text('post_code', null,
 									['class'=>'form-control c-square c-theme',
 										'placeholder'=>'Post Code',
-										'ng-model' => 'profile_form.post_code']) !!}
+										'ng-model' => 'profile_form.post_code',
+										'ng-init' => "profile_form.post_code = '$user->post_code'"]) !!}
 								<span ng-if="profile_error.post_code" class="help-block c-font-red">
 									<strong ng-repeat="item in profile_error.message.post_code | limitTo:1">@{{item}}</strong>
 								</span>
