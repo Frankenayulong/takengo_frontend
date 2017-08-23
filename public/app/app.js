@@ -5,18 +5,22 @@ if(window){
   Object.assign(env, window.__env);
 }
 
-var app = angular.module('takeNGo', ['slim', 'ngGeolocation', 'ngCookies'])
+var app = angular.module('takeNGo', 
+['slim', 
+'ngGeolocation', 
+'ngCookies',
+'ngMap']
+)
 .constant('ENV', env)
 .config(function ($httpProvider) {
     $httpProvider.defaults.withCredentials = true;
-});
-
-app.config(['$locationProvider', function($locationProvider) {
+})
+.config(['$locationProvider', function($locationProvider) {
     $locationProvider.html5Mode({
         enabled: true,
         requireBase: false
     });
-}]);
+}])
 
 app.controller('mainController', ['$scope', '$timeout', '$http', '$rootScope', 'ENV', '$geolocation', '$cookies', function($scope, $timeout, $http, $rootScope, ENV, $geolocation, $cookies){
     $scope.digest = function(a) {

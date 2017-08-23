@@ -87,7 +87,7 @@
                     <div class="c-content-product-2 c-bg-white">
                         <div class="c-content-overlay">
                             <div class="c-label c-label-left c-font-uppercase c-font-white c-font-13 c-font-bold" ng-class="item.transition_mode == 'AUTO' ? 'c-bg-green' : 'c-bg-red'">@{{item.transition_mode == 'AUTO' ? 'A/T' : 'M/T'}}</div>
-                            <div class="c-label c-label-right c-bg-blue c-font-uppercase c-font-white c-font-13 c-font-bold" ng-if="item.distance">@{{(item.distance || 0) / 1000 | number : 2}} km away</div>
+                            <div class="c-label c-label-right c-bg-blue c-font-uppercase c-font-white c-font-13 c-font-bold" ng-if="item.distance === 0 || item.distance">@{{(item.distance || 0) / 1000 | number : 2}} km away</div>
                             <div class="c-bg-img-center c-overlay-object" data-height="height" style="height: 270px; background-image: url(@{{carsCollectionCtrl.api_url + 'img/cars/' + item.cid}});"></div>
                         </div>
                         <div class="c-info">
@@ -111,7 +111,32 @@
                     <li class="c-next" ng-show="carsCollectionCtrl.pagination.next"><a href="#"><i class="fa fa-angle-right"></i></a></li>
                 </ul>
             </div>
+
+            <div class="row" style="margin-top:30px;" ng-if="metadata.current_location != null">
+                <ng-map id="cars-collection-map" center="@{{metadata.current_location.latitude}}, @{{metadata.current_location.longitude}}" zoom="13">
+                    <marker position="[@{{metadata.current_location.latitude}}, @{{metadata.current_location.longitude}}]"
+                        animation="Animation.BOUNCE" centered="true" title="You Are Here">
+                    </marker>
+                    <marker ng-repeat="car in cars" 
+                    ng-if="car.distance === 0 || car.distance"
+                     position="[@{{car.lat || 0}}, @{{car.long || 0}}]" 
+                     title="@{{car.name}}"
+                     animation="Animation.DROP">
+                    </marker>
+                </ng-map>
+            </div>
         </div>
     </div><!-- END: CONTENT/SHOPS/SHOP-2-1 -->
 </div>
+<style>
+    #cars-collection-map{
+        height: 400px
+    }
+</style>
+@endsection
+
+@section('script')
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCk4jGn1h6CtPzKYczwwvv5IwEgomxgmwA"></script>
+<script src="{{ URL::asset('app/lib/ngMap/ng-map.min.js')}}"></script>
+
 @endsection
