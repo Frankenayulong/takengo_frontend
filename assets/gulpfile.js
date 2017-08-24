@@ -7,6 +7,7 @@ const uglify = require('gulp-uglify');
 const ngAnnotate = require('gulp-ng-annotate');
 const babel = require('gulp-babel');
 const sourcemaps = require('gulp-sourcemaps');
+const pump = require('pump');
 
 gulp.task('css', function(){
     var css_files = [
@@ -31,10 +32,16 @@ gulp.task('css', function(){
         'demos/default/css/themes/default.css',
         'demos/default/css/custom.css'
     ];
-    return gulp.src(filesExist(css_files))
-    .pipe(concatCss('build.css'))
-    .pipe(minifyCSS())
-    .pipe(gulp.dest('../public/css'));  
+    pump([
+        gulp.src(filesExist(css_files)),
+        concatCss('build.css'),
+        minifyCSS(),
+        gulp.dest('../public/css')
+      ],
+      (err) => {
+        console.log(err)
+      }
+    );
 });
 
 gulp.task('js', function(){
@@ -69,12 +76,18 @@ gulp.task('js', function(){
         'plugins/caleran.min.js',
         'plugins/caleran.obf.js'
     ];
-    return gulp.src(filesExist(js_files))
-    .pipe(sourcemaps.init())
-    .pipe(concat('build.js'))
-    .pipe(uglify())
-    .pipe(sourcemaps.write('../js'))
-    .pipe(gulp.dest('../public/js'))
+    pump([
+        gulp.src(filesExist(js_files)),
+        sourcemaps.init(),
+        concat('build.js'),
+        uglify(),
+        sourcemaps.write('../js'),
+        gulp.dest('../public/js')
+      ],
+      (err) => {
+        console.log(err)
+      }
+    );
 })
 
 gulp.task('angular', function(){
@@ -91,16 +104,22 @@ gulp.task('angular', function(){
         'app/controllers/pages/profile_edit.js',
         'app/controllers/pages/cars_collection.js'
     ];
-    return gulp.src(filesExist(angular_files))
-    .pipe(sourcemaps.init())
-    .pipe(concat('ng-min.js'))
-    .pipe(babel({
-        presets: ["env"]
-    }))
-    .pipe(ngAnnotate())
-    .pipe(uglify())
-    .pipe(sourcemaps.write('../js'))
-    .pipe(gulp.dest('../public/js'))
+    pump([
+        gulp.src(filesExist(angular_files)),
+        sourcemaps.init(),
+        concat('ng-min.js'),
+        babel({
+            presets: ["env"]
+        }),
+        ngAnnotate(),
+        uglify(),
+        sourcemaps.write('../js'),
+        gulp.dest('../public/js')
+      ],
+      (err) => {
+        console.log(err)
+      }
+    );
 })
 
 
@@ -109,24 +128,36 @@ gulp.task('slider', function(){
         'plugins/revo-slider/js/extensions/source/revolution.extension.kenburn.js',
         'plugins/revo-slider/js/extensions/source/revolution.extension.parallax.js'
     ];
-    return gulp.src(filesExist(slider_files))
-    .pipe(sourcemaps.init())
-    .pipe(concat('slider.js'))
-    .pipe(uglify())
-    .pipe(sourcemaps.write('../js'))
-    .pipe(gulp.dest('../public/js'))
+    pump([
+        gulp.src(filesExist(slider_files)),
+        sourcemaps.init(),
+        concat('slider.js'),
+        uglify(),
+        sourcemaps.write('../js'),
+        gulp.dest('../public/js')
+      ],
+      (err) => {
+        console.log(err)
+      }
+    );
 })
 
 gulp.task('faq', function(){
     var faq_files = [
         'demos/default/js/scripts/pages/faq.js'
     ];
-    return gulp.src(filesExist(faq_files))
-        .pipe(sourcemaps.init())
-        .pipe(concat('faq.js'))
-        .pipe(uglify())
-        .pipe(sourcemaps.write('../js'))
-        .pipe(gulp.dest('../public/js'))
+    pump([
+        gulp.src(filesExist(faq_files)),
+        sourcemaps.init(),
+        concat('faq.js'),
+        uglify(),
+        sourcemaps.write('../js'),
+        gulp.dest('../public/js')
+        ],
+        (err) => {
+        console.log(err)
+        }
+    );
 })
 
 gulp.task('default', [ 'css', 'js', 'slider', 'faq', 'angular' ]);
