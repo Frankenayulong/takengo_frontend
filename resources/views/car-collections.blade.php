@@ -92,12 +92,12 @@
                         </div>
                         <div class="c-info">
                             <p class="c-title c-font-18 c-font-slim">@{{item.name}}</p>
-                            <p class="c-price c-font-16 c-font-slim">$@{{item.price}}
+                            <p class="c-price c-font-16 c-font-slim"><span class="c-font-bold">$@{{item.price}}</span> / day
                             </p>
                         </div>
                         <div class="btn-group btn-group-justified" role="group">
                             <div class="btn-group c-border-top" role="group">
-                                <a href="shop-product-wishlist.html" class="btn btn-lg c-btn-white c-btn-uppercase c-btn-square c-font-grey-3 c-font-white-hover c-bg-red-2-hover c-btn-product">Book Now</a>
+                                <a href="javascript:;" class="btn btn-lg c-btn-white c-btn-uppercase c-btn-square c-font-grey-3 c-font-white-hover c-bg-red-2-hover c-btn-product">Book Now</a>
                             </div>
                         </div>
                     </div>
@@ -128,9 +128,4 @@
         </div>
     </div><!-- END: CONTENT/SHOPS/SHOP-2-1 -->
 </div>
-<style>
-    #cars-collection-map{
-        height: 400px
-    }
-</style>
 @endsection

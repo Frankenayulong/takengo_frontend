@@ -237,6 +237,6 @@
 
 @section('script')
     <!-- BEGIN: PAGE SCRIPTS -->
-    <script src="{{asset('js/faq-min.js')}}" type="text/javascript"></script>
+    <script src="{{asset('js/faq.js')}}" type="text/javascript"></script>
     <!-- END: PAGE SCRIPTS -->
     @endsection

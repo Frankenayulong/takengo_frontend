@@ -107,3 +107,7 @@ textarea.noresize {
         height:200px;
         width:400px;
     }
+
+    #cars-collection-map{
+        height: 400px
+    }

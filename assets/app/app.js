@@ -16,8 +16,10 @@ var app = angular.module('takeNGo',
     $httpProvider.defaults.withCredentials = true;
 })
 .config(['$locationProvider', function($locationProvider) {
-    $locationProvider.html5Mode(false)
-    .hashPrefix('');
+    $locationProvider.html5Mode({
+        enabled: true,
+        requireBase: false
+    });
 }])
 
 app.controller('mainController', ['$scope', '$timeout', '$http', '$rootScope', 'ENV', '$geolocation', '$cookies', function($scope, $timeout, $http, $rootScope, ENV, $geolocation, $cookies){
