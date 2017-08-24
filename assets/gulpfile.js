@@ -2,11 +2,11 @@ const gulp = require('gulp');
 const minifyCSS = require('gulp-csso');
 const concatCss = require('gulp-concat-css');
 const concat = require('gulp-concat');
-const minify = require('gulp-minify');
 const filesExist = require('files-exist');
 const uglify = require('gulp-uglify');
 const ngAnnotate = require('gulp-ng-annotate');
 const babel = require('gulp-babel');
+const sourcemaps = require('gulp-sourcemaps');
 
 gulp.task('css', function(){
     var css_files = [
@@ -32,8 +32,10 @@ gulp.task('css', function(){
         'demos/default/css/custom.css'
     ];
     return gulp.src(filesExist(css_files))
+    .pipe(sourcemaps.init())
     .pipe(concatCss('build.css'))
     .pipe(minifyCSS())
+    .pipe(sourcemaps.write())
     .pipe(gulp.dest('../public/css'));  
 });
 
@@ -70,8 +72,10 @@ gulp.task('js', function(){
         'plugins/caleran.obf.js'
     ];
     return gulp.src(filesExist(js_files))
+    .pipe(sourcemaps.init())
     .pipe(concat('build.js'))
     .pipe(uglify())
+    .pipe(sourcemaps.write())
     .pipe(gulp.dest('../public/js'))
 })
 
@@ -90,12 +94,14 @@ gulp.task('angular', function(){
         'app/controllers/pages/cars_collection.js'
     ];
     return gulp.src(filesExist(angular_files))
+    .pipe(sourcemaps.init())
     .pipe(concat('ng-min.js'))
     .pipe(babel({
         presets: ["env"]
     }))
     .pipe(ngAnnotate())
     .pipe(uglify())
+    .pipe(sourcemaps.write())
     .pipe(gulp.dest('../public/js'))
 })
 
@@ -106,8 +112,10 @@ gulp.task('slider', function(){
         'plugins/revo-slider/js/extensions/source/revolution.extension.parallax.js'
     ];
     return gulp.src(filesExist(slider_files))
+    .pipe(sourcemaps.init())
     .pipe(concat('slider.js'))
-    .pipe(minify())
+    .pipe(uglify())
+    .pipe(sourcemaps.write())
     .pipe(gulp.dest('../public/js'))
 })
 
@@ -116,8 +124,10 @@ gulp.task('faq', function(){
         'demos/default/js/scripts/pages/faq.js'
     ];
     return gulp.src(filesExist(faq_files))
+        .pipe(sourcemaps.init())
         .pipe(concat('faq.js'))
-        .pipe(minify())
+        .pipe(uglify())
+        .pipe(sourcemaps.write())
         .pipe(gulp.dest('../public/js'))
 })
 
