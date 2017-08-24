@@ -111,10 +111,8 @@ app.controller('carsCollectionController', ['$scope', '$rootScope', '$http', 'EN
     var parseParams = () => {
         var p = "";
         var pCount = 0;
-        if($scope.carsCollectionCtrl.current_page > 1){
-            p += ("page=" + $scope.carsCollectionCtrl.current_page);
-            pCount++;
-        }
+        p += ("page=" + $scope.carsCollectionCtrl.current_page);
+        pCount++;
         if($rootScope.metadata.current_location !== null){
             if(pCount > 0){
                 p += "&";
