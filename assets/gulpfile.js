@@ -3,11 +3,10 @@ var minifyCSS = require('gulp-csso');
 var concatCss = require('gulp-concat-css');
 var concat = require('gulp-concat');
 var minify = require('gulp-minify');
-filesExist = require('files-exist');
-var uglifyjs = require('uglify-es');
-var composer = require('gulp-uglify/composer');
-
-var uglify = composer(uglifyjs, console);
+var filesExist = require('files-exist');
+var uglify = require('gulp-uglify');
+var NgAnnotate = require('gulp-ng-annotate');
+var babel = require('gulp-babel');
 
 gulp.task('css', function(){
     var css_files = [
@@ -76,29 +75,29 @@ gulp.task('js', function(){
     .pipe(gulp.dest('../public/js'))
 })
 
-// gulp.task('angular-lib', function(){
-//     var angular_files = [
-//         // 'plugins/angular/angular.min.js',
-//         'plugins/slim/slim.angular.js'
-//     ];
-//     return gulp.src(filesExist(angular_files))
-//     .pipe(concat('ng-lib-min.js'))
-//     .pipe(uglify())
-//     .pipe(gulp.dest('../public/js'))
-// })
-
-// gulp.task('angular', function(){
-//     var angular_files = [
-//         'app/app.js',
-//         'app/controllers/components/modals/sign-in.js',
-//         'app/controllers/components/modals/sign-up.js',
-//         'app/controllers/components/header.js'
-//     ];
-//     return gulp.src(filesExist(angular_files))
-//     .pipe(concat('ng-min.js'))
-//     .pipe(uglify())
-//     .pipe(gulp.dest('../public/js'))
-// })
+gulp.task('angular', function(){
+    var angular_files = [
+        'app/lib/angular/angular.min.js',
+        'app/lib/angular/angular-cookies.min.js',
+        'app/lib/slim/slim.angular.js',
+        'app/lib/ngGeolocation/ngGeolocation.min.js',
+        'app/lib/ngMap/ng-map.min.js',
+        'app/app.js',
+        'app/controllers/components/modals/sign-in.js',
+        'app/controllers/components/modals/sign-up.js',
+        'app/controllers/components/header.js',
+        'app/controllers/pages/profile_edit.js',
+        'app/controllers/pages/cars_collection.js'
+    ];
+    return gulp.src(filesExist(angular_files))
+    .pipe(concat('ng-min.js'))
+    .pipe(babel({
+        presets: ["env"]
+    }))
+    .pipe(NgAnnotate())
+    .pipe(uglify())
+    .pipe(gulp.dest('../public/js'))
+})
 
 
 gulp.task('slider', function(){
@@ -122,5 +121,5 @@ gulp.task('faq', function(){
         .pipe(gulp.dest('../public/js'))
 })
 
-gulp.task('default', [ 'css', 'js', 'slider', 'faq' ]);
+gulp.task('default', [ 'css', 'js', 'slider', 'faq', 'angular' ]);
 module.exports = gulp;
