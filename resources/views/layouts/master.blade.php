@@ -54,11 +54,6 @@
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCk4jGn1h6CtPzKYczwwvv5IwEgomxgmwA"></script>
         <script type="text/javascript" src="{{asset('js/env.js')}}"></script>
         <script type="text/javascript" src="{{asset('js/build.js')}}"></script>
-        <script>
-        $(document).ready(function() {    
-            App.init(); // init core    
-        });
-        </script>
         <script type="text/javascript" src="{{asset('js/slider.js')}}"></script>
         <script src="{{ URL::asset('app/lib/angular/angular.min.js')}}"></script>
         <!-- <script src="{{ URL::asset('app/lib/angular/angular-cookies.min.js')}}"></script>
@@ -71,6 +66,11 @@
         <script src="{{ URL::asset('app/controllers/components/header.js')}}"></script>
         <script src="{{ URL::asset('app/controllers/pages/profile_edit.js')}}"></script>
         <script src="{{ URL::asset('app/controllers/pages/cars_collection.js')}}"></script> -->
+        <script>
+        $(document).ready(function() {    
+            App.init(); // init core    
+        });
+        </script>
         <script src="{{ URL::asset('js/ng-min.js')}}" type="text/javascript"></script>
         @yield('script')
     </body>

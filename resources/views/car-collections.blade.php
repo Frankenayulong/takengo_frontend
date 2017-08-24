@@ -73,6 +73,19 @@
                     </div>
                 </div>
             </div>
+            <div class="row" style="margin-top:30px;" ng-if="metadata.current_location != null">
+                <ng-map id="cars-collection-map" center="@{{metadata.current_location.latitude}}, @{{metadata.current_location.longitude}}" zoom="13">
+                    <marker position="[@{{metadata.current_location.latitude}}, @{{metadata.current_location.longitude}}]"
+                        animation="Animation.BOUNCE" centered="true" title="You Are Here">
+                    </marker>
+                    <marker ng-repeat="car in cars" 
+                    ng-if="car.distance === 0 || car.distance"
+                     position="[@{{car.lat || 0}}, @{{car.long || 0}}]" 
+                     title="@{{car.name}}"
+                     animation="Animation.DROP">
+                    </marker>
+                </ng-map>
+            </div>
             <div class="row c-center" style="margin-top:30px" ng-show="carsCollectionCtrl.loading.retrieve">
                 @component('components.shared.spinner')
                     big
@@ -112,19 +125,6 @@
                 </ul>
             </div>
 
-            <div class="row" style="margin-top:30px;" ng-if="metadata.current_location != null">
-                <ng-map id="cars-collection-map" center="@{{metadata.current_location.latitude}}, @{{metadata.current_location.longitude}}" zoom="13">
-                    <marker position="[@{{metadata.current_location.latitude}}, @{{metadata.current_location.longitude}}]"
-                        animation="Animation.BOUNCE" centered="true" title="You Are Here">
-                    </marker>
-                    <marker ng-repeat="car in cars" 
-                    ng-if="car.distance === 0 || car.distance"
-                     position="[@{{car.lat || 0}}, @{{car.long || 0}}]" 
-                     title="@{{car.name}}"
-                     animation="Animation.DROP">
-                    </marker>
-                </ng-map>
-            </div>
         </div>
     </div><!-- END: CONTENT/SHOPS/SHOP-2-1 -->
 </div>
