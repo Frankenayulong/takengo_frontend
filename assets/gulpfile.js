@@ -32,10 +32,8 @@ gulp.task('css', function(){
         'demos/default/css/custom.css'
     ];
     return gulp.src(filesExist(css_files))
-    .pipe(sourcemaps.init())
     .pipe(concatCss('build.css'))
     .pipe(minifyCSS())
-    .pipe(sourcemaps.write())
     .pipe(gulp.dest('../public/css'));  
 });
 
@@ -75,7 +73,7 @@ gulp.task('js', function(){
     .pipe(sourcemaps.init())
     .pipe(concat('build.js'))
     .pipe(uglify())
-    .pipe(sourcemaps.write())
+    .pipe(sourcemaps.write('../js'))
     .pipe(gulp.dest('../public/js'))
 })
 
@@ -101,7 +99,7 @@ gulp.task('angular', function(){
     }))
     .pipe(ngAnnotate())
     .pipe(uglify())
-    .pipe(sourcemaps.write())
+    .pipe(sourcemaps.write('../js'))
     .pipe(gulp.dest('../public/js'))
 })
 
@@ -115,7 +113,7 @@ gulp.task('slider', function(){
     .pipe(sourcemaps.init())
     .pipe(concat('slider.js'))
     .pipe(uglify())
-    .pipe(sourcemaps.write())
+    .pipe(sourcemaps.write('../js'))
     .pipe(gulp.dest('../public/js'))
 })
 
@@ -127,7 +125,7 @@ gulp.task('faq', function(){
         .pipe(sourcemaps.init())
         .pipe(concat('faq.js'))
         .pipe(uglify())
-        .pipe(sourcemaps.write())
+        .pipe(sourcemaps.write('../js'))
         .pipe(gulp.dest('../public/js'))
 })
 
