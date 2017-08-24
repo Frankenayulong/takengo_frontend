@@ -1,12 +1,12 @@
-var gulp = require('gulp');
-var minifyCSS = require('gulp-csso');
-var concatCss = require('gulp-concat-css');
-var concat = require('gulp-concat');
-var minify = require('gulp-minify');
-var filesExist = require('files-exist');
-var uglify = require('gulp-uglify');
-var NgAnnotate = require('gulp-ng-annotate');
-var babel = require('gulp-babel');
+const gulp = require('gulp');
+const minifyCSS = require('gulp-csso');
+const concatCss = require('gulp-concat-css');
+const concat = require('gulp-concat');
+const minify = require('gulp-minify');
+const filesExist = require('files-exist');
+const uglify = require('gulp-uglify');
+const ngAnnotate = require('gulp-ng-annotate');
+const babel = require('gulp-babel');
 
 gulp.task('css', function(){
     var css_files = [
@@ -77,11 +77,11 @@ gulp.task('js', function(){
 
 gulp.task('angular', function(){
     var angular_files = [
-        'app/lib/angular/angular.min.js',
+        // 'app/lib/angular/angular.min.js', << NGMAP needs this first
         'app/lib/angular/angular-cookies.min.js',
         'app/lib/slim/slim.angular.js',
-        'app/lib/ngGeolocation/ngGeolocation.min.js',
-        'app/lib/ngMap/ng-map.min.js',
+        'app/lib/ngGeolocation/ngGeolocation.js',
+        // 'app/lib/ngMap/ng-map.js', << CANNOT BE MINIFIED
         'app/app.js',
         'app/controllers/components/modals/sign-in.js',
         'app/controllers/components/modals/sign-up.js',
@@ -94,7 +94,7 @@ gulp.task('angular', function(){
     .pipe(babel({
         presets: ["env"]
     }))
-    .pipe(NgAnnotate())
+    .pipe(ngAnnotate())
     .pipe(uglify())
     .pipe(gulp.dest('../public/js'))
 })
@@ -122,4 +122,3 @@ gulp.task('faq', function(){
 })
 
 gulp.task('default', [ 'css', 'js', 'slider', 'faq', 'angular' ]);
-module.exports = gulp;
