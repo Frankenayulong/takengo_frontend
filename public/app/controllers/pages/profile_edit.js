@@ -1,4 +1,6 @@
-app.controller('profileEditController', ['$scope', '$rootScope', '$http', 'ENV', function($scope, $rootScope, $http, ENV){
+app.controller('profileEditController', [
+    '$scope', '$rootScope', '$http', 'ENV', '$window', 
+function($scope, $rootScope, $http, ENV, $window){
     $scope.profile_error = {
         first_name: false,
         last_name: false,
@@ -58,7 +60,8 @@ app.controller('profileEditController', ['$scope', '$rootScope', '$http', 'ENV',
             }
         })
         .then((data)=>{
-            console.log(data);     
+            console.log(data);
+            $window.location.href = ENV.BASE_URL + 'profile';     
         }, (data)=>{
             console.log(data);
             if(data.status == 422){
