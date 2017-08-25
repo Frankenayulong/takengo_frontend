@@ -5,19 +5,74 @@ app.controller('carsCollectionController', ['$scope', '$rootScope', '$http', 'EN
     if (params.hasOwnProperty('page') && !isNaN(params.page)){
         page = params.page
     }
-    var addMarker = (map) => {
-        map.sources[0].data.features.push({
+    var addMarker = () => {
+        $scope.glMap.sources[0].data.features.push({
             type: 'Feature',
-            properties: {},
+            properties: {
+                "description": "<p><a href=\"http://www.mtpleasantdc.com/makeitmtpleasant\" target=\"_blank\" title=\"Opens in a new window\">Make it Mount Pleasant</a> is a handmade and vintage market and afternoon of live entertainment and kids activities. 12:00-6:00 p.m.</p>",
+                "icon": "marker" //car
+            },
             geometry: {
                 type: 'Point',
-                coordinates: [$rootScope.metadata.current_location.latitude, $rootScope.metadata.current_location.longitude]
+                coordinates: [$rootScope.metadata.current_location.longitude, $rootScope.metadata.current_location.latitude]
             }
         });
+        // $scope.testSources = [
+        //     {
+        //               "id": "places",
+        //               "type": "geojson",
+        //               "data": {
+        //                   "type": "FeatureCollection",
+        //                   "features": [{
+        //                       "type": "Feature",
+        //                       "properties": {
+        //                           "description": "<strong>Make it Mount Pleasant</strong><p><a href=\"http://www.mtpleasantdc.com/makeitmtpleasant\" target=\"_blank\" title=\"Opens in a new window\">Make it Mount Pleasant</a> is a handmade and vintage market and afternoon of live entertainment and kids activities. 12:00-6:00 p.m.</p>",
+        //                           "icon": "theatre"
+        //                       },
+        //                       "geometry": {
+        //                           "type": "Point",
+        //                           "coordinates": [$rootScope.metadata.current_location.longitude, $rootScope.metadata.current_location.latitude]
+        //                       }
+        //                   }]
+        //               }
+        //           }
+        //   ];
+        console.log($scope.glMap.sources[0])
+        $scope.digest()
     }
     $scope.$on('mapboxglMap:load', (event, GLEvent)=>{
-        // addMarker(GLEvent.target);
+        
     })
+    
+    $scope.testLayers = [{
+        "id": "places",
+        "type": "symbol",
+        "source":"places",
+        "layout": {
+          "icon-image": "{icon}-15",
+          "icon-allow-overlap": true
+        },
+        popup: {
+          enabled: true,
+          onClick: {
+            message: '${description}'
+          }
+        }
+      }];
+
+    $scope.glMap = {
+        sources: [
+            {
+                id: 'places',
+                type: 'geojson',
+                data: {
+                    type: 'FeatureCollection',
+                    features: []
+                }
+            }
+        ]
+    }
+
     $scope.map = null;
     NgMap.getMap().then(function(map) {
         console.log(map)
@@ -58,6 +113,7 @@ app.controller('carsCollectionController', ['$scope', '$rootScope', '$http', 'EN
     var location_unregister = $scope.$watch('metadata.current_location_retrieved', function(newVal, oldVal){
         if(newVal != oldVal && newVal === true){
             $scope.retrieve();
+            addMarker();
             location_unregister();
         }
     })

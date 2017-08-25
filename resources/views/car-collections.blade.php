@@ -75,11 +75,15 @@
             </div>
             <div class="row" ng-if="metadata.current_location != null">
             <mapboxgl
-                gl-style="'mapbox://styles/mapbox/streets-v10'"
-                id="<map_id>"
-                gl-center="[-37.815206499999995, 144.963937]"
-                gl-min-zoom="11.15"
-                gl-max-zoom="18">
+                gl-style="'mapbox://styles/mapbox/light-v9'"
+                gl-sprite="''"
+                id="glMap"
+                gl-center="{lat: metadata.current_location.latitude, lng: metadata.current_location.longitude}"
+                gl-min-zoom="13"
+                gl-max-zoom="18"
+                gl-sources="glMap.sources"
+                gl-layers="testLayers"
+                >
             </mapboxgl>
             </div>
             <div class="row" style="margin-top:30px;" ng-if="metadata.current_location != null">
