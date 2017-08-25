@@ -75,7 +75,7 @@
             </div>
             <div class="row" ng-if="metadata.current_location != null">
             <mapboxgl
-                gl-style="'mapbox://styles/mapbox/light-v9'"
+                gl-style="'mapbox://styles/mapbox/streets-v8'"
                 gl-sprite="''"
                 id="glMap"
                 gl-center="{lat: metadata.current_location.latitude, lng: metadata.current_location.longitude}"
