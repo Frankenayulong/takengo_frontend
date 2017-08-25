@@ -9,8 +9,12 @@ var app = angular.module('takeNGo',
 ['slim', 
 'ngGeolocation', 
 'ngCookies',
-'ngMap']
+'ngMap',
+'mapboxgl-directive']
 )
+.run([function () {
+    mapboxgl.accessToken = 'pk.eyJ1Ijoia2VuZHJpY2trZXNsZXkiLCJhIjoiY2o2cjdjajgzMDYwbDMzb2FpdnRvczF1ciJ9.NeaHwY5gskY0bekndG9uuw';
+}])
 .constant('ENV', env)
 .config(function ($httpProvider) {
     $httpProvider.defaults.withCredentials = true;
@@ -32,8 +36,7 @@ app.controller('mainController', ['$scope', '$timeout', '$http', '$rootScope', '
             }
         };
         return $timeout(waitForRenderAndDoSomething);
-    };
-
+    };    
     $scope.range = function(n) {
         return new Array(n);
     };

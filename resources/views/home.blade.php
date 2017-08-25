@@ -101,7 +101,6 @@
 	</div> 
 </div>
 <!-- END: CONTENT/FEATURES/FEATURES-8 -->
-
 <!-- BEGIN: CONTENT/FEATURES/FEATURES-15-2 -->
 <div id="feature-15-2" class="c-content-feature-15 c-bg-img-center" style="background-image: url(../../assets/base/img/content/backgrounds/bg-11.jpg)">
 	<div class="container">

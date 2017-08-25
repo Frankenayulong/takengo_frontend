@@ -18,6 +18,8 @@
         
         <link href="{{asset('css/plugins/slim.min.css')}}" rel="stylesheet" type="text/css"/>
         <link href="{{asset('css/build.css')}}" rel="stylesheet" type="text/css"/>
+        <link href="{{asset('app/lib/mapbox-gl/mapbox-gl.css')}}" rel="stylesheet" type="text/css"/>
+        <link href="{{asset('app/lib/mapbox-gl/angular-mapboxgl-directive.css')}}" rel="stylesheet" type="text/css"/>
 
         <link rel="shortcut icon" href="favicon.ico"/>
     </head>
@@ -56,22 +58,29 @@
         <script type="text/javascript" src="{{asset('js/build.js')}}"></script>
         <script type="text/javascript" src="{{asset('js/slider.js')}}"></script>
         <script src="{{ URL::asset('app/lib/angular/angular.min.js')}}"></script>
-        <!-- <script src="{{ URL::asset('app/lib/angular/angular-cookies.min.js')}}"></script>
-        <script src="{{ URL::asset('app/lib/slim/slim.angular.js')}}"></script>
-        <script src="{{ URL::asset('app/lib/ngGeolocation/ngGeolocation.min.js') }}"></script> -->
+        <script src="{{ URL::asset('app/lib/mapbox-gl/mapbox-gl.js')}}"></script>
+        <script src="{{ URL::asset('app/lib/mapbox-gl/angular-mapboxgl-directive.js')}}"></script>
         <script src="{{ URL::asset('app/lib/ngMap/ng-map.min.js')}}"></script>
-        <!-- <script src="{{ URL::asset('app/app.js')}}"></script>
-        <script src="{{ URL::asset('app/controllers/components/modals/sign-in.js')}}"></script>
-        <script src="{{ URL::asset('app/controllers/components/modals/sign-up.js')}}"></script>
-        <script src="{{ URL::asset('app/controllers/components/header.js')}}"></script>
-        <script src="{{ URL::asset('app/controllers/pages/profile_edit.js')}}"></script>
-        <script src="{{ URL::asset('app/controllers/pages/cars_collection.js')}}"></script> -->
         <script>
         $(document).ready(function() {    
             App.init(); // init core    
         });
         </script>
-        <script src="{{ URL::asset('js/ng-min.js')}}" type="text/javascript"></script>
+
+
+
+        <script src="{{ URL::asset('app/lib/angular/angular-cookies.min.js')}}"></script>
+        <script src="{{ URL::asset('app/lib/slim/slim.angular.js')}}"></script>
+        <script src="{{ URL::asset('app/lib/ngGeolocation/ngGeolocation.min.js') }}"></script>
+        <script src="{{ URL::asset('app/app.js')}}"></script>
+        <script src="{{ URL::asset('app/controllers/components/modals/sign-in.js')}}"></script>
+        <script src="{{ URL::asset('app/controllers/components/modals/sign-up.js')}}"></script>
+        <script src="{{ URL::asset('app/controllers/components/header.js')}}"></script>
+        <script src="{{ URL::asset('app/controllers/pages/profile_edit.js')}}"></script>
+        <script src="{{ URL::asset('app/controllers/pages/cars_collection.js')}}"></script>
+
+
+        <!-- <script src="{{ URL::asset('js/ng-min.js')}}" type="text/javascript"></script> -->
         @yield('script')
     </body>
 </html>

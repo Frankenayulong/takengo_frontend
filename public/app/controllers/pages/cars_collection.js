@@ -1,10 +1,23 @@
-app.controller('carsCollectionController', ['$scope', '$rootScope', '$http', 'ENV', '$location', 'NgMap', function($scope, $rootScope, $http, ENV, $location, NgMap){
+app.controller('carsCollectionController', ['$scope', '$rootScope', '$http', 'ENV', '$location', 'NgMap', 'mapboxglMapsData', function($scope, $rootScope, $http, ENV, $location, NgMap, mapboxglMapsData){
     console.log('Going to Cars Collection Page')
     let params = $location.search();
     let page = 1;
     if (params.hasOwnProperty('page') && !isNaN(params.page)){
         page = params.page
     }
+    var addMarker = (map) => {
+        map.sources[0].data.features.push({
+            type: 'Feature',
+            properties: {},
+            geometry: {
+                type: 'Point',
+                coordinates: [$rootScope.metadata.current_location.latitude, $rootScope.metadata.current_location.longitude]
+            }
+        });
+    }
+    $scope.$on('mapboxglMap:load', (event, GLEvent)=>{
+        // addMarker(GLEvent.target);
+    })
     $scope.map = null;
     NgMap.getMap().then(function(map) {
         console.log(map)
