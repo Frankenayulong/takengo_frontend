@@ -92,7 +92,7 @@ app.controller('carsCollectionController', ['$scope', '$rootScope', '$http', 'EN
             console.log($scope.carsLocations);
             reset_error();
             $scope.carsCollectionCtrl.loading.retrieve = false;
-            if($scope.carsCollectionCtrl.last_page < $scope.carsCollectionCtrl.current_page){
+            if($scope.carsCollectionCtrl.last_page < $scope.carsCollectionCtrl.current_page && $scope.carsCollectionCtrl.current_page > 0){
                 $scope.carsCollectionCtrl.current_page = $scope.carsCollectionCtrl.last_page;
                 $location.search('page', $scope.carsCollectionCtrl.last_page)
                 $scope.retrieve()
