@@ -82,7 +82,7 @@
                 gl-min-zoom="13"
                 gl-max-zoom="18"
                 gl-sources="glMap.sources"
-                gl-layers="testLayers"
+                gl-layers="glLayers"
                 >
             </mapboxgl>
             </div>

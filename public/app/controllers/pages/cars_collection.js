@@ -10,8 +10,14 @@ app.controller('carsCollectionController', ['$scope', '$rootScope', '$http', 'EN
             type: 'Feature',
             properties: {
                 "description": "<p><a href=\"http://www.mtpleasantdc.com/makeitmtpleasant\" target=\"_blank\" title=\"Opens in a new window\">Make it Mount Pleasant</a> is a handmade and vintage market and afternoon of live entertainment and kids activities. 12:00-6:00 p.m.</p>",
-                "icon": "marker" //car
             },
+            geometry: {
+                type: 'Point',
+                coordinates: [$rootScope.metadata.current_location.longitude, $rootScope.metadata.current_location.latitude]
+            }
+        });
+        $scope.glMap.sources[0].data.features.push({
+            type: 'Feature',
             geometry: {
                 type: 'Point',
                 coordinates: [$rootScope.metadata.current_location.longitude, $rootScope.metadata.current_location.latitude]
@@ -40,14 +46,43 @@ app.controller('carsCollectionController', ['$scope', '$rootScope', '$http', 'EN
         console.log($scope.glMap.sources[0])
         $scope.digest()
     }
+
+    var addCarMarker = (lat = 0, long = 0, car = null) => {
+        $scope.glMap.sources[1].data.features.push({
+            type: 'Feature',
+            properties: {
+                "description": "<p><a href=\"http://www.mtpleasantdc.com/makeitmtpleasant\" target=\"_blank\" title=\"Opens in a new window\">Make it Mount Pleasant</a> is a handmade and vintage market and afternoon of live entertainment and kids activities. 12:00-6:00 p.m.</p>",
+                "icon": "car"
+            },
+            geometry: {
+                type: 'Point',
+                coordinates: [long, lat]
+            }
+        });
+    }
     $scope.$on('mapboxglMap:load', (event, GLEvent)=>{
         
     })
     
-    $scope.testLayers = [{
+    $scope.glLayers = [{
         "id": "places",
-        "type": "symbol",
+        "type": "circle",
         "source":"places",
+        "paint": {
+            'circle-radius': 8,
+            'circle-color': '#FF620D'
+         },
+        popup: {
+          enabled: true,
+          onClick: {
+            message: '${description}'
+          }
+        }
+      },
+      {
+        "id": "cars",
+        "type": "symbol",
+        "source":"cars",
         "layout": {
           "icon-image": "{icon}-15",
           "icon-allow-overlap": true
@@ -64,6 +99,14 @@ app.controller('carsCollectionController', ['$scope', '$rootScope', '$http', 'EN
         sources: [
             {
                 id: 'places',
+                type: 'geojson',
+                data: {
+                    type: 'FeatureCollection',
+                    features: []
+                }
+            },
+            {
+                id: 'cars',
                 type: 'geojson',
                 data: {
                     type: 'FeatureCollection',
@@ -156,9 +199,9 @@ app.controller('carsCollectionController', ['$scope', '$rootScope', '$http', 'EN
             $scope.cars.forEach((obj)=>{
                 if(obj.distance !== null){
                     $scope.carsLocations.push([obj.lat, obj.long])
+                    addCarMarker(obj.lat, obj.long, obj);
                 }
             })
-            console.log($scope.carsLocations);
             reset_error();
             $scope.carsCollectionCtrl.loading.retrieve = false;
             if($scope.carsCollectionCtrl.last_page < $scope.carsCollectionCtrl.current_page){
