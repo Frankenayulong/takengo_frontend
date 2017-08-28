@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div ng-controller="carsCollectionController">
+<div ng-controller="carsCollectionController as vm">
     <!-- START BREADCRUMBS -->
     <div class="c-layout-breadcrumbs-1 c-bgimage-full  c-centered  c-fonts-uppercase c-fonts-bold   c-bg-img-center" style="background-image: url({{asset('assets/base/img/content/banner2.jpg')}}); background-size:cover; background-position:center center">
         <div class="container">
@@ -74,15 +74,24 @@
                 </div>
             </div>
             <div class="row" style="margin-top:30px;" ng-if="metadata.current_location != null">
+                <script id="car-desc.html" type="text/ng-template">
+                    
+                </script>
                 <ng-map id="cars-collection-map" center="@{{metadata.current_location.latitude}}, @{{metadata.current_location.longitude}}" zoom="13">
+                    <info-window id="car-collection-info-window">
+                        <div ng-non-bindable="">
+                            I'm an cached template<br/>                      
+                        </div>
+                    </info-window>
                     <marker position="[@{{metadata.current_location.latitude}}, @{{metadata.current_location.longitude}}]"
                         animation="Animation.BOUNCE" centered="true" title="You Are Here">
                     </marker>
-                    <marker ng-repeat="car in cars" 
-                    ng-if="car.distance === 0 || car.distance"
-                     position="[@{{car.lat || 0}}, @{{car.long || 0}}]" 
-                     title="@{{car.name}}"
-                     animation="Animation.DROP">
+                    <marker id="car-@{{car.cid}}" ng-repeat="car in cars" 
+                        ng-if="car.distance === 0 || car.distance"
+                        position="[@{{car.lat || 0}}, @{{car.long || 0}}]" 
+                        title="@{{car.name}}"
+                        animation="Animation.DROP"
+                        on-click="vm.showStore(event, car)">
                     </marker>
                 </ng-map>
             </div>

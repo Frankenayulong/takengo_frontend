@@ -1,14 +1,23 @@
 app.controller('carsCollectionController', ['$scope', '$rootScope', '$http', 'ENV', '$location', 'NgMap', function($scope, $rootScope, $http, ENV, $location, NgMap){
     console.log('Going to Cars Collection Page')
+    var vm = this;
     let params = $location.search();
     let page = 1;
     if (params.hasOwnProperty('page') && !isNaN(params.page)){
         page = params.page
     }
-    $scope.map = null;
+    $scope.gmap = {
+        map: null,
+        store: null
+    };
+    vm.showStore = (evt, car) => {
+        console.log('hai');
+        $scope.gmap.store = car;
+        $scope.gmap.map.showInfoWindow('car-collection-info-window', 'car-'+car.cid);
+    };
     NgMap.getMap().then(function(map) {
         console.log(map)
-        $scope.map = map;
+        $scope.gmap.map = map;
     }).catch(err => {
         console.log(err)
     });
