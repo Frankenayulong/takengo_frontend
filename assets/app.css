@@ -111,3 +111,6 @@ textarea.noresize {
     #cars-collection-map{
         height: 400px
     }
+    .slider.slider-horizontal{
+        width:100%!important;
+    }

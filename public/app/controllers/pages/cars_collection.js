@@ -6,12 +6,19 @@ app.controller('carsCollectionController', ['$scope', '$rootScope', '$http', 'EN
     if (params.hasOwnProperty('page') && !isNaN(params.page)){
         page = params.page
     }
+
+    $scope.query = {
+        car_types: '',
+        price_range: '',
+        sort: '',
+        radius: 10
+    }
+
     $scope.gmap = {
         map: null,
         store: null
     };
     vm.showStore = (evt, car) => {
-        console.log('hai');
         $scope.gmap.store = car;
         $scope.gmap.map.showInfoWindow('car-collection-info-window', 'car-'+car.cid);
     };
@@ -129,6 +136,34 @@ app.controller('carsCollectionController', ['$scope', '$rootScope', '$http', 'EN
             p += ("lat="+$rootScope.metadata.current_location.latitude);
             p += "&";
             p += ("long="+$rootScope.metadata.current_location.longitude);
+            pCount++;
+        }
+        if($scope.query.car_types.length > 0){
+            if(pCount > 0){
+                p += "&";
+            }
+            p += ("type="+$scope.query.car_types);
+            pCount++;
+        }
+        if($scope.query.price_range.length > 0){
+            if(pCount > 0){
+                p += "&";
+            }
+            p += ("price="+$scope.query.price_range);
+            pCount++;
+        }
+        if($scope.query.radius.length > 0){
+            if(pCount > 0){
+                p += "&";
+            }
+            p += ("rad="+$scope.query.radius);
+            pCount++;
+        }
+        if($scope.query.sort.length > 0){
+            if(pCount > 0){
+                p += "&";
+            }
+            p += ("sort="+$scope.query.sort);
             pCount++;
         }
         return p;
