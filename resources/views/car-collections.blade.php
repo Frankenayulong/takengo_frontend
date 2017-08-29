@@ -90,7 +90,15 @@
                                     </p>
                                     <p class="c-font-14 c-font-slim">@{{(gmap.store.distance || 0) / 1000 | number : 2}} km away</p>
                                 </div>
-                            </div>                      
+                            </div>    
+                            <div class="row">
+                                <div class="col-sm-12 col-lg-6">
+                                        <a href="javascript:;" class="btn btn-lg c-btn-white c-btn-uppercase c-btn-square c-font-grey-3 c-font-white-hover c-bg-red-2-hover c-btn-product">Book Now</a>
+                                    </div>
+                                    <div class="col-sm-12 col-lg-6">
+                                    <a href="javascript:;" class="btn btn-lg c-btn-white c-btn-uppercase c-btn-square c-font-grey-3 c-font-white-hover c-bg-green-2-hover c-btn-product">Details</a>
+                                </div>
+                            </div>                  
                         </div>
                     </info-window>
                     <marker position="[@{{metadata.current_location.latitude}}, @{{metadata.current_location.longitude}}]"
@@ -136,8 +144,11 @@
                             </p>
                         </div>
                         <div class="btn-group btn-group-justified" role="group">
-                            <div class="btn-group c-border-top" role="group">
+                            <div class="btn-group c-border-right c-border-top" role="group">
                                 <a href="javascript:;" class="btn btn-lg c-btn-white c-btn-uppercase c-btn-square c-font-grey-3 c-font-white-hover c-bg-red-2-hover c-btn-product">Book Now</a>
+                            </div>
+                            <div class="btn-group c-border-left c-border-top" role="group">
+                                <a href="javascript:;" class="btn btn-lg c-btn-white c-btn-uppercase c-btn-square c-font-grey-3 c-font-white-hover c-bg-green-2-hover c-btn-product">Details</a>
                             </div>
                         </div>
                     </div>
