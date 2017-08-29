@@ -79,8 +79,18 @@
                 </script>
                 <ng-map id="cars-collection-map" center="@{{metadata.current_location.latitude}}, @{{metadata.current_location.longitude}}" zoom="13">
                     <info-window id="car-collection-info-window">
-                        <div ng-non-bindable="">
-                            I'm an cached template<br/>                      
+                        <div ng-non-bindable="" style="overflow-x:hidden">
+                            <div class="row">
+                                <div class="col-sm-12 col-lg-4">
+                                    <img src="@{{carsCollectionCtrl.api_url + 'img/cars/' + gmap.store.cid}}" style="height:100px;width:auto;"/>
+                                </div>
+                                <div style="padding-left:10px;" class="col-sm-12 col-lg-8">
+                                    <p class="c-title c-font-14 c-font-slim">@{{gmap.store.name}} (@{{gmap.store.transition_mode == 'AUTO' ? 'A/T' : 'M/T'}})</p>
+                                    <p class="c-price c-font-14 c-font-slim"><span class="c-font-bold">$@{{gmap.store.price}}</span> / day
+                                    </p>
+                                    <p class="c-font-14 c-font-slim">@{{(gmap.store.distance || 0) / 1000 | number : 2}} km away</p>
+                                </div>
+                            </div>                      
                         </div>
                     </info-window>
                     <marker position="[@{{metadata.current_location.latitude}}, @{{metadata.current_location.longitude}}]"
