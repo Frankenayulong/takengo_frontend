@@ -44,9 +44,9 @@
     <div class="col sm-12 col-lg-4">
         <ul class="c-shop-filter-search-1 list-unstyled">
             <li>
-                <label class="control-label c-font-uppercase c-font-bold">Radius (km)</label>
+                <label class="control-label c-font-uppercase c-font-bold">Radius (@{{query.radius}} km)</label>
                 <div style="width:100%" class="c-price-range-slider c-theme-1 input-group">
-                    <input ng-model="query.radius" type="text" class="c-price-slider" value="" data-slider-min="1" data-slider-max="20" data-slider-step="1" data-slider-value="10">
+                    <input id="radius-slider" ng-model="query.radius" type="text" class="c-price-slider" value="" data-slider-min="1" data-slider-max="20" data-slider-step="1" data-slider-value="10">
                 </div>
             </li>
         </ul>

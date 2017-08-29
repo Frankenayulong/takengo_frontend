@@ -168,4 +168,12 @@ app.controller('carsCollectionController', ['$scope', '$rootScope', '$http', 'EN
         }
         return p;
     }
+
+    $('#radius-slider').slider().on('slideStop', function(ev){
+        var newVal = $('#radius-slider').data('slider').getValue();
+        if($scope.query.radius != newVal) {
+            $scope.query.radius = newVal
+            $scope.digest()
+        }
+    });
 }]);
