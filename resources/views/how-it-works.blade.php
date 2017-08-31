@@ -3,7 +3,7 @@
 @section('content')
 
     <!-- START BREADCRUMBS -->
-    <div class="c-layout-breadcrumbs-1 c-bgimage-full  c-centered  c-fonts-uppercase c-fonts-bold   c-bg-img-center" style="background-image: url({{asset('assets/base/img/content/backgrounds/bg-47.jpg')}})">
+    <div class="c-layout-breadcrumbs-1 c-bgimage-full  c-centered  c-fonts-uppercase c-fonts-bold   c-bg-img-center" style="background-image: url({{asset('assets/base/img/content/banner7.jpg')}}); background-position:center 60%">
         <div class="container">
             <div class="c-page-title c-pull-left">
                 <h2 class="c-font-uppercase c-font-bold c-font-white c-font-35 c-font-slim c-opacity-09">How It Works</h2>
