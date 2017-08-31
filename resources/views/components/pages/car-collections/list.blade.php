@@ -16,7 +16,7 @@
                     <a href="javascript:;" class="btn btn-lg c-btn-white c-btn-uppercase c-btn-square c-font-grey-3 c-font-white-hover c-bg-red-2-hover c-btn-product">Book Now</a>
                 </div>
                 <div class="btn-group c-border-left c-border-top" role="group">
-                    <a href="javascript:;" class="btn btn-lg c-btn-white c-btn-uppercase c-btn-square c-font-grey-3 c-font-white-hover c-bg-green-2-hover c-btn-product">Details</a>
+                    <a href="{{url('/details')}}" class="btn btn-lg c-btn-white c-btn-uppercase c-btn-square c-font-grey-3 c-font-white-hover c-bg-green-2-hover c-btn-product">Details</a>
                 </div>
             </div>
         </div>

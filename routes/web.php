@@ -22,6 +22,9 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('/collections', function () {
         return view('car-collections');
     });
+    Route::get('/details', function () {
+        return view('car-details');
+    });
     Route::get('/how-it-works', function () {
         return view('how-it-works');
     });
