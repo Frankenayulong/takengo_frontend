@@ -84,11 +84,6 @@ app.controller('mainController', ['$scope', '$timeout', '$http', '$rootScope', '
     $scope.authenticate.check = () => {
         $scope.authenticate.check_token().then(()=>{
             $scope.modalFunc.closeAuth();
-            // $scope.authenticate.register_auth().then(()=>{
-            //     console.log('register auth success');
-            // }).catch(()=>{
-            //     console.log('register auth fail');
-            // })
             $scope.authenticate.get_profile().then((data)=>{
                 var user = (data.data || {}).user;
                 $rootScope.metadata.signing = false;
@@ -132,7 +127,13 @@ app.controller('mainController', ['$scope', '$timeout', '$http', '$rootScope', '
 
     $scope.authenticate.check_token = () => {
         return new Promise((resolve, reject) => {
-            $http.post(ENV.API_URL + 'token').then(function(data){
+            $http.post(ENV.API_URL + 'token',{},{
+                headers: {
+                    'X-TKNG-UID': $cookies.get('fe_uid'),
+                    'X-TKNG-TKN': $cookies.get('fe_token'),
+                    'X-TKNG-EM': $cookies.get('fe_email')
+                }
+            }).then(function(data){
                 console.log('check_token');
                 console.log(data);
                 console.log('end of check_token');
@@ -144,9 +145,9 @@ app.controller('mainController', ['$scope', '$timeout', '$http', '$rootScope', '
                         email: data.data.email,
                         first_name: data.data.first_name
                     }
-                    $cookies.put('fe_uid', data.data.uid);
-                    $cookies.put('fe_token', data.data.token);
-                    $cookies.put('fe_email', data.data.email);
+                    $cookies.put('fe_uid', data.data.uid, {path: '/'});
+                    $cookies.put('fe_token', data.data.token, {path: '/'});
+                    $cookies.put('fe_email', data.data.email, {path: '/'});
                     resolve();
                 }else{
                     reject();
@@ -181,6 +182,9 @@ app.controller('mainController', ['$scope', '$timeout', '$http', '$rootScope', '
     $scope.authenticate.sign_out = () => {
         console.log('signing out');
         $rootScope.metadata.signing = false;
+        $cookies.remove('fe_uid', {path: '/'});
+        $cookies.remove('fe_token', {path: '/'});
+        $cookies.remove('fe_email', {path: '/'});
         $rootScope.metadata = Object.assign($rootScope.metadata, {
             signed_in: false,
             email_verified: false,

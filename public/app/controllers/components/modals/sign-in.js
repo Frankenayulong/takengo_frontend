@@ -35,7 +35,9 @@ app.controller('signInController', ['$scope', '$rootScope', '$timeout', '$http',
         .then((data)=>{
             console.log(data);            
             $rootScope.metadata.loading.sign_in = false;
-
+            $cookies.put('fe_uid', data.data.uid, {path: '/'});
+            $cookies.put('fe_token', data.data.token, {path: '/'});
+            $cookies.put('fe_email', data.data.email, {path: '/'});
             //RESET INPUT & ERRORS
             $scope.reset_input();
             reset_error();

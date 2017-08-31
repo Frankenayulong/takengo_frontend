@@ -1,4 +1,4 @@
-app.controller('carsCollectionController', ['$scope', '$rootScope', '$http', 'ENV', '$location', 'NgMap', function($scope, $rootScope, $http, ENV, $location, NgMap){
+app.controller('carsCollectionController', ['$scope', '$rootScope', '$http', 'ENV', '$location', 'NgMap', '$window', function($scope, $rootScope, $http, ENV, $location, NgMap, $window){
     console.log('Going to Cars Collection Page')
     var vm = this;
     let params = $location.search();
@@ -122,6 +122,14 @@ app.controller('carsCollectionController', ['$scope', '$rootScope', '$http', 'EN
             $scope.carsCollectionCtrl.loading.retrieve = false;
             $scope.digest();
         });
+    }
+
+    $scope.book = (url = '') => {
+        if(!$rootScope.metadata.signed_in || url == ''){
+            $('#login-form').modal('show');
+        }else{
+            $window.location.href = url;
+        }
     }
 
     var parseParams = () => {
