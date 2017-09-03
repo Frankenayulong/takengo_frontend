@@ -16,12 +16,8 @@ Route::get('/', function () {
 Route::get('/brands', function () {
     return view('car-brands');
 });
-Route::get('/cars', function () {
-    return view('car-collections');
-});
-Route::get('/cars/{cid}', function () {
-    return view('car-details');
-});
+Route::get('/cars', 'CarController@index');
+Route::get('/cars/{cid}', 'CarController@detail');
 Route::get('/how-it-works', function () {
     return view('how-it-works');
 });
