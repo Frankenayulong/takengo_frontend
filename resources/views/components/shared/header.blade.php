@@ -23,24 +23,16 @@
                 <nav class="c-mega-menu c-mega-menu-mobile c-fonts-uppercase c-fonts-sbold">
                     <ul class="nav navbar-nav c-theme-nav"> 
                         <li class="c-active">
-                            <a href="{{url('/')}}" class="c-link dropdown-toggle">Home</a>
+                            <a href="{{url('/')}}" class="c-link">Home</a>
                         </li>
                         <li class="c-menu-type-classic">
-                            <a href="javascript:;" class="c-link dropdown-toggle">Our Cars<span class="c-arrow c-toggler"></span></a>
-                            <ul class="dropdown-menu c-menu-type-classic c-pull-left">
-                                <li class="dropdown-submenu">
-                                    <a href="{{url('/brands')}}">Brands</a>
-                                </li>
-                                <li class="dropdown-submenu">
-                                    <a href="{{url('/collections')}}">Collections</a>
-                                </li>           
-                            </ul>
+                            <a href="{{url('/cars')}}" class="c-link">Our Cars</a>
                         </li>
                         <li>
-                            <a href="{{url('/how-it-works')}}" class="c-link dropdown-toggle">How it Works</a>
+                            <a href="{{url('/how-it-works')}}" class="c-link">How it Works</a>
                         </li>
                         <li >
-                            <a href="{{url('/contact-us')}}" class="c-link dropdown-toggle">Contact Us</a>
+                            <a href="{{url('/contact-us')}}" class="c-link">Contact Us</a>
                         </li>
                         
                         <li class="c-cart-toggler-wrapper">

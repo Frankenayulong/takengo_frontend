@@ -16,10 +16,10 @@ Route::get('/', function () {
 Route::get('/brands', function () {
     return view('car-brands');
 });
-Route::get('/collections', function () {
+Route::get('/cars', function () {
     return view('car-collections');
 });
-Route::get('/details', function () {
+Route::get('/cars/{cid}', function () {
     return view('car-details');
 });
 Route::get('/how-it-works', function () {

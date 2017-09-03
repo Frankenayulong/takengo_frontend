@@ -11,7 +11,7 @@
             <ul class="c-page-breadcrumbs c-theme-nav c-pull-right c-fonts-regular">
                 <li><a href="{{url('/')}}" class="c-font-white">Home</a></li>
                 <li class="c-font-white">/</li>
-                <li><a href="{{url('/collections')}}" class="c-font-white">Our Cars</a></li>
+                <li><a href="{{url('/cars')}}" class="c-font-white">Our Cars</a></li>
                 <li class="c-font-white">/</li>
                 <li class="c-state-active c-font-white">Details</li>
             </ul>
