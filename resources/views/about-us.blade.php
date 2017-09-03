@@ -17,8 +17,10 @@
     </div>
     <!-- END BREADCRUMBS -->
 
+    
+
     <!-- BEGIN: CONTENT/SLIDERS/TEAM-2 -->
-    <div class="c-content-box c-size-md c-bg-grey-1">
+    <div class="c-content-box c-size-md c-bg-grey-1" id="wht">
         <div class="container">
             <!-- Begin: Testimonals 1 component -->
             <div class="c-content-person-1-slider" data-slider="owl">
@@ -29,145 +31,112 @@
                 </div>
                 <!-- End-->
 
-                <!-- Begin: Owlcarousel -->
-                <div class="owl-carousel owl-theme c-theme c-owl-nav-center wow animated fadeInUp" data-items="3" data-slide-speed="8000" data-rtl="false">
-                    <div class="c-content-person-1 c-option-2">
-                        <div class="c-caption c-content-overlay">
-                            <div class="c-overlay-wrapper">
-                                <div class="c-overlay-content">
-                                    <a href="#"><i class="icon-link"></i></a>
-                                    <a href="{{asset('assets/base/img/content/franky.jpg')}}" data-lightbox="fancybox" data-fancybox-group="gallery-2">
-                                        <i class="icon-magnifier"></i>
-                                    </a>
+                <div class="row">
+                    <div class="col-md-4 col-sm-6 c-margin-b-30">
+                        <div class="c-content-person-1 c-option-2">
+                            <div class="c-caption meet-team" style="background-image:url({{asset('assets/base/img/content/franky.jpg')}}); background-size:cover;">
+                            </div>
+                            <div class="c-body">
+                                <div class="c-head">
+                                    <div class="c-name c-font-uppercase c-font-bold">Franky G. Sanjaya</div>
+                                    <ul class="c-socials c-theme-ul">
+                                        <li><a href="#"><i class="icon-social-facebook"></i></a></li>
+                                    </ul>
                                 </div>
+                                <div class="c-position">
+                                    S3642810
+                                </div>
+                                <p>
+                                    Loves sleeping
+                                </p>
                             </div>
-                            <img src="{{asset('assets/base/img/content/franky.jpg')}}" class="img-responsive c-overlay-object" alt="Franky Gabriel Sanjaya" style="height:330px">
-                        </div>
-                        <div class="c-body">
-                            <div class="c-head">
-                                <div class="c-name c-font-uppercase c-font-bold">Franky G. Sanjaya</div>
-                                <ul class="c-socials c-theme-ul">
-                                    <li><a href="#"><i class="icon-social-facebook"></i></a></li>
-                                </ul>
-                            </div>
-                            <div class="c-position">
-                                S3642810
-                            </div>
-                            <p>
-                                Loves sleeping
-                            </p>
                         </div>
                     </div>
-                    <div class="c-content-person-1 c-option-2">
-                        <div class="c-caption c-content-overlay">
-                            <div class="c-overlay-wrapper">
-                                <div class="c-overlay-content">
-                                    <a href="#"><i class="icon-link"></i></a>
-                                    <a href="{{asset('assets/base/img/content/kendrick.jpg')}}" data-lightbox="fancybox" data-fancybox-group="gallery-2">
-                                        <i class="icon-magnifier"></i>
-                                    </a>
+                    <div class="col-md-4 col-sm-6 c-margin-b-30">
+                        <div class="c-content-person-1 c-option-2">
+                            <div class="c-caption meet-team" style="background-image:url({{asset('assets/base/img/content/kendrick.jpg')}}); background-size:cover;">
+                            </div>
+                            <div class="c-body">
+                                <div class="c-head">
+                                    <div class="c-name c-font-uppercase c-font-bold">Kendrick Kesley</div>
+                                    <ul class="c-socials c-theme-ul">
+                                        <li><a href="#"><i class="icon-social-facebook"></i></a></li>
+                                    </ul>
                                 </div>
+                                <div class="c-position">
+                                    S3642811
+                                </div>
+                                <p>
+                                    Loves coding
+                                </p>
                             </div>
-                            <img src="{{asset('assets/base/img/content/kendrick.jpg')}}" class="img-responsive c-overlay-object" alt="Kendrick Kesley" style="height:330px">
-                        </div>
-                        <div class="c-body">
-                            <div class="c-head">
-                                <div class="c-name c-font-uppercase c-font-bold">Kendrick Kesley</div>
-                                <ul class="c-socials c-theme-ul">
-                                    <li><a href="#"><i class="icon-social-facebook"></i></a></li>
-                                </ul>
-                            </div>
-                            <div class="c-position">
-                                S3642811
-                            </div>
-                            <p>
-                                Loves coding
-                            </p>
                         </div>
                     </div>
-                    <div class="c-content-person-1 c-option-2">
-                        <div class="c-caption c-content-overlay">
-                            <div class="c-overlay-wrapper">
-                                <div class="c-overlay-content">
-                                    <a href="#"><i class="icon-link"></i></a>
-                                    <a href="{{asset('assets/base/img/content/nadya.jpg')}}" data-lightbox="fancybox" data-fancybox-group="gallery-2">
-                                        <i class="icon-magnifier"></i>
-                                    </a>
+                    <div class="col-md-4 col-sm-6 c-margin-b-30">
+                        <div class="c-content-person-1 c-option-2">
+                            <div class="c-caption meet-team" style="background-image:url({{asset('assets/base/img/content/nadya.jpg')}}); background-size:cover;">
+                            </div>
+                            <div class="c-body">
+                                <div class="c-head">
+                                    <div class="c-name c-font-uppercase c-font-bold">Nadya Safira</div>
+                                    <ul class="c-socials c-theme-ul">
+                                        <li><a href="#"><i class="icon-social-facebook"></i></a></li>
+                                    </ul>
                                 </div>
+                                <div class="c-position">
+                                    S3642868
+                                </div>
+                                <p>
+                                    Loves traveling
+                                </p>
                             </div>
-                            <img src="{{asset('assets/base/img/content/nadya.jpg')}}" class="img-responsive c-overlay-object" alt="Nadya Safira" style="height:330px">
-                        </div>
-                        <div class="c-body">
-                            <div class="c-head">
-                                <div class="c-name c-font-uppercase c-font-bold">Nadya Safira</div>
-                                <ul class="c-socials c-theme-ul">
-                                    <li><a href="#"><i class="icon-social-facebook"></i></a></li>
-                                </ul>
-                            </div>
-                            <div class="c-position">
-                                S3642868
-                            </div>
-                            <p>
-                                Loves traveling
-                            </p>
                         </div>
                     </div>
-                    <div class="c-content-person-1 c-option-2">
-                        <div class="c-caption c-content-overlay">
-                            <div class="c-overlay-wrapper">
-                                <div class="c-overlay-content">
-                                    <a href="#"><i class="icon-link"></i></a>
-                                    <a href="{{asset('assets/base/img/content/veronica.jpg')}}" data-lightbox="fancybox" data-fancybox-group="gallery-2">
-                                        <i class="icon-magnifier"></i>
-                                    </a>
+
+                    <div class="col-md-4 col-sm-6 c-margin-b-30">
+                        <div class="c-content-person-1 c-option-2">
+                            <div class="c-caption meet-team" style="background-image:url({{asset('assets/base/img/content/veronica.jpg')}}); background-size:cover;">
+                            </div>
+                            <div class="c-body">
+                                <div class="c-head">
+                                    <div class="c-name c-font-uppercase c-font-bold">Veronica Ong</div>
+                                    <ul class="c-socials c-theme-ul">
+                                        <li><a href="#"><i class="icon-social-facebook"></i></a></li>
+                                    </ul>
                                 </div>
+                                <div class="c-position">
+                                    S3642807
+                                </div>
+                                <p>
+                                    Loves eating
+                                </p>
                             </div>
-                            <img src="{{asset('assets/base/img/content/veronica.jpg')}}" class="img-responsive c-overlay-object" alt="Veronica Ong" style="height:330px">
-                        </div>
-                        <div class="c-body">
-                            <div class="c-head">
-                                <div class="c-name c-font-uppercase c-font-bold">Veronica Ong</div>
-                                <ul class="c-socials c-theme-ul">
-                                    <li><a href="#"><i class="icon-social-facebook"></i></a></li>
-                                </ul>
-                            </div>
-                            <div class="c-position">
-                                S3642807
-                            </div>
-                            <p>
-                                Loves eating
-                            </p>
                         </div>
                     </div>
-                    <div class="c-content-person-1 c-option-2">
-                        <div class="c-caption c-content-overlay">
-                            <div class="c-overlay-wrapper">
-                                <div class="c-overlay-content">
-                                    <a href="#"><i class="icon-link"></i></a>
-                                    <a href="{{asset('assets/base/img/content/yulita.jpg')}}" data-lightbox="fancybox" data-fancybox-group="gallery-2">
-                                        <i class="icon-magnifier"></i>
-                                    </a>
+                    <div class="col-md-4 col-sm-6 c-margin-b-30">
+                        <div class="c-content-person-1 c-option-2">
+                            <div class="c-caption meet-team" style="background-image:url({{asset('assets/base/img/content/yulita.jpg')}}); background-size:cover;">
+                            </div>
+                            <div class="c-body">
+                                <div class="c-head">
+                                    <div class="c-name c-font-uppercase c-font-bold">Yulita P. Hartoyo</div>
+                                    <ul class="c-socials c-theme-ul">
+                                        <li><a href="#"><i class="icon-social-facebook"></i></a></li>
+                                    </ul>
                                 </div>
+                                <div class="c-position">
+                                    S3642813
+                                </div>
+                                <p>
+                                    Loves playing games
+                                </p>
                             </div>
-                            <img src="{{asset('assets/base/img/content/yulita.jpg')}}" class="img-responsive c-overlay-object" alt="Yulita Putri Hartoyo" style="height:330px">
-                        </div>
-                        <div class="c-body">
-                            <div class="c-head">
-                                <div class="c-name c-font-uppercase c-font-bold">Yulita P. Hartoyo</div>
-                                <ul class="c-socials c-theme-ul">
-                                    <li><a href="#"><i class="icon-social-facebook"></i></a></li>
-                                </ul>
-                            </div>
-                            <div class="c-position">
-                                S3642813
-                            </div>
-                            <p>
-                                Loves playing games
-                            </p>
                         </div>
                     </div>
-                </div>
-                <!-- End-->
+				
+			
+	        <!-- End-->
+	            </div>
             </div>
             <!-- End-->
         </div>
@@ -221,4 +190,7 @@
     </div>
     <!-- END: FEATURES 13-2 --><!-- END: CONTENT/FEATURES/FEATURES-13-2 -->
 
+@endsection
+
+@section('script')
 @endsection

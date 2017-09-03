@@ -21,7 +21,7 @@
 
         <link rel="shortcut icon" href="favicon.ico"/>
     </head>
-    <body ng-controller="mainController" class="c-layout-header-fixed c-layout-header-mobile-fixed c-layout-header-fullscreen"> 
+    <body ng-controller="mainController" class="c-layout-header-fixed c-layout-header-mobile-fixed c-layout-header-fullscreen c-page-on-scroll"> 
         @component('components.shared.header')
         @endcomponent
 
