@@ -15,10 +15,10 @@
                 </div>    
                 <div class="row">
                     <div class="col-sm-12 col-lg-6">
-                            <a href="javascript:;" class="btn btn-lg c-btn-white c-btn-uppercase c-btn-square c-font-grey-3 c-font-white-hover c-bg-red-2-hover c-btn-product">Book Now</a>
+                            <a href="javascript:;" ng-click="book('{{url('/cars/book')}}/' + gmap.store.cid)" class="btn btn-lg c-btn-white c-btn-uppercase c-btn-square c-font-grey-3 c-font-white-hover c-bg-red-2-hover c-btn-product">Book Now</a>
                         </div>
                         <div class="col-sm-12 col-lg-6">
-                        <a href="javascript:;" class="btn btn-lg c-btn-white c-btn-uppercase c-btn-square c-font-grey-3 c-font-white-hover c-bg-green-2-hover c-btn-product">Details</a>
+                        <a href="{{url('/cars')}}/@{{gmap.store.cid}}?lat=@{{(metadata.current_location || {}).latitude}}&amp;long=@{{(metadata.current_location || {}).longitude}}" class="btn btn-lg c-btn-white c-btn-uppercase c-btn-square c-font-grey-3 c-font-white-hover c-bg-green-2-hover c-btn-product">Details</a>
                     </div>
                 </div>                  
             </div>
