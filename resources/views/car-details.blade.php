@@ -77,7 +77,7 @@
                             @endif
                         </div>
                         <br/><br/><br/><br/>
-                        <div class="c-product-price">$99.00</div>
+                        <div class="c-product-price">${{$car->price}} / day</div>
                         <div class="row c-product-variant">
                             <div class="col-md-6 col-xs-12" style="margin-bottom:8px;">
                                 <p style="margin:0" class="c-font-uppercase c-font-bold">Car Type</p>
