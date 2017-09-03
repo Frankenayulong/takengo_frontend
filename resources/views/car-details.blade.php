@@ -23,25 +23,37 @@
         <div class="c-shop-product-details-2">
             <div class="row">
                 <div class="col-lg-6">
-                    <div class="c-product-gallery">
-                        <div class="c-product-gallery-content">
-                                <img src="{{asset('assets/base/img/content/testCar.png')}}">
-                        </div>
-                        <div class="row c-product-gallery-thumbnail">
-                            <div class="col-xs-3 c-product-thumb">
-                                <img src="{{asset('assets/base/img/content/testCar.png')}}">
-                            </div>
-                            <div class="col-xs-3 c-product-thumb">
-                                <img src="{{asset('assets/base/img/content/testCar.png')}}">
-                            </div>
-                            <div class="col-xs-3 c-product-thumb">
-                                <img src="{{asset('assets/base/img/content/testCar.png')}}">
-                            </div>
-                            <div class="col-xs-3 c-product-thumb c-product-thumb-last">
-                                <img src="{{asset('assets/base/img/content/testCar.png')}}">
-                            </div>
-                        </div>
-                    </div>
+                <div class="c-product-gallery">
+						<div class="c-product-gallery-content" style="height:500px;">
+							<div class="c-zoom">
+								<img style="background:#FFFFFF" src="{{asset('assets/base/img/content/testCar.png')}}">
+							</div>
+							<div class="c-zoom">
+								<img src="{{asset('assets/base/img/content/testCar.png')}}">
+							</div>
+							<div class="c-zoom">
+								<img src="{{asset('assets/base/img/content/testCar.png')}}">
+							</div>
+							<div class="c-zoom">
+								<img src="{{asset('assets/base/img/content/testCar.png')}}">
+							</div>
+						</div>
+						<div class="row c-product-gallery-thumbnail">
+							<div class="col-xs-3 c-product-thumb" style="width:120px">
+								<img src="{{asset('assets/base/img/content/testCar.png')}}">
+							</div>
+							<div class="col-xs-3 c-product-thumb" style="width:120px">
+								<img src="{{asset('assets/base/img/content/testCar.png')}}">
+							</div>
+							<div class="col-xs-3 c-product-thumb" style="width:120px">
+								<img src="{{asset('assets/base/img/content/testCar.png')}}">
+							</div>
+							<div class="col-xs-3 c-product-thumb c-product-thumb-last" style="width:120px">
+								<img src="{{asset('assets/base/img/content/testCar.png')}}">
+							</div>
+						</div>
+					</div>
+                    
                 </div>
                 <div class="col-lg-6">
                     <div class="c-product-meta">
@@ -56,45 +68,45 @@
                         <br/><br/><br/><br/>
                         <div class="c-product-price">$99.00</div>
                         <div class="row c-product-variant">
-                            <div class="col-sm-6 col-xs-6">
-                                <p class="c-product-meta-label c-product-margin-1 c-font-uppercase c-font-bold">Car Type:</p>
-                                <p class="c-product-meta-label c-product-margin-1">Test</p>
+                            <div class="col-md-6 col-xs-12" style="margin-bottom:8px;">
+                                <p style="margin:0" class="c-font-uppercase c-font-bold">Car Type</p>
+                                <p style="margin:0">Test</p>
                             </div>
-                            <div class="col-sm-6 col-xs-6">
-                                <p class="c-product-meta-label c-product-margin-1 c-font-uppercase c-font-bold">Release Year:</p>
-                                <p class="c-product-meta-label c-product-margin-1">Test</p>
+                            <div class="col-md-6 col-xs-12" style="margin-bottom:8px;">
+                                <p style="margin:0" class="c-font-uppercase c-font-bold">Release Year</p>
+                                <p style="margin:0">Test</p>
                             </div>
-                            <div class="col-sm-12 col-xs-12">
-                                <p class="c-product-meta-label c-product-margin-1 c-font-uppercase c-font-bold">Transition Mode:</p>
-                                <p class="c-product-meta-label c-product-margin-1">Test</p>
+                            <div class="col-md-6 col-xs-12" style="margin-bottom:8px;">
+                                <p style="margin:0" class="c-font-uppercase c-font-bold">Transition Mode</p>
+                                <p style="margin:0">Test</p>
                             </div>
-                            <div class="col-sm-6 col-xs-6">
-                                <p class="c-product-meta-label c-product-margin-1 c-font-uppercase c-font-bold">Capacity:</p>
-                                <p class="c-product-meta-label c-product-margin-1">Test</p>
+                            <div class="col-md-6 col-xs-12" style="margin-bottom:8px;">
+                                <p style="margin:0" class="c-font-uppercase c-font-bold">Capacity</p>
+                                <p style="margin:0">Test</p>
                             </div>
-                            <div class="col-sm-6 col-xs-6">
-                                <p class="c-product-meta-label c-product-margin-1 c-font-uppercase c-font-bold">Doors:</p>
-                                <p class="c-product-meta-label c-product-margin-1">Test</p>
+                            <div class="col-md-6 col-xs-12" style="margin-bottom:8px;">
+                                <p style="margin:0" class="c-font-uppercase c-font-bold">Doors</p>
+                                <p style="margin:0">Test</p>
                             </div>
-                            <div class="col-sm-6 col-xs-6">
-                                <p class="c-product-meta-label c-product-margin-1 c-font-uppercase c-font-bold">Large Bags:</p>
-                                <p class="c-product-meta-label c-product-margin-1">Test</p>
+                            <div class="col-md-6 col-xs-12" style="margin-bottom:8px;">
+                                <p style="margin:0" class="c-font-uppercase c-font-bold">Large Bags</p>
+                                <p style="margin:0">Test</p>
                             </div>
-                            <div class="col-sm-6 col-xs-6">
-                                <p class="c-product-meta-label c-product-margin-1 c-font-uppercase c-font-bold">Small Bags:</p>
-                                <p class="c-product-meta-label c-product-margin-1">Test</p>
+                            <div class="col-md-6 col-xs-12" style="margin-bottom:8px;">
+                                <p style="margin:0" class="c-font-uppercase c-font-bold">Small Bags</p>
+                                <p style="margin:0">Test</p>
                             </div>
-                            <div class="col-sm-12 col-xs-12">
-                                <p class="c-product-meta-label c-product-margin-1 c-font-uppercase c-font-bold">Air Conditioned:</p>
-                                <p class="c-product-meta-label c-product-margin-1">Test</p>
+                            <div class="col-md-6 col-xs-12" style="margin-bottom:8px;">
+                                <p style="margin:0" class="c-font-uppercase c-font-bold">Air Conditioned</p>
+                                <p style="margin:0">Test</p>
                             </div>
-                            <div class="col-sm-6 col-xs-6">
-                                <p class="c-product-meta-label c-product-margin-1 c-font-uppercase c-font-bold">Mileage:</p>
-                                <p class="c-product-meta-label c-product-margin-1">Test</p>
+                            <div class="col-md-6 col-xs-12" style="margin-bottom:8px;">
+                                <p style="margin:0" class="c-font-uppercase c-font-bold">Mileage</p>
+                                <p style="margin:0">Test</p>
                             </div>
-                            <div class="col-sm-6 col-xs-6">
-                                <p class="c-product-meta-label c-product-margin-1 c-font-uppercase c-font-bold">Fuel Policy:</p>
-                                <p class="c-product-meta-label c-product-margin-1">Test</p>
+                            <div class="col-md-6 col-xs-12" style="margin-bottom:8px;">
+                                <p style="margin:0" class="c-font-uppercase c-font-bold">Fuel Policy</p>
+                                <p style="margin:0">Test</p>
                             </div>
                         </div>
                         <div class="c-product-add-cart c-margin-t-20">

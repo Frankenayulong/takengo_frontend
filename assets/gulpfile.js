@@ -71,6 +71,7 @@ gulp.task('js', function(){
         'plugins/js-cookie/js.cookie.js',
         'base/js/components.js',
         'base/js/components-shop.js',
+        'plugins/zoom-master/jquery.zoom.min.js',
         'base/js/app.js',
         'system.js',
         'plugins/caleran.min.js',
