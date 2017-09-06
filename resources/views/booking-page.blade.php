@@ -72,7 +72,7 @@
                     </form>
                 </div>
 
-                <div class="col-lg-6">
+                <div class="col-lg-6" style="padding-left:0">
                     <div class="c-product-meta">
                         <div class="c-content-title-1">
                             <h3 class="c-font-uppercase c-font-bold">{{$car->name}}</h3>
