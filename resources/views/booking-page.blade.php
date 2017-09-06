@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-<div ng-controller="carsBookingController" ng-init="book_other.price_per_day = {{$car->price}}">
+<div ng-controller="carsBookingController" ng-init="book_other.price_per_day = {{$car->price}};book_other.disabled = {{json_encode($bookings)}}">
     <!-- START BREADCRUMBS -->
     <div class="c-layout-breadcrumbs-1 c-bgimage-full c-centered c-fonts-uppercase c-fonts-bold c-bg-img-center" style="background-image: url({{asset('assets/base/img/content/banner1.jpg')}}); background-size:cover; background-position:center center">
         <div class="container">
@@ -20,14 +20,15 @@
     <div class="c-content-box c-size-md c-bg-white">
         <div class="container c-shop-product-details-2">
             <div class="row" style="margin-left:0;margin-right:0;">
-                <div class="col-lg-6">	
-                    <form ng-controller="profileEditController" class="c-shop-form-1" ng-submit="save_booking()">
+                <div class="col-lg-6 c-margin-b-40">	
+                    <form ng-hide="book_metadata.loading.booking" ng-controller="profileEditController" class="c-shop-form-1" ng-submit="save_booking()">
                         <div class="row">
                             <div class="row">
                                 <input type="hidden" value="{{$car->cid}}" ng-init="book_form.cid = {{$car->cid}}" ng-model="book_form.cid"/>
                                 <input type="hidden" value="{{$user->uid}}" ng-init="book_form.uid = {{$user->uid}}" ng-model="book_form.uid"/>
                                 <div class="form-group col-sm-12 col-lg-12">
-                                    <label for="caleran-header">Booking for @{{book_form.book_start_date}} - @{{book_form.book_end_date}}</label>
+                                    <label ng-if="book_form.book_start_date != null && book_form.book_end_date != null" for="caleran-header">Booking for @{{book_form.book_start_date}} - @{{book_form.book_end_date}}</label>
+                                    <label ng-if="book_form.book_start_date == null || book_form.book_end_date == null" for="caleran-header">Select a booking date</label>
                                     <br/>
                                     {!! Form::text('book_date', null,
                                         ['class'=>'form-control c-square c-theme',
@@ -65,11 +66,17 @@
                                     <div class="col-sm-12">
                                         <button type="button" class="btn btn-default c-btn-square c-btn-uppercase c-btn-bold">Reset</button>
                                         {!! Form::submit('Submit', ['class' => 'btn c-theme-btn c-btn-square c-btn-uppercase c-btn-bold']) !!}
+                                        <p ng-if="book_metadata.error" class="c-font-red c-font-10">Whoops! Something went wrong</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </form>
+                    <div class="row c-center" style="margin-top:30px" ng-show="book_metadata.loading.booking">
+                        @component('components.shared.spinner')
+                            big
+                        @endcomponent
+                    </div>
                 </div>
 
                 <div class="col-lg-6" style="padding-left:0">
@@ -77,6 +84,11 @@
                         <div class="c-content-title-1">
                             <h3 class="c-font-uppercase c-font-bold">{{$car->name}}</h3>
                             <div class="c-line-left"></div>
+                        </div>
+                        <div class="c-product-badge">
+                            @if(property_exists($car, 'distance'))
+                            <div class="c-product-new">{{number_format($car->distance / 1000, 2)}} km away</div>
+                            @endif
                         </div>
                         <br/><br/><br/><br/>
                         <div class="c-product-price">${{$car->price}} / day</div>

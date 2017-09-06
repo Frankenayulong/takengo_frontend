@@ -11,44 +11,64 @@ app.controller('carsBookingController', ['$scope', '$rootScope', '$http', 'ENV',
         }
     };
 
+    $scope.book_metadata = {
+        loading: {
+            booking: false
+        },
+        error: false
+    }
+
     $scope.book_form = {
-        book_start_date: moment().format('DD MMMM YYYY'),
-        book_end_date: moment().format('DD MMMM YYYY'),
+        book_start_date: null,
+        book_end_date: null,
         cid: '',
         uid: ''
     };
     $scope.book_other = {
         totalDays: 1,
-        price_per_day: 0
+        price_per_day: 0,
+        disabled: []
     }
-    $("#caleran-header").caleran({
-        inline: true,
-        calendarCount: 2,
-        showHeader: false,
-        showFooter: false,
-        format: 'DD MMMM YYYY',
-        minDate: new Date(),
-        enableKeyboard: true,
-        onafterselect: function(caleran, startDate, endDate){
-            // caleran: caleran object instance
-            // startDate: moment.js instance
-            // endDate: moment.js instance
-            $scope.book_form.book_start_date = startDate.format('DD MMMM YYYY');
-            $scope.book_form.book_end_date = endDate.format('DD MMMM YYYY');
-            $scope.book_other.totalDays = endDate.diff(startDate, 'days');
-            if($scope.book_other.totalDays == 0){
-                $scope.book_other.totalDays = 1;
+    $scope.digest(()=>{
+        console.log($scope.book_other);
+        var disabledRanges = [];
+        $scope.book_other.disabled.forEach((obj) => {
+            disabledRanges.push({
+                start: moment(obj.start_date).subtract(1, 'day'),
+                end: moment(obj.end_date).add(1, 'day')
+            });
+        })
+        $("#caleran-header").caleran({
+            inline: true,
+            calendarCount: 2,
+            showHeader: false,
+            showFooter: false,
+            format: 'DD MMMM YYYY',
+            minDate: new Date(),
+            enableKeyboard: true,
+            disabledRanges: disabledRanges,
+            startEmpty: true,
+            onafterselect: function(caleran, startDate, endDate){
+                // caleran: caleran object instance
+                // startDate: moment.js instance
+                // endDate: moment.js instance
+                $scope.book_form.book_start_date = startDate.format('DD MMMM YYYY');
+                $scope.book_form.book_end_date = endDate.format('DD MMMM YYYY');
+                $scope.book_other.totalDays = endDate.diff(startDate, 'days');
+                if($scope.book_other.totalDays == 0){
+                    $scope.book_other.totalDays = 1;
+                }
+                console.log($scope.book_form);
+                console.log($scope.book_other);
+                $scope.digest();
             }
-            console.log($scope.book_form);
-            console.log($scope.book_other);
-            $scope.digest();
-        }
-    });
+        });
+    })
 
     $scope.save_booking = () => {
-        console.log($scope.book_form);
-        return;
-        $http.put(ENV.API_URL + 'book', $scope.book_form, {
+        $scope.book_metadata.loading.booking = true;
+        var req_payload = Object.assign({}, $scope.book_form, $rootScope.metadata.current_location);
+        $http.post(ENV.API_URL + 'book', req_payload, {
             headers:{
                 'X-TKNG-UID': $rootScope.metadata.auth.uid,
                 'X-TKNG-TKN': $rootScope.metadata.auth.token,
@@ -56,50 +76,12 @@ app.controller('carsBookingController', ['$scope', '$rootScope', '$http', 'ENV',
             }
         })
         .then((data)=>{
+            $scope.book_metadata.loading.booking = false;
             console.log(data);
-            $window.location.href = ENV.BASE_URL + 'profile';     
         }, (data)=>{
+            $scope.book_metadata.loading.booking = false;
+            $scope.book_metadata.error = true;
             console.log(data);
-            if(data.status == 422){
-                let response = data.data;
-                if(response.first_name){
-                    $scope.profile_error.first_name = true;
-                    $scope.profile_error.message.first_name = response.first_name;
-                }
-                if(response.last_name){
-                    $scope.profile_error.last_name = true;
-                    $scope.profile_error.message.last_name = response.last_name;
-                }
-                if(response.gender){
-                    $scope.profile_error.gender = true;
-                    $scope.profile_error.message.gender = response.gender;
-                }
-                if(response.phone){
-                    $scope.profile_error.phone = true;
-                    $scope.profile_error.message.phone = response.phone;
-                }
-                if(response.birth_date){
-                    $scope.profile_error.birth_date = true;
-                    $scope.profile_error.message.birth_date = response.birth_date;
-                }
-                if(response.address){
-                    $scope.profile_error.address = true;
-                    $scope.profile_error.message.address = response.address;
-                }
-                if(response.suburb){
-                    $scope.profile_error.suburb = true;
-                    $scope.profile_error.message.suburb = response.suburb;
-                }
-                if(response.state){
-                    $scope.profile_error.state = true;
-                    $scope.profile_error.message.state = response.state;
-                }
-                if(response.post_code){
-                    $scope.profile_error.post_code = true;
-                    $scope.profile_error.message.post_code = response.post_code;
-                }
-                $scope.digest();
-            }
         });
     }
 }]);

@@ -22,6 +22,10 @@ class BookingController extends Controller
                 'X-TKNG-UID' => $uid,
                 'X-TKNG-TKN' => $token,
                 'X-TKNG-EM'  => $email
+            ],
+            'form_params' => [
+                'lat' => $request->input('lat'),
+                'long' => $request->input('long')
             ]
         ]);
         $response = json_decode((string)$result->getBody());
@@ -30,7 +34,8 @@ class BookingController extends Controller
         }
         return view('booking-page')->with([
             'car' => $response->car,
-            'user' => $response->user
+            'user' => $response->user,
+            'bookings' => $response->bookings
         ]);
     }
 }

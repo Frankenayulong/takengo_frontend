@@ -16,11 +16,11 @@
 					<button class="c-topbar-toggler" type="button">
 						<i class="fa fa-ellipsis-v"></i>
 					</button>
-					<button class="c-cart-toggler" type="button">
+					<button class="c-cart-toggler" type="button" ng-if="metadata.signed_in && !metadata.signing">
 						<i class="icon-handbag"></i> <span class="c-cart-number c-theme-bg">2</span>
 					</button>
 				</div>
-                <nav class="c-mega-menu c-mega-menu-mobile c-fonts-uppercase c-fonts-sbold">
+                <nav class="c-mega-menu c-mega-menu-dark-mobile c-fonts-uppercase c-fonts-sbold">
                     <ul class="nav navbar-nav c-theme-nav"> 
                         <li class="c-active">
                             <a href="{{url('/')}}" class="c-link">Home</a>
@@ -35,7 +35,7 @@
                             <a href="{{url('/contact-us')}}" class="c-link">Contact Us</a>
                         </li>
                         
-                        <li class="c-cart-toggler-wrapper">
+                        <li class="c-cart-toggler-wrapper" ng-if="metadata.signed_in && !metadata.signing">
                             <a href="#" class="c-btn-icon c-cart-toggler"><i class="icon-notebook c-cart-icon"></i> <span class="c-cart-number c-theme-bg">1</span></a>
                         </li>
 
