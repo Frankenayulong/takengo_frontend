@@ -19,7 +19,39 @@
 
     <div class="c-content-box c-size-md c-bg-white">
         <div class="container">
-            
+            <div class="row" style="margin-left:0;margin-right:0;">
+                <div class="col-md-12">	
+                    <form ng-controller="profileEditController" class="c-shop-form-1" ng-submit="save_profile()">
+                        <div class="row">
+                            <div class="row">
+                                <div class="form-group col-sm-12 col-lg-6">
+                                    <label for="caleran-header">Booking for @{{book_form.book_start_date}} - @{{book_form.book_end_date}}</label>
+                                    <br/>
+                                    {!! Form::text('book_date', null,
+                                        ['class'=>'form-control c-square c-theme',
+                                            'placeholder'=>'Booking Date',
+                                            'id' => 'caleran-header']) !!}
+                                    <span ng-if="book_error.book_date" class="help-block c-font-red">
+                                        <strong ng-repeat="item in book_error.message.book_date | limitTo:1">@{{item}}</strong>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="row c-right">
+                                <div class="form-group c-margin-t-40">
+                                    <div class="col-sm-12">
+                                        <button type="button" class="btn btn-default c-btn-square c-btn-uppercase c-btn-bold">Reset</button>
+                                        {!! Form::submit('Submit', ['class' => 'btn c-theme-btn c-btn-square c-btn-uppercase c-btn-bold']) !!}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+		
         </div>
     </div>
 </div>
