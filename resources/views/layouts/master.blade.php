@@ -19,7 +19,7 @@
         <link href="{{asset('css/plugins/slim.min.css')}}" rel="stylesheet" type="text/css"/>
         <link href="{{asset('css/build.css')}}" rel="stylesheet" type="text/css"/>
 
-        <link rel="shortcut icon" href="favicon.ico"/>
+        <link rel="shortcut icon" href="{{asset('favicon.ico')}}"/>
     </head>
     <body ng-controller="mainController" class="c-layout-header-fixed c-layout-header-mobile-fixed c-layout-header-fullscreen c-page-on-scroll"> 
         @component('components.shared.header')

@@ -21,9 +21,10 @@
         <div class="container">
             <div class="row" style="margin-left:0;margin-right:0;">
                 <div class="col-md-12">	
-                    <form ng-controller="profileEditController" class="c-shop-form-1" ng-submit="save_profile()">
+                    <form ng-controller="profileEditController" class="c-shop-form-1" ng-submit="save_booking()">
                         <div class="row">
                             <div class="row">
+                                <input type="hidden" value="{{$car->cid}}" ng-init="book_form.cid = {{$car->cid}}" ng-model="book_form.cid"/>
                                 <div class="form-group col-sm-12 col-lg-6">
                                     <label for="caleran-header">Booking for @{{book_form.book_start_date}} - @{{book_form.book_end_date}}</label>
                                     <br/>
