@@ -32,32 +32,19 @@
                     @else
                     <div class="c-product-gallery">
                         <div class="c-product-gallery-content" style="height:500px;">
-                            <div class="c-zoom">
-                                <img style="background:#FFFFFF" src="{{asset('assets/base/img/content/testCar.png')}}">
-                            </div>
-                            <div class="c-zoom">
-                                <img src="{{asset('assets/base/img/content/testCar.png')}}">
-                            </div>
-                            <div class="c-zoom">
-                                <img src="{{asset('assets/base/img/content/testCar.png')}}">
-                            </div>
-                            <div class="c-zoom">
-                                <img src="{{asset('assets/base/img/content/testCar.png')}}">
-                            </div>
+                            @foreach($car->pictures as $picture)
+                                <div class="c-zoom">
+                                    <div style="background-image:url('{{config('api.api_url') . 'img/cars/'.$car->cid.'/'.$picture->pic_name}}');width:100%;height:100%;background-size:contain;background-position: center center;background-repeat:no-repeat;"></div>
+                                 
+                                </div>
+                            @endforeach
                         </div>
                         <div class="row c-product-gallery-thumbnail">
+                            @foreach($car->pictures as $picture)
                             <div class="col-xs-3 c-product-thumb" style="width:120px">
-                                <img src="{{asset('assets/base/img/content/testCar.png')}}">
+                                <img src="{{config('api.api_url') . 'img/cars/'.$car->cid.'/'.$picture->pic_name}}">
                             </div>
-                            <div class="col-xs-3 c-product-thumb" style="width:120px">
-                                <img src="{{asset('assets/base/img/content/testCar.png')}}">
-                            </div>
-                            <div class="col-xs-3 c-product-thumb" style="width:120px">
-                                <img src="{{asset('assets/base/img/content/testCar.png')}}">
-                            </div>
-                            <div class="col-xs-3 c-product-thumb c-product-thumb-last" style="width:120px">
-                                <img src="{{asset('assets/base/img/content/testCar.png')}}">
-                            </div>
+                            @endforeach
                         </div>
                     </div>
                     @endif
