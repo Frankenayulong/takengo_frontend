@@ -13,8 +13,14 @@ app.controller('carsBookingController', ['$scope', '$rootScope', '$http', 'ENV',
 
     $scope.book_form = {
         book_start_date: moment().format('DD MMMM YYYY'),
-        book_end_date: moment().format('DD MMMM YYYY')
+        book_end_date: moment().format('DD MMMM YYYY'),
+        cid: '',
+        uid: ''
     };
+    $scope.book_other = {
+        totalDays: 1,
+        price_per_day: 0
+    }
     $("#caleran-header").caleran({
         inline: true,
         calendarCount: 2,
@@ -29,7 +35,12 @@ app.controller('carsBookingController', ['$scope', '$rootScope', '$http', 'ENV',
             // endDate: moment.js instance
             $scope.book_form.book_start_date = startDate.format('DD MMMM YYYY');
             $scope.book_form.book_end_date = endDate.format('DD MMMM YYYY');
+            $scope.book_other.totalDays = endDate.diff(startDate, 'days');
+            if($scope.book_other.totalDays == 0){
+                $scope.book_other.totalDays = 1;
+            }
             console.log($scope.book_form);
+            console.log($scope.book_other);
             $scope.digest();
         }
     });

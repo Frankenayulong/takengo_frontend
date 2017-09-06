@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-<div ng-controller="carsBookingController">
+<div ng-controller="carsBookingController" ng-init="book_other.price_per_day = {{$car->price}}">
     <!-- START BREADCRUMBS -->
     <div class="c-layout-breadcrumbs-1 c-bgimage-full c-centered c-fonts-uppercase c-fonts-bold c-bg-img-center" style="background-image: url({{asset('assets/base/img/content/banner1.jpg')}}); background-size:cover; background-position:center center">
         <div class="container">
@@ -18,14 +18,15 @@
     <!-- END BREADCRUMBS -->
 
     <div class="c-content-box c-size-md c-bg-white">
-        <div class="container">
+        <div class="container c-shop-product-details-2">
             <div class="row" style="margin-left:0;margin-right:0;">
-                <div class="col-md-12">	
+                <div class="col-lg-6">	
                     <form ng-controller="profileEditController" class="c-shop-form-1" ng-submit="save_booking()">
                         <div class="row">
                             <div class="row">
                                 <input type="hidden" value="{{$car->cid}}" ng-init="book_form.cid = {{$car->cid}}" ng-model="book_form.cid"/>
-                                <div class="form-group col-sm-12 col-lg-6">
+                                <input type="hidden" value="{{$user->uid}}" ng-init="book_form.uid = {{$user->uid}}" ng-model="book_form.uid"/>
+                                <div class="form-group col-sm-12 col-lg-12">
                                     <label for="caleran-header">Booking for @{{book_form.book_start_date}} - @{{book_form.book_end_date}}</label>
                                     <br/>
                                     {!! Form::text('book_date', null,
@@ -38,9 +39,28 @@
                                 </div>
                             </div>
                         </div>
-
                         <div class="row">
-                            <div class="row c-right">
+                            <div class="row">
+                                  <div class="form-group">
+                                        <div class="col-sm-12">
+                                            <table>
+                                                <tr>
+                                                    <td class="c-font-sbold">Total Days</td>
+                                                    <td>&nbsp;&nbsp;:&nbsp;&nbsp;</td>
+                                                    <td>&nbsp;&nbsp;@{{book_other.totalDays}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="c-font-sbold">Total Price</td>
+                                                    <td>&nbsp;&nbsp;:&nbsp;&nbsp;</td>
+                                                    <td>&nbsp;&nbsp;$@{{ book_other.price_per_day * book_other.totalDays | number:2 }}</td>
+                                                </tr>
+                                            </table>  
+                                        </div>
+                                  </div>    
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="row c-left">
                                 <div class="form-group c-margin-t-40">
                                     <div class="col-sm-12">
                                         <button type="button" class="btn btn-default c-btn-square c-btn-uppercase c-btn-bold">Reset</button>
@@ -51,6 +71,58 @@
                         </div>
                     </form>
                 </div>
+
+                <div class="col-lg-6">
+                    <div class="c-product-meta">
+                        <div class="c-content-title-1">
+                            <h3 class="c-font-uppercase c-font-bold">{{$car->name}}</h3>
+                            <div class="c-line-left"></div>
+                        </div>
+                        <br/><br/><br/><br/>
+                        <div class="c-product-price">${{$car->price}} / day</div>
+                        <div class="row c-product-variant">
+                            <div class="col-md-6 col-xs-12" style="margin-bottom:8px;">
+                                <p style="margin:0" class="c-font-uppercase c-font-bold">Car Type</p>
+                                <p style="margin:0">{{$car->car_types}}</p>
+                            </div>
+                            <div class="col-md-6 col-xs-12" style="margin-bottom:8px;">
+                                <p style="margin:0" class="c-font-uppercase c-font-bold">Release Year</p>
+                                <p style="margin:0">{{$car->release_year}}</p>
+                            </div>
+                            <div class="col-md-6 col-xs-12" style="margin-bottom:8px;">
+                                <p style="margin:0" class="c-font-uppercase c-font-bold">Transition Mode</p>
+                                <p style="margin:0">{{$car->transition_mode == 'AUTO' ? 'Automatic' : 'Manual'}}</p>
+                            </div>
+                            <div class="col-md-6 col-xs-12" style="margin-bottom:8px;">
+                                <p style="margin:0" class="c-font-uppercase c-font-bold">Capacity</p>
+                                <p style="margin:0">{{$car->capacity}} person{{$car->capacity > 1 ? 's' : ''}}</p>
+                            </div>
+                            <div class="col-md-6 col-xs-12" style="margin-bottom:8px;">
+                                <p style="margin:0" class="c-font-uppercase c-font-bold">Doors</p>
+                                <p style="margin:0">{{$car->doors}}</p>
+                            </div>
+                            <div class="col-md-6 col-xs-12" style="margin-bottom:8px;">
+                                <p style="margin:0" class="c-font-uppercase c-font-bold">Large Bags</p>
+                                <p style="margin:0">{{$car->large_bags}}</p>
+                            </div>
+                            <div class="col-md-6 col-xs-12" style="margin-bottom:8px;">
+                                <p style="margin:0" class="c-font-uppercase c-font-bold">Small Bags</p>
+                                <p style="margin:0">{{$car->small_bags}}</p>
+                            </div>
+                            <div class="col-md-6 col-xs-12" style="margin-bottom:8px;">
+                                <p style="margin:0" class="c-font-uppercase c-font-bold">Air Conditioned</p>
+                                <p style="margin:0">{{$car->air_conditioned ? 'YES' : 'NO'}}</p>
+                            </div>
+                            <div class="col-md-6 col-xs-12" style="margin-bottom:8px;">
+                                <p style="margin:0" class="c-font-uppercase c-font-bold">Mileage</p>
+                                <p style="margin:0">{{$car->limit_mileage}} km</p>
+                            </div>
+                            <div class="col-md-6 col-xs-12" style="margin-bottom:8px;">
+                                <p style="margin:0" class="c-font-uppercase c-font-bold">Fuel Policy</p>
+                                <p style="margin:0">{{$car->fuel_policy}}</p>
+                            </div>
+                        </div>
+                    </div>
             </div>
 		
         </div>
