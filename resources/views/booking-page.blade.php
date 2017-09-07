@@ -20,8 +20,8 @@
     <div class="c-content-box c-size-md c-bg-white">
         <div class="container c-shop-product-details-2">
             <div class="row" style="margin-left:0;margin-right:0;">
-                <div class="col-lg-6 c-margin-b-40">	
-                    <form ng-hide="book_metadata.loading.booking" ng-controller="profileEditController" class="c-shop-form-1" ng-submit="save_booking()">
+                <div class="col-lg-5 c-margin-b-40" style="margin-right:10px;">	
+                    <form ng-hide="book_metadata.loading.booking" class="c-shop-form-1" ng-submit="save_booking()">
                         <div class="row">
                             <div class="row">
                                 <input type="hidden" value="{{$car->cid}}" ng-init="book_form.cid = {{$car->cid}}" ng-model="book_form.cid"/>
@@ -32,8 +32,14 @@
                                     <br/>
                                     {!! Form::text('book_date', null,
                                         ['class'=>'form-control c-square c-theme',
-                                            'placeholder'=>'Booking Date',
+                                            'placeholder'=>'Start Date',
                                             'id' => 'caleran-header']) !!}
+                                </div>
+                                <div class="form-group col-sm-12 col-lg-12">
+                                    {!! Form::text('end_date', null,
+                                        ['class'=>'form-control c-square c-theme',
+                                            'placeholder'=>'End Date',
+                                            'id' => 'caleran-end']) !!}
                                     <span ng-if="book_error.book_date" class="help-block c-font-red">
                                         <strong ng-repeat="item in book_error.message.book_date | limitTo:1">@{{item}}</strong>
                                     </span>
@@ -65,8 +71,9 @@
                                 <div class="form-group c-margin-t-40">
                                     <div class="col-sm-12">
                                         <button type="button" class="btn btn-default c-btn-square c-btn-uppercase c-btn-bold">Reset</button>
-                                        {!! Form::submit('Submit', ['class' => 'btn c-theme-btn c-btn-square c-btn-uppercase c-btn-bold']) !!}
+                                        {!! Form::submit('Submit', ['class' => 'btn c-theme-btn c-btn-square c-btn-uppercase c-btn-bold', 'ng-disabled' => '!book_error.valid || !book_form.book_start_date || !book_form.book_end_date']) !!}
                                         <p ng-if="book_metadata.error" class="c-font-red c-font-10">Whoops! Something went wrong</p>
+                                        <p ng-if="!book_error.valid" class="c-font-red c-font-10">Someone has booked for that date</p>
                                     </div>
                                 </div>
                             </div>
