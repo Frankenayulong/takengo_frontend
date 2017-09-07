@@ -40,7 +40,7 @@ app.controller('carsBookingController', ['$scope', '$rootScope', '$http', 'ENV',
         })
         $("#caleran-header").caleran({
             inline: true,
-            calendarCount: 2,
+            calendarCount: 1,
             showHeader: false,
             showFooter: false,
             format: 'DD MMMM YYYY',
@@ -77,6 +77,7 @@ app.controller('carsBookingController', ['$scope', '$rootScope', '$http', 'ENV',
         })
         .then((data)=>{
             $scope.book_metadata.loading.booking = false;
+            $window.location.href = ENV.BASE_URL + 'history'; 
             console.log(data);
         }, (data)=>{
             $scope.book_metadata.loading.booking = false;

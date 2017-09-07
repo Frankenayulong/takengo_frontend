@@ -40,3 +40,4 @@ Route::get('/about-us', function () {
 });
 
 Route::get('/cars/book/{cid}', 'BookingController@show');
+Route::get('/book', 'BookingController@history');

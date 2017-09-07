@@ -3,8 +3,8 @@
         <info-window id="car-collection-info-window">
             <div ng-non-bindable="" style="overflow-x:hidden">
                 <div class="row">
-                    <div class="col-sm-12 col-lg-4">
-                        <img src="@{{carsCollectionCtrl.api_url + 'img/cars/' + gmap.store.cid}}" style="height:100px;width:auto;"/>
+                    <div class="col-sm-12 col-lg-4" >
+                        <div style="height:100px;background-image:url('@{{carsCollectionCtrl.api_url + 'img/cars/' + gmap.store.cid}}');background-size:contain;background-repeat:no-repeat;background-position:center center;width:100%"></div>
                     </div>
                     <div style="padding-left:10px;" class="col-sm-12 col-lg-8">
                         <p class="c-title c-font-14 c-font-slim">@{{gmap.store.name}} (@{{gmap.store.transition_mode == 'AUTO' ? 'A/T' : 'M/T'}})</p>

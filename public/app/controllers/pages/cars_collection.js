@@ -108,7 +108,7 @@ app.controller('carsCollectionController', ['$scope', '$rootScope', '$http', 'EN
             console.log($scope.carsLocations);
             reset_error();
             $scope.carsCollectionCtrl.loading.retrieve = false;
-            if($scope.carsCollectionCtrl.last_page < $scope.carsCollectionCtrl.current_page && $scope.carsCollectionCtrl.current_page > 0){
+            if($scope.carsCollectionCtrl.last_page < $scope.carsCollectionCtrl.current_page && $scope.carsCollectionCtrl.last_page != 0 && $scope.carsCollectionCtrl.current_page > 0){
                 $scope.carsCollectionCtrl.current_page = $scope.carsCollectionCtrl.last_page;
                 $location.search('page', $scope.carsCollectionCtrl.last_page)
                 $scope.retrieve()
@@ -160,7 +160,7 @@ app.controller('carsCollectionController', ['$scope', '$rootScope', '$http', 'EN
             p += ("price="+$scope.query.price_range);
             pCount++;
         }
-        if($scope.query.radius.length > 0){
+        if(!isNaN($scope.query.radius)){
             if(pCount > 0){
                 p += "&";
             }
