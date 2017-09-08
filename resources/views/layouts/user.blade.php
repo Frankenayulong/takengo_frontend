@@ -32,10 +32,7 @@
                     <li class="c-dropdown c-open">
                         <a href="javascript:;" class="c-toggler">My Profile<span class="c-arrow"></span></a>
                         <ul class="c-dropdown-menu">
-                            <li class="{{Request::is('dashboard') ? 'c-active' : ''}}">
-                                <a href="{{url('/dashboard')}}">Dashboard</a>
-                            </li>
-                            <li class="{{Request::is('profile') ? 'c-active' : ''}}">
+                            <li class="{{Request::is('profile*') ? 'c-active' : ''}}">
                                 <a href="{{url('/profile')}}">My Profile</a>
                             </li>
                             <li class="{{Request::is('history') ? 'c-active' : ''}}">

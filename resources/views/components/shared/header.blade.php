@@ -16,9 +16,9 @@
 					<button class="c-topbar-toggler" type="button">
 						<i class="fa fa-ellipsis-v"></i>
 					</button>
-					<button class="c-cart-toggler" type="button" ng-if="metadata.signed_in && !metadata.signing">
+					<!-- <button class="c-cart-toggler" type="button" ng-if="metadata.signed_in && !metadata.signing">
 						<i class="icon-handbag"></i> <span class="c-cart-number c-theme-bg">2</span>
-					</button>
+					</button> -->
 				</div>
                 <nav class="c-mega-menu c-mega-menu-dark-mobile c-fonts-uppercase c-fonts-sbold">
                     <ul class="nav navbar-nav c-theme-nav"> 
@@ -35,18 +35,15 @@
                             <a href="{{url('/contact-us')}}" class="c-link">Contact Us</a>
                         </li>
                         
-                        <li class="c-cart-toggler-wrapper" ng-if="metadata.signed_in && !metadata.signing">
+                        <!-- <li class="c-cart-toggler-wrapper" ng-if="metadata.signed_in && !metadata.signing">
                             <a href="#" class="c-btn-icon c-cart-toggler"><i class="icon-notebook c-cart-icon"></i> <span class="c-cart-number c-theme-bg">1</span></a>
-                        </li>
+                        </li> -->
 
                         <li ng-if="metadata.signed_in && !metadata.signing" class="c-menu-type-classic">
                             <a href="javascript:;" class="c-link dropdown-toggle">
                             @{{metadata.auth.first_name || 'My Profile'}}
                             <span class="c-arrow c-toggler"></span></a>
                             <ul class="dropdown-menu c-menu-type-classic c-pull-left">
-                                <li class="dropdown-submenu">
-                                    <a href="{{url('/dashboard')}}">Dashboard</a>
-                                </li>
                                 <li class="dropdown-submenu">
                                     <a href="{{url('/profile')}}">My Profile</a>
                                 </li>
@@ -71,8 +68,8 @@
             </div>			
 
             <!-- BEGIN CART -->
-            @component('components.shared.cart')
-            @endcomponent
+            <!-- @component('components.shared.cart')
+            @endcomponent -->
             <!-- END CART -->
 
 		</div>

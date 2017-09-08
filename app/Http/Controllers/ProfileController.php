@@ -58,8 +58,4 @@ class ProfileController extends Controller
             'user' => $response->user
         ]);
     }
-
-    public function dashboard(){
-        return view('dashboard');
-    }
 }
