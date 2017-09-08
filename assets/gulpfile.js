@@ -11,6 +11,8 @@ const pump = require('pump');
 
 gulp.task('css', function(){
     var css_files = [
+        'plugins/snackbarjs/dist/snackbar.css',
+        'plugins/snackbarjs/themes-css/material.css',
         'app.css',
         'spinner.css',
         'plugins/caleran.min.css',
@@ -48,6 +50,7 @@ gulp.task('js', function(){
     var js_files = [
         'plugins/jquery.min.js',
         'plugins/moment.min.js',
+        'plugins/snackbarjs/src/snackbar.js',
         'plugins/jquery-migrate.min.js',
         'plugins/bootstrap/js/bootstrap.js',
         'plugins/jquery.easing.min.js',
@@ -75,7 +78,7 @@ gulp.task('js', function(){
         'base/js/app.js',
         'system.js',
         'plugins/caleran.min.js',
-        'plugins/caleran.obf.js'
+        'plugins/caleran.obf.js',
     ];
     pump([
         gulp.src(filesExist(js_files)),

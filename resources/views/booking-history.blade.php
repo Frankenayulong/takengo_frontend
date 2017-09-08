@@ -39,7 +39,7 @@ Booking History
             </div>
             <div class="col-md-2 col-sm-6 col-xs-6 c-cart-ref">
                 <p class="c-cart-sub-title c-theme-font c-font-uppercase c-font-bold">Car Name</p>
-                <p>{{$item->car->name}}</p>
+                <p><a class="c-theme-font c-link" href="{{url('cars') . '/' . $item->car->cid}}">{{$item->car->name}}</a></p>
             </div>
             <div class="col-md-2 col-sm-6 col-xs-6 c-cart-desc">
                 <p class="c-cart-sub-title c-theme-font c-font-uppercase c-font-bold">Price</p>
@@ -58,9 +58,16 @@ Booking History
                 @if($item->transactions_count > 0)
                 <p class="c-font-green c-font-sbold">Completed</p>
                 @else
-                <a href="javascript:;" class="btn c-btn-blue c-btn-square">Pay</a>
-                <br/>
-                <a href="javascript:;" class="btn c-font-red btn-link">Cancel</a>
+                <div ng-if="request_id != {{$item->ohid}}">
+                    <a href="javascript:;" ng-click="pay({{$item->ohid}})" class="btn c-btn-blue c-btn-square">Pay</a>
+                    <br/>
+                    <a href="javascript:;" class="btn c-font-red btn-link">Cancel</a>
+                </div>
+                <div ng-if="request_id == {{$item->ohid}}">
+                    @component('components.shared.spinner')
+                        small
+                    @endcomponent
+                </div>
                 @endif
             </div>
         </div>
