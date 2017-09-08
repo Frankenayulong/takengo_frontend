@@ -51,6 +51,9 @@
                                     <a href="{{url('/profile')}}">My Profile</a>
                                 </li>
                                 <li class="dropdown-submenu">
+                                    <a href="{{url('/history')}}">Booking History</a>
+                                </li>
+                                <li class="dropdown-submenu">
                                     <a href="javascript:;" ng-click="authenticate.sign_out()">Logout</a>
                                 </li>           
                             </ul>
