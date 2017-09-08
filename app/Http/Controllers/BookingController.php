@@ -43,11 +43,12 @@ class BookingController extends Controller
         if($request->cookie('fe_token') === null || $request->cookie('fe_email') === null || $request->cookie('fe_uid') === null){
             return back();
         }
+        $page = $request->input('page', 1);
         $token = $request->cookie('fe_token');
         $email = $request->cookie('fe_email');
         $uid = $request->cookie('fe_uid');
         $client = new Client();
-        $result = $client->post(config('api.api_url') . 'book/history', [
+        $result = $client->post(config('api.api_url') . 'book/history?page='.$page, [
             'verify' => false,
             'headers' => [
                 'X-TKNG-UID' => $uid,
@@ -60,8 +61,22 @@ class BookingController extends Controller
         if($response->status != 'OK'){
             return back()->withInput();
         }
+        $current_page = $response->bookings->current_page;
+        $last_page = $response->bookings->last_page;
+        $prev_page = null;
+        $next_page = null;
+        if($current_page > 1){
+            $prev_page = $current_page - 1;
+        }
+        if($current_page < $last_page){
+            $next_page = $current_page + 1;
+        }
         return view('booking-history')->with([
-            'history' => $response->bookings
+            'history' => $response->bookings->data,
+            'prev_page' => $prev_page,
+            'next_page' => $next_page,
+            'current_page' => $current_page,
+            'last_page' => $last_page
         ]);
     }
 }
