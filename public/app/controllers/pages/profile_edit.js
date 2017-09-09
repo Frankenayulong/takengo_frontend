@@ -1,6 +1,11 @@
 app.controller('profileEditController', [
     '$scope', '$rootScope', '$http', 'ENV', '$window', 
 function($scope, $rootScope, $http, ENV, $window){
+    $scope.$watchGroup(['metadata.signed_in', 'metadata.signing'], function(newVal, oldVal) {
+        if(newVal[0] == false && newVal[1] == false){
+            $window.history.back();
+        }
+    });
     $scope.profile_error = {
         first_name: false,
         last_name: false,
@@ -26,7 +31,7 @@ function($scope, $rootScope, $http, ENV, $window){
         first_name: '',
         last_name: '',
         gender: '',
-        birth_date: moment().format('DD MMMM YYYY'),
+        birth_date: null,
         address: '',
         suburb: '',
         state: '',
@@ -50,6 +55,12 @@ function($scope, $rootScope, $http, ENV, $window){
             $scope.digest();
         }
     });
+
+    $scope.init_birth_date = (date)=>{
+        if($scope.isValidDate(date)){
+            $scope.profile_form.birth_date = moment(date).format('DD MMMM YYYY');
+        }
+    }
 
     $scope.save_profile = () => {
         $http.put(ENV.API_URL + 'profile/edit', $scope.profile_form,{
@@ -108,7 +119,7 @@ function($scope, $rootScope, $http, ENV, $window){
     }
 }]);
 
-app.controller('profileDocumentController', ['$scope', '$rootScope', '$http', 'ENV', function($scope, $rootScope, $http, ENV){
+app.controller('profileDocumentController', ['$scope', '$rootScope', '$http', 'ENV', '$window', function($scope, $rootScope, $http, ENV, $window){
     $scope.slim = {
         api_url: ENV.API_URL + 'user/document/upload',
         // called when slim has initialized
@@ -128,5 +139,78 @@ app.controller('profileDocumentController', ['$scope', '$rootScope', '$http', 'E
         upload: function (error, data, response) {
             console.log(error, data, response);
         }
+    }
+
+    $scope.driver_license_error = {
+        number: false,
+        exp_date: false,
+        country_issuer: false,
+        message: {
+            number: [],
+            exp_date: [],
+            country_issuer: []
+        }
+    };
+
+    $scope.driver_license_form = {
+        number: '',
+        exp_date: null,
+        country_issuer: ''
+    };
+
+    $scope.init_expiry_date = (date)=>{
+        if($scope.isValidDate(date)){
+            $scope.driver_license_form.exp_date = moment(date).format('DD MMMM YYYY');
+        }
+    }
+
+    $("#caleran-exp-date").caleran({
+        singleDate: true,
+        calendarCount: 1,
+        showHeader: false,
+        showFooter: false,
+        autoCloseOnSelect: true,
+        format: 'DD MMMM YYYY',
+        minDate: new Date(),
+        enableKeyboard: true,
+        onafterselect: function(caleran, startDate, endDate){
+            // caleran: caleran object instance
+            // startDate: moment.js instance
+            // endDate: moment.js instance
+            $scope.driver_license_form.exp_date = startDate.format('DD MMMM YYYY');
+            $scope.digest();
+        }
+    });
+
+    $scope.save_driver_license = () => {
+        $http.put(ENV.API_URL + 'profile/driverlicense/edit', $scope.driver_license_form,{
+            headers:{
+                'X-TKNG-UID': $rootScope.metadata.auth.uid,
+                'X-TKNG-TKN': $rootScope.metadata.auth.token,
+                'X-TKNG-EM': $rootScope.metadata.auth.email
+            }
+        })
+        .then((data)=>{
+            console.log(data);
+            $window.location.href = ENV.BASE_URL + 'profile';     
+        }, (data)=>{
+            console.log(data);
+            if(data.status == 422){
+                let response = data.data;
+                if(response.number){
+                    $scope.driver_license_error.number = true;
+                    $scope.driver_license_error.message.number = response.number;
+                }
+                if(response.exp_date){
+                    $scope.driver_license_error.exp_date = true;
+                    $scope.driver_license_error.message.exp_date = response.exp_date;
+                }
+                if(response.country_issuer){
+                    $scope.driver_license_error.country_issuer = true;
+                    $scope.driver_license_error.message.country_issuer = response.country_issuer;
+                }
+                $scope.digest();
+            }
+        });
     }
 }]);

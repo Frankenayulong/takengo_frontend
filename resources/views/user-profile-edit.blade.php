@@ -116,7 +116,8 @@ Edit Profile
 							['class'=>'form-control c-square c-theme',
 								'placeholder'=>'Birth Date',
 								'id' => 'caleran-header',
-								'ng-model' => 'profile_form.birth_date']) !!}
+								'ng-model' => 'profile_form.birth_date',
+								'ng-init' => "init_birth_date('$user->birth_date')"]) !!}
 						<span ng-if="profile_error.birth_date" class="help-block c-font-red">
 							<strong ng-repeat="item in profile_error.message.birth_date | limitTo:1">@{{item}}</strong>
 						</span>
@@ -211,16 +212,70 @@ Edit Profile
 </div>
 <div ng-controller="profileDocumentController">
 	<div class="c-content-title-1 c-title-md" style="margin-top:40px;">
-		<h3 class="c-left c-font-uppercase c-font-bold">Required Documents</h3>
+		<h3 class="c-left c-font-uppercase c-font-bold">Driver License</h3>
 		<div class="c-line-left c-bg-theme"></div>
 	</div>
+	<form class="c-shop-form-1" ng-submit="save_driver_license()">
+	<div class="row">
+			<div class="form-group col-sm-12 col-lg-6">
+				{!! Form::label('dl-num', 'Number', ['class' => 'control-label c-font-14']) !!}
+				{!! Form::text('dl-num', null,
+					['required',
+						'class'=>'form-control c-square c-theme',
+						'placeholder'=>'Number',
+						'ng-model' => 'driver_license_form.number',
+						'ng-init' => "driver_license_form.number = '$user->driver_license_number'"]) !!}
+				<span ng-if="driver_license_error.number" class="help-block c-font-red">
+					<strong ng-repeat="item in driver_license_error.message.number | limitTo:1">@{{item}}</strong>
+				</span>
+			</div>
+			<div class="form-group col-sm-12 col-lg-6">
+				{!! Form::label('expiry_date', 'Expiry Date', ['class' => 'control-label c-font-14']) !!}
+				{!! Form::text('expiry_date', null,
+					['required',
+						'class'=>'form-control c-square c-theme',
+						'placeholder'=>'Expiry Date',
+						'ng-model' => 'driver_license_form.exp_date',
+						'id' => 'caleran-exp-date',
+						'ng-init' => "init_expiry_date('$user->driver_license_expiry_date')"]) !!}
+				<span ng-if="driver_license_error.exp_date" class="help-block c-font-red">
+					<strong ng-repeat="item in driver_license_error.message.exp_date | limitTo:1">@{{item}}</strong>
+				</span>
+			</div>
+			<div class="form-group col-sm-12 col-lg-6">
+				{!! Form::label('country_issuer', 'Country Issuer', ['class' => 'control-label c-font-14']) !!}
+				{!! Form::text('country_issuer', null,
+					['required',
+						'class'=>'form-control c-square c-theme',
+						'placeholder'=>'Country Issuer',
+						'ng-model' => 'driver_license_form.country_issuer',
+						'ng-init' => "driver_license_form.country_issuer = '$user->driver_license_country_issuer'"]) !!}
+				<span ng-if="driver_license_error.country_issuer" class="help-block c-font-red">
+					<strong ng-repeat="item in driver_license_error.message.country_issuer | limitTo:1">@{{item}}</strong>
+				</span>
+			</div>
+	</div>
+	<div class="row">
+		<div class="c-right">
+			<div class="form-group c-margin-t-40">
+				<div class="col-sm-12">
+					<button type="button" class="btn btn-default c-btn-square c-btn-uppercase c-btn-bold">Reset</button>
+					{!! Form::submit('Submit', ['class' => 'btn c-theme-btn c-btn-square c-btn-uppercase c-btn-bold']) !!}
+				</div>
+			</div>
+		</div>
+	</div>
+	</form>
 	<div class="row">
 		<div class="form-group col-sm-12 col-lg-6">
 		<label class="control-label c-font-17">Upload your driver license below</label>
 			<slim id="driver-license-slim" data-ratio="16:9"
-				data-size="200,400"
+				data-size="400,225"
 				data-service="slim.api_url"
 				data-filter-sharpen="20"
+				@if($user->driver_license_picture)
+                data-initial-image="{{ Config::get('api.api_base_url') }}/driverlicense/{{$user->uid}}"
+                @endif
 				data-post="output"
 				data-will-request="slim.will_request"
 				data-did-upload="slim.upload"

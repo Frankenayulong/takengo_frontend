@@ -10,9 +10,7 @@ class ProfileController extends Controller
 {
     public function show(Request $request){
         if($request->cookie('fe_token') === null || $request->cookie('fe_email') === null || $request->cookie('fe_uid') === null){
-            return response()->json([
-                'status' => 'nocookie'
-            ]);
+            return redirect('/');
         }
         $token = $request->cookie('fe_token');
         $email = $request->cookie('fe_email');
@@ -36,9 +34,7 @@ class ProfileController extends Controller
 
     public function edit(Request $request){
         if($request->cookie('fe_token') === null || $request->cookie('fe_email') === null || $request->cookie('fe_uid') === null){
-            return response()->json([
-                'status' => 'nocookie'
-            ]);
+            return redirect('/');
         }
         $token = $request->cookie('fe_token');
         $email = $request->cookie('fe_email');

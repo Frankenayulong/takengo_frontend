@@ -3,7 +3,7 @@
 My Profile
 @endsection
 @section('inner-content')
-<div class="row">
+<div class="row" ng-controller="userProfileController">
     <div class="col-lg-12">
         <div class="c-content-title-1">
             <h3 class="c-font-uppercase c-font-bold">My PROFILE</h3>
@@ -43,7 +43,10 @@ My Profile
                 <hr/>
                 <ul class="list-unstyled">
                     <li>
-                        <p style="margin:0" class="c-font-16">{{$user->address ? $user->address.', ' : ''}}{{$user->suburb ? $user->suburb.', ' : ''}}</p>
+                        <p style="margin:0" class="c-font-16">{{$user->address or ''}}</p>
+                    </li>
+                    <li>
+                        <p style="margin:0" class="c-font-16">{{$user->suburb or ''}}</p>
                     </li>
                     <li>
                         <p style="margin:0" class="c-font-16">{{$user->state or ''}}</p>
@@ -59,18 +62,23 @@ My Profile
                 <hr/>
                 <ul class="list-unstyled">
                     <li>
-                        <img src="{{asset('assets/base/img/content/shop5/02.png')}}" style="height:100px;width:auto"/>
-                        <p style="margin:0" class="c-font-16">{{$user->driver_license_picture or $unspecified_field}}</p>
+                        <img src="{{ Config::get('api.api_base_url') }}/driverlicense/{{$user->uid}}" style="height:100px;width:auto"/>
                     </li>
+                    @if($user->driver_license_number)
+                    <li style="margin-top:10px;">
+                        <p style="margin:0" class="c-font-16 c-font-bold">{{$user->driver_license_number}}</p>
+                    </li>
+                    @endif
+                    @if($user->driver_license_expiry_date)
                     <li>
-                        <p style="margin:0" class="c-font-16">{{$user->driver_license_number or ''}}</p>
+                        <p style="margin:0" class="c-font-16">Expiring on {{\Carbon\Carbon::parse($user->driver_license_expiry_date)->format('d M Y')}}</p>
                     </li>
+                    @endif
+                    @if($user->driver_license_country_issuer)
                     <li>
-                        <p style="margin:0" class="c-font-16">{{$user->driver_license_expiry_date or ''}}</p>
+                        <p style="margin:0" class="c-font-16">Issued by {{$user->driver_license_country_issuer}}</p>
                     </li>
-                    <li>
-                        <p style="margin:0" class="c-font-16">{{$user->driver_license_country_issuer or ''}}</p>
-                    </li>
+                    @endif
                 </ul>
                 @endif
                 <br/>

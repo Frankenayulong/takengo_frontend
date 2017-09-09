@@ -74,6 +74,7 @@
         <script src="{{ URL::asset('app/controllers/pages/cars_booking.js')}}"></script>
         <script src="{{ URL::asset('app/controllers/pages/cars_details.js')}}"></script>
         <script src="{{ URL::asset('app/controllers/pages/booking-history.js')}}"></script>
+        <script src="{{ URL::asset('app/controllers/pages/profile.js')}}"></script>
         
         <!-- <script src="{{ URL::asset('js/ng-min.js')}}" type="text/javascript"></script> -->
         @yield('script')

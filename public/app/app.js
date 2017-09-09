@@ -202,4 +202,10 @@ app.controller('mainController', ['$scope', '$timeout', '$http', '$rootScope', '
     $(document).ready(()=>{
         setTimeout($scope.authenticate.check, 500)
     })
+
+    $scope.isValidDate = (str) => {
+        var d = moment(str,'YYYY-M-DD');
+        if(d == null || !d.isValid()) return false;
+        return true;
+    }
 }]);
