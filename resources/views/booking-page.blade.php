@@ -27,7 +27,7 @@
                                 <input type="hidden" value="{{$car->cid}}" ng-init="book_form.cid = {{$car->cid}}" ng-model="book_form.cid"/>
                                 <input type="hidden" value="{{$user->uid}}" ng-init="book_form.uid = {{$user->uid}}" ng-model="book_form.uid"/>
                                 <div class="form-group col-sm-12 col-lg-12">
-                                    <label ng-if="book_form.book_start_date != null && book_form.book_end_date != null" for="caleran-header">Booking for @{{book_form.book_start_date}} - @{{book_form.book_end_date}}</label>
+                                    <label ng-if="book_form.book_start_date != null && book_form.book_end_date != null" for="caleran-header">Booking for @{{book_form.book_start_date.format('DD MMMM YYYY')}} - @{{book_form.book_end_date.format('DD MMMM YYYY')}}</label>
                                     <label ng-if="book_form.book_start_date == null || book_form.book_end_date == null" for="caleran-header">Select a booking date</label>
                                     <br/>
                                     {!! Form::text('book_date', null,

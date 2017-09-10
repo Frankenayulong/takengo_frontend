@@ -43,7 +43,7 @@ Booking History
             </div>
             <div class="col-md-2 col-sm-6 col-xs-6 c-cart-desc">
                 <p class="c-cart-sub-title c-theme-font c-font-uppercase c-font-bold">Price</p>
-                <p class="c-cart-price c-font-bold">${{$item->days * $item->car->price}}</p>
+                <p class="c-cart-price c-font-bold">${{$item->days * $item->car_price}}</p>
             </div>
             <div class="clearfix col-md-2 col-sm-3 col-xs-6 c-cart-price">
                 <p class="c-cart-sub-title c-theme-font c-font-uppercase c-font-bold">Start Date</p>
@@ -55,13 +55,13 @@ Booking History
             </div>
             <div class="col-md-2 col-sm-12 col-xs-6 c-cart-qty c-center">
                 <p class="c-cart-sub-title c-theme-font c-font-uppercase c-font-bold">Status</p>
-                @if($item->transactions_count > 0)
-                <p class="c-font-green c-font-sbold">Completed</p>
-                @else
-                <div ng-if="request_id != {{$item->ohid}}">
+                <p id="{{$item->ohid}}-canceled" style="{{!$item->active ? '' : 'display:none;'}}" class="c-font-red c-font-sbold">Canceled</p>
+                <p id="{{$item->ohid}}-completed" style="{{$item->active && $item->transactions_count > 0 ? '' : 'display:none;'}}" class="c-font-green c-font-sbold">Completed</p>
+                @if($item->transactions_count <= 0 && $item->active)
+                <div id="{{$item->ohid}}-action" ng-if="request_id != {{$item->ohid}}">
                     <a href="javascript:;" ng-click="pay({{$item->ohid}})" class="btn c-btn-blue c-btn-square">Pay</a>
                     <br/>
-                    <a href="javascript:;" class="btn c-font-red btn-link">Cancel</a>
+                    <a href="javascript:;" ng-click="cancel({{$item->ohid}})" class="btn c-font-red btn-link">Cancel</a>
                 </div>
                 <div ng-if="request_id == {{$item->ohid}}">
                     @component('components.shared.spinner')
@@ -73,6 +73,7 @@ Booking History
         </div>
         @endforeach
     </div>
+    @if($last_page > 1)
     <div class="row">
         <div class="col-sm-12">
             <ul class="c-content-pagination c-square c-theme pull-right">
@@ -88,6 +89,7 @@ Booking History
             </ul>
         </div>
     </div>
+    @endif
 </div>
 
 @endsection

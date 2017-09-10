@@ -10,10 +10,12 @@ app.controller('carsDetailController', ['$scope', '$rootScope', '$http', 'ENV', 
     });
 
     $scope.book = (url = '') => {
-        if(!$rootScope.metadata.signed_in || url == ''){
-            $('#login-form').modal('show');
-        }else{
-            $window.location.href = url;
+        if(!$rootScope.metadata.signing){
+            if(!$rootScope.metadata.signed_in || url == ''){
+                $('#login-form').modal('show');
+            }else{
+                $window.location.href = url;
+            }
         }
     }
 }]);

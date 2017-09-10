@@ -10,13 +10,13 @@ class BookingController extends Controller
 {
     public function show(Request $request, $cid){
         if($request->cookie('fe_token') === null || $request->cookie('fe_email') === null || $request->cookie('fe_uid') === null){
-            return back();
+            return redirect('/cars');
         }
         $token = $request->cookie('fe_token');
         $email = $request->cookie('fe_email');
         $uid = $request->cookie('fe_uid');
         $client = new Client();
-        $result = $client->post(config('api.api_url') . 'cars/book/'.$cid, [
+        $result = $client->post(config('api.api_url') . 'cars/'.$cid.'/book', [
             'verify' => false,
             'headers' => [
                 'X-TKNG-UID' => $uid,
@@ -41,7 +41,7 @@ class BookingController extends Controller
 
     public function history(Request $request){
         if($request->cookie('fe_token') === null || $request->cookie('fe_email') === null || $request->cookie('fe_uid') === null){
-            return back();
+            return redirect('/cars');
         }
         $page = $request->input('page', 1);
         $token = $request->cookie('fe_token');
