@@ -21,9 +21,8 @@ Route::get('/cars/{cid}', 'CarController@detail');
 Route::get('/how-it-works', function () {
     return view('how-it-works');
 });
-Route::get('/contact-us', function () {
-    return view('contact-us');
-});
+Route::get('/contact-us', 'ContactUsController@index');
+Route::post('/contact-us', 'ContactUsController@create');
 Route::get('/profile', 'ProfileController@show');
 Route::get('/profile/edit', 'ProfileController@edit');
 Route::put('/profile/edit', 'ProfileController@update')->name('profile.submit');
@@ -40,3 +39,5 @@ Route::get('/about-us', function () {
 
 Route::get('/cars/book/{cid}', 'BookingController@show');
 Route::get('/history', 'BookingController@history');
+
+Route::post('/register-newsletter', 'NewsletterController@register');

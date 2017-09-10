@@ -33,13 +33,16 @@
                         </div>
                         <div class="c-container c-bg-grey-1 c-bg-img-bottom-right" style="background-image:url(../../assets/base/img/content/misc/feedback_box_2.png)">
                             <div class="c-content-title-1">
-                                <h3 class="c-font-uppercase c-font-bold">Have a question?</h3>
+                                <h3 class="c-font-uppercase c-font-bold">Subscribe to our newsletter</h3>
                                 <div class="c-line-left"></div>
-                                <form action="#">
+                                @if(Session::has('status-nl') && Session::has('success-nl'))
+                                <div class="alert {{session('success-nl') ? 'alert-success' : 'alert-danger'}}" role="alert">{{session('status-nl')}}</div>
+                                @endif
+                                <form action="/register-newsletter" method="POST">
                                     <div class="input-group input-group-lg c-square">
-                                        <input type="text" class="form-control c-square" placeholder="Ask a question"/>
+                                        <input name="email" type="email" class="form-control c-square" placeholder="Enter your email"/>
                                         <span class="input-group-btn">
-							        	<button class="btn c-theme-btn c-btn-square c-btn-uppercase c-font-bold" type="button">Go!</button>
+							        	<button class="btn c-theme-btn c-btn-square c-btn-uppercase c-font-bold" type="submit">Go!</button>
 							      	</span>
                                     </div>
                                 </form>
@@ -52,21 +55,25 @@
                             <div class="c-content-title-1">
                                 <h3  class="c-font-uppercase c-font-bold">Keep in touch</h3>
                                 <div class="c-line-left"></div>
+                                @if(Session::has('status') && Session::has('success'))
+                                <div class="alert {{session('success') ? 'alert-success' : 'alert-danger'}}" role="alert">{{session('status')}}</div>
+                                @endif
                                 <p class="c-font-lowercase">Our helpline is always open to receive any inquiry or feedback.
                                     Please feel free to drop us an email from the form below and we will get back to you as soon as we can.</p>
                             </div>
-                            <form action="#">
+                            
+                            <form action="{{url('/contact-us')}}" method="POST">
                                 <div class="form-group">
-                                    <input type="text" placeholder="Your Name" class="form-control c-square c-theme input-lg">
+                                    <input name="name" type="text" placeholder="Your Name" class="form-control c-square c-theme input-lg">
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" placeholder="Your Email" class="form-control c-square c-theme input-lg">
+                                    <input name="email" type="text" placeholder="Your Email" class="form-control c-square c-theme input-lg">
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" placeholder="Contact Phone" class="form-control c-square c-theme input-lg">
+                                    <input name="phone" type="text" placeholder="Contact Phone" class="form-control c-square c-theme input-lg">
                                 </div>
                                 <div class="form-group">
-                                    <textarea rows="8" name="message" placeholder="Write comment here ..." class="form-control c-theme c-square input-lg"></textarea>
+                                    <textarea name="content" rows="8" name="message" placeholder="Write comment here ..." class="form-control c-theme c-square input-lg"></textarea>
                                 </div>
                                 <button type="submit" class="btn c-theme-btn c-btn-uppercase btn-lg c-btn-bold c-btn-square">Submit</button>
                             </form>
