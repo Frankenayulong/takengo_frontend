@@ -1,7 +1,7 @@
 app.controller('bookingHistoryController', ['$scope', '$rootScope', '$http', 'ENV', '$window', function($scope, $rootScope, $http, ENV, $window){
     $scope.$watchGroup(['metadata.signed_in', 'metadata.signing'], function(newVal, oldVal) {
         if(newVal[0] == false && newVal[1] == false){
-            $window.href = ENV.BASE_URL;
+            $window.location = ENV.BASE_URL;
         }
     });
     $scope.request_id = -1;
