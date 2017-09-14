@@ -32,6 +32,9 @@ class BookingController extends Controller
         if($response->status != 'OK'){
             return back()->withInput();
         }
+        $response->bookings = array_filter($response->bookings, function($item){
+            return $item !== null;
+        });
         return view('booking-page')->with([
             'car' => $response->car,
             'user' => $response->user,
@@ -71,6 +74,11 @@ class BookingController extends Controller
         if($current_page < $last_page){
             $next_page = $current_page + 1;
         }
+        $response->bookings->data = array_filter($response->bookings->data, function($item){
+            if($item !== null && $item->car !== null){
+                return $item;
+            }
+        });
         return view('booking-history')->with([
             'history' => $response->bookings->data,
             'prev_page' => $prev_page,

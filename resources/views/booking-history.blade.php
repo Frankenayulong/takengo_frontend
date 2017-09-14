@@ -4,6 +4,11 @@ Booking History
 @endsection
 @section('inner-content')
 <div ng-controller="bookingHistoryController">
+    <div class="row c-center" style="margin-top:30px" ng-show="metadata.signing">
+        @component('components.shared.spinner')
+            big
+        @endcomponent
+    </div>
     <div class="row c-margin-b-40 c-order-history-2">
         <div class="row c-cart-table-title">
             <div class="col-md-2 c-cart-image">
@@ -31,11 +36,11 @@ Booking History
             <h3>You haven't booked anything!</h3>
         </div>
         @endif
-        @foreach($history as $item)
+        @foreach($history as $index => $item)
         <div class="row c-cart-table-row">
-            <h2 class="c-font-uppercase c-font-bold c-theme-bg c-font-white c-cart-item-title c-cart-item-first">#1</h2>
+            <h2 class="c-font-uppercase c-font-bold c-theme-bg c-font-white c-cart-item-title c-cart-item-first">#{{$index + 1}}</h2>
             <div class="col-md-2 col-sm-6 col-xs-5 c-cart-image">
-                <img src="{{config('api.api_url') . 'img/cars/'.$item->car->cid}}"/>
+                <img src="{{config('api.api_url') . 'img/cars/' . $item->car->cid}}"/>
             </div>
             <div class="col-md-2 col-sm-6 col-xs-6 c-cart-ref">
                 <p class="c-cart-sub-title c-theme-font c-font-uppercase c-font-bold">Car Name</p>
@@ -43,25 +48,33 @@ Booking History
             </div>
             <div class="col-md-2 col-sm-6 col-xs-6 c-cart-desc">
                 <p class="c-cart-sub-title c-theme-font c-font-uppercase c-font-bold">Price</p>
-                <p class="c-cart-price c-font-bold">${{$item->days * $item->car_price}}</p>
+                @if($item->active)
+                <p class="c-cart-price c-font-bold">${{number_format(max(\Carbon\Carbon::now()->diffInHours(\Carbon\Carbon::parse($item->start_date)), 1) * $item->car_price / 24, 2, ',', '.')}}</p>
+                @else
+                <p class="c-cart-price c-font-bold">${{number_format(max(\Carbon\Carbon::parse($item->end_date)->diffInHours(\Carbon\Carbon::parse($item->start_date)), 1) * $item->car_price / 24, 2, ',', '.')}}</p>
+                @endif
             </div>
             <div class="clearfix col-md-2 col-sm-3 col-xs-6 c-cart-price">
                 <p class="c-cart-sub-title c-theme-font c-font-uppercase c-font-bold">Start Date</p>
-                <p>{{\Carbon\Carbon::parse($item->start_date)->format('d M Y')}}</p>
+                <p>{{\Carbon\Carbon::parse($item->start_date)->format('d M Y h:i:s A')}}</p>
             </div>		
             <div class="col-md-2 col-sm-6 col-xs-6 c-cart-total">
                 <p class="c-cart-sub-title c-theme-font c-font-uppercase c-font-bold">End Date</p>
-                <p>{{\Carbon\Carbon::parse($item->end_date)->format('d M Y')}}</p>
+                @if($item->active)
+                <p>{{\Carbon\Carbon::now()->format('d M Y h:i:s A')}}</p>
+                @else
+                <p>{{\Carbon\Carbon::parse($item->end_date)->format('d M Y h:i:s A')}}</p>
+                @endif
             </div>
             <div class="col-md-2 col-sm-12 col-xs-6 c-cart-qty c-center">
                 <p class="c-cart-sub-title c-theme-font c-font-uppercase c-font-bold">Status</p>
-                <p id="{{$item->ohid}}-canceled" style="{{!$item->active ? '' : 'display:none;'}}" class="c-font-red c-font-sbold">Canceled</p>
+                <p id="{{$item->ohid}}-canceled" style="{{!$item->active ? '' : 'display:none;'}}" class="c-font-red c-font-sbold">Stopped</p>
                 <p id="{{$item->ohid}}-completed" style="{{$item->active && $item->transactions_count > 0 ? '' : 'display:none;'}}" class="c-font-green c-font-sbold">Completed</p>
                 @if($item->transactions_count <= 0 && $item->active)
                 <div id="{{$item->ohid}}-action" ng-if="request_id != {{$item->ohid}}">
-                    <a href="javascript:;" ng-click="pay({{$item->ohid}})" class="btn c-btn-blue c-btn-square">Pay</a>
-                    <br/>
-                    <a href="javascript:;" ng-click="cancel({{$item->ohid}})" class="btn c-font-red btn-link">Cancel</a>
+                    <!-- <a href="javascript:;" ng-click="pay({{$item->ohid}})" class="btn c-btn-blue c-btn-square">Pay</a>
+                    <br/> -->
+                    <a href="javascript:;" ng-click="cancel({{$item->ohid}})" class="btn c-btn-blue c-btn-square">Stop</a>
                 </div>
                 <div ng-if="request_id == {{$item->ohid}}">
                     @component('components.shared.spinner')

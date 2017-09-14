@@ -20,8 +20,8 @@ app.controller('carsBookingController', ['$scope', '$rootScope', '$http', 'ENV',
     }
 
     $scope.book_form = {
-        book_start_date: null,
-        book_end_date: null,
+        book_start_date: moment(),
+        book_end_date: moment(),
         cid: '',
         uid: ''
     };

@@ -20,13 +20,18 @@
     <div class="c-content-box c-size-md c-bg-white">
         <div class="container c-shop-product-details-2">
             <div class="row" style="margin-left:0;margin-right:0;">
-                <div class="col-lg-5 c-margin-b-40" style="margin-right:10px;">	
+                <div class="c-center col-lg-5 c-margin-b-40" style="margin-top:30px" ng-show="metadata.signing">
+                    @component('components.shared.spinner')
+                        big
+                    @endcomponent
+                </div>
+                <div ng-hide="metadata.signing || metadata.booking != null" class="col-lg-5 c-margin-b-40" style="margin-right:10px;">	
                     <form ng-hide="book_metadata.loading.booking" class="c-shop-form-1" ng-submit="save_booking()">
-                        <div class="row">
+                        <div class="row" ng-hide="1==1">
                             <div class="row">
                                 <input type="hidden" value="{{$car->cid}}" ng-init="book_form.cid = {{$car->cid}}" ng-model="book_form.cid"/>
                                 <input type="hidden" value="{{$user->uid}}" ng-init="book_form.uid = {{$user->uid}}" ng-model="book_form.uid"/>
-                                <div class="form-group col-sm-12 col-lg-12">
+                                <div class="form-group col-sm-12 col-lg-12" ng-hide="1==0">
                                     <label ng-if="book_form.book_start_date != null && book_form.book_end_date != null" for="caleran-header">Booking for @{{book_form.book_start_date.format('DD MMMM YYYY')}} - @{{book_form.book_end_date.format('DD MMMM YYYY')}}</label>
                                     <label ng-if="book_form.book_start_date == null || book_form.book_end_date == null" for="caleran-header">Select a booking date</label>
                                     <br/>
@@ -46,7 +51,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="row" ng-hide="1==1">
                             <div class="row">
                                   <div class="form-group">
                                         <div class="col-sm-12">
@@ -67,11 +72,10 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="row c-left">
+                            <div class="row c-center">
                                 <div class="form-group c-margin-t-40">
                                     <div class="col-sm-12">
-                                        <button type="button" class="btn btn-default c-btn-square c-btn-uppercase c-btn-bold">Reset</button>
-                                        {!! Form::submit('Submit', ['class' => 'btn c-theme-btn c-btn-square c-btn-uppercase c-btn-bold', 'ng-disabled' => '!book_error.valid || !book_form.book_start_date || !book_form.book_end_date']) !!}
+                                        {!! Form::submit('Book Now', ['style'=>'padding: 20px 50px;','class' => 'btn c-btn-green-2 c-btn-square c-btn-lg c-btn-uppercase c-btn-bold', 'ng-disabled' => '!book_error.valid || !book_form.book_start_date || !book_form.book_end_date']) !!}
                                         <p ng-if="book_metadata.error" class="c-font-red c-font-10">Whoops! Something went wrong</p>
                                         <p ng-if="!book_error.valid" class="c-font-red c-font-10">Someone has booked for that date</p>
                                     </div>
@@ -85,7 +89,16 @@
                         @endcomponent
                     </div>
                 </div>
-
+                
+                <div ng-hide="metadata.signing || metadata.booking == null" class="col-lg-5 c-margin-b-40" style="margin-right:10px;">	
+                    <h3>You can only rent one car at a time</h3>
+                    <div class="row c-center" style="margin-top:30px" ng-show="zrequesting">
+                        @component('components.shared.spinner')
+                            big
+                        @endcomponent
+                    </div>
+                    <button ng-hide="zrequesting" type="button" ng-click="global_cancel(metadata.booking.ohid)" class="btn c-theme-btn c-btn-square c-btn-uppercase c-btn-bold">Stop Renting</button>
+                </div>
                 <div class="col-lg-6" style="padding-left:0">
                     <div class="c-product-meta">
                         <div class="c-content-title-1">

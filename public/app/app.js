@@ -91,7 +91,8 @@ app.controller('mainController', ['$scope', '$timeout', '$http', '$rootScope', '
                     signed_in: true,
                     email: user.email,
                     uid: user.uid,
-                    email_verified: user.s_verified
+                    email_verified: user.s_verified,
+                    booking: user.bookings.length > 0 ? user.bookings[0] : null 
                 });
                 $scope.digest();
                 console.log($rootScope.metadata);
@@ -202,6 +203,37 @@ app.controller('mainController', ['$scope', '$timeout', '$http', '$rootScope', '
     $(document).ready(()=>{
         setTimeout($scope.authenticate.check, 500)
     })
+
+    $scope.global_cancel = (id) => {
+        if($scope.zrequesting){
+            $.snackbar({content: "Please wait..."});
+            return;
+        }else{
+            $scope.zrequesting = true;
+            $scope.zrequest_id = id;
+            $http.post(ENV.API_URL + 'booking/'+id+'/cancel', {}, {
+                headers:{
+                    'X-TKNG-UID': $rootScope.metadata.auth.uid,
+                    'X-TKNG-TKN': $rootScope.metadata.auth.token,
+                    'X-TKNG-EM': $rootScope.metadata.auth.email
+                }
+            })
+            .then((data)=>{
+                console.log(data.data); 
+                let response = data.data;
+                $scope.zrequesting = false;
+                $scope.zrequest_id = -1;
+                $scope.metadata.booking = null;
+                $scope.digest();
+            }, (data)=>{
+                console.log(data);
+                $scope.zrequesting = false;
+                $scope.zrequest_id = -1;
+                $scope.digest();
+            });
+            
+        }
+    }
 
     $scope.isValidDate = (str) => {
         var d = moment(str,'YYYY-M-DD');
