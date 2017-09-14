@@ -91,7 +91,7 @@
                 </div>
                 
                 <div ng-hide="metadata.signing || metadata.booking == null" class="col-lg-5 c-margin-b-40" style="margin-right:10px;">	
-                    <h3>You can only rent one car at a time</h3>
+                    <h3 style="text-align:center;">You can only rent one car at a time</h3>
                     <div class="row c-center" style="margin-top:30px" ng-show="zrequesting">
                         @component('components.shared.spinner')
                             big
