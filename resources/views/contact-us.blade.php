@@ -40,9 +40,9 @@
                                 @endif
                                 <form action="/register-newsletter" method="POST">
                                     <div class="input-group input-group-lg c-square">
-                                        <input name="email" type="email" class="form-control c-square" placeholder="Enter your email"/>
+                                        <input id="newsletter-email" name="email" type="email" class="form-control c-square" placeholder="Enter your email"/>
                                         <span class="input-group-btn">
-							        	<button class="btn c-theme-btn c-btn-square c-btn-uppercase c-font-bold" type="submit">Go!</button>
+							        	<button id="newsletter-submit-btn" class="btn c-theme-btn c-btn-square c-btn-uppercase c-font-bold" type="submit">Go!</button>
 							      	</span>
                                     </div>
                                 </form>
@@ -64,18 +64,18 @@
                             
                             <form action="{{url('/contact-us')}}" method="POST">
                                 <div class="form-group">
-                                    <input name="name" type="text" placeholder="Your Name" class="form-control c-square c-theme input-lg">
+                                    <input id="contact-name" name="name" type="text" placeholder="Your Name" class="form-control c-square c-theme input-lg">
                                 </div>
                                 <div class="form-group">
-                                    <input name="email" type="text" placeholder="Your Email" class="form-control c-square c-theme input-lg">
+                                    <input id="contact-email" name="email" type="text" placeholder="Your Email" class="form-control c-square c-theme input-lg">
                                 </div>
                                 <div class="form-group">
-                                    <input name="phone" type="text" placeholder="Contact Phone" class="form-control c-square c-theme input-lg">
+                                    <input id="contact-phone" name="phone" type="text" placeholder="Contact Phone" class="form-control c-square c-theme input-lg">
                                 </div>
                                 <div class="form-group">
-                                    <textarea name="content" rows="8" name="message" placeholder="Write comment here ..." class="form-control c-theme c-square input-lg"></textarea>
+                                    <textarea id="contact-content" name="content" rows="8" name="message" placeholder="Write comment here ..." class="form-control c-theme c-square input-lg"></textarea>
                                 </div>
-                                <button type="submit" class="btn c-theme-btn c-btn-uppercase btn-lg c-btn-bold c-btn-square">Submit</button>
+                                <button type="submit" id="contact-submit-btn" class="btn c-theme-btn c-btn-uppercase btn-lg c-btn-bold c-btn-square">Submit</button>
                             </form>
                         </div>
                     </div>
