@@ -143,7 +143,7 @@ app.controller('carsBookingController', ['$scope', '$rootScope', '$http', 'ENV',
             }
         })
         .then((data)=>{
-            $scope.book_metadata.loading.booking = false;
+            // $scope.book_metadata.loading.booking = false;
             $window.location.href = ENV.BASE_URL + 'history'; 
             console.log(data);
         }, (data)=>{

@@ -29,12 +29,17 @@ class BookingController extends Controller
             ]
         ]);
         $response = json_decode((string)$result->getBody());
+        return json_encode($response);
         if($response->status != 'OK'){
             return back()->withInput();
         }
         $response->bookings = array_filter($response->bookings, function($item){
             return $item !== null;
         });
+        return $response->bookings;
+        if(count($response->bookings) > 0){
+            return redirect()->back();
+        }
         return view('booking-page')->with([
             'car' => $response->car,
             'user' => $response->user,

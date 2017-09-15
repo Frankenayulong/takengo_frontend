@@ -211,7 +211,10 @@ app.controller('mainController', ['$scope', '$timeout', '$http', '$rootScope', '
         }else{
             $scope.zrequesting = true;
             $scope.zrequest_id = id;
-            $http.post(ENV.API_URL + 'booking/'+id+'/cancel', {}, {
+            $http.post(ENV.API_URL + 'booking/'+id+'/cancel', {
+                latitude: ($rootScope.metadata.current_location || {}).latitude,
+                longitude: ($rootScope.metadata.current_location || {}).longitude
+            }, {
                 headers:{
                     'X-TKNG-UID': $rootScope.metadata.auth.uid,
                     'X-TKNG-TKN': $rootScope.metadata.auth.token,

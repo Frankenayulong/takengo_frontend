@@ -1,4 +1,4 @@
-app.controller('signInController', ['$scope', '$rootScope', '$timeout', '$http', 'ENV', function($scope, $rootScope, $timeout, $http, ENV){
+app.controller('signInController', ['$scope', '$rootScope', '$timeout', '$http', 'ENV', '$cookies', function($scope, $rootScope, $timeout, $http, ENV, $cookies){
     
     $scope.signin_error = {
         email: false,
