@@ -110,7 +110,7 @@
                             <div class="c-product-add-cart c-margin-t-20">
                                 <div class="row">
                                     <div class="col-sm-12 col-xs-12 c-margin-t-20">
-                                        <button ng-click="book('{{url('/cars/book')}}/' + {{$car->cid}} + '?lat=' + ((metadata.current_location || {}).latitude) + '&amp;long=' + ((metadata.current_location || {}).longitude) )" class="btn c-btn btn-lg c-font-bold c-font-white c-theme-btn c-btn-square c-font-uppercase">Book Now</button>
+                                        <button id="book-now" ng-click="book('{{url('/cars/book')}}/' + {{$car->cid}} + '?lat=' + ((metadata.current_location || {}).latitude) + '&amp;long=' + ((metadata.current_location || {}).longitude) )" class="btn c-btn btn-lg c-font-bold c-font-white c-theme-btn c-btn-square c-font-uppercase">Book Now</button>
                                     </div>
                                 </div>
                             </div>

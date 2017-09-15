@@ -11,18 +11,26 @@ use Tests\Browser\Pages\HomeMobile;
 class HomeTest extends DuskTestCase
 {
     /**
-     * A Dusk test example.
-     *
-     * @return void
+     * @group home
+     * @group mobile
+     * @group home_mobile
      */
-    // public function testMobile()
-    // {
-    //     $this->browse(function (Browser $browser) {
-    //         $browser->visit(new HomeMobile);
-    //     });
-    // }
+    public function testMobile()
+    {
+        $this->browse(function (Browser $browser) {
+            $browser->driver->manage()->deleteAllCookies();
+            $browser->visit(new HomeMobile);
+        });
+    }
+
+    /**
+     * @group home
+     * @group desktop
+     * @group home_desktop
+     */
     public function testDesktop(){
         $this->browse(function (Browser $browser) {
+        $browser->driver->manage()->deleteAllCookies();
             $browser->visit(new HomeDesktop);
         });
     }

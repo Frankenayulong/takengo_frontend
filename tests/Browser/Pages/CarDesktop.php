@@ -4,8 +4,9 @@ namespace Tests\Browser\Pages;
 
 use Laravel\Dusk\Browser;
 use Laravel\Dusk\Page as BasePage;
+use App\User;
 
-class HomeDesktop extends BasePage
+class CarDesktop extends BasePage
 {
     /**
      * Get the URL for the page.
@@ -14,7 +15,7 @@ class HomeDesktop extends BasePage
      */
     public function url()
     {
-        return '/';
+        return '/cars';
     }
 
     /**
@@ -26,38 +27,33 @@ class HomeDesktop extends BasePage
     public function assert(Browser $browser)
     {
         $email = str_random(20) . '@' . str_random(5) . '.' . str_random(3);
+
         $browser->assertPathIs($this->url());
         $browser->resize(1920, 1020);
         $browser->assertSeeLink('Home');
         $browser->assertSeeLink('Our Cars');
         $browser->assertSeeLink('How it Works');
         $browser->assertSeeLink('Contact Us');
-        $browser->assertSeeLink('Sign In');
-        $browser->waitForLink('Sign In', 10);
-        $browser->clickLink('Sign In');
-        $browser->pause(500);
-        $browser->assertSee('Sign in to your account');
-        $browser->assertSee('Please provide your login credentials');
-        $browser->assertSee('Don\'t Have An Account Yet ?');
-        $browser->assertSee('LOGIN');
-        $browser->assertSeeLink('Signup!');
-        $browser->assertSeeLink('Facebook');
-        $browser->assertSeeLink('Google');
+
+        $browser->assertSee('OUR CARS');
+        $browser->assertSee('CAR TYPES');
+        $browser->assertSee('PRICE RANGE');
+        $browser->assertSee('SORT BY');
+        $browser->assertSee('RADIUS (10 KM)');
+        $browser->assertSee('SEARCH');
+
+        $browser->driver->executeScript('window.scrollTo(0, 1000);');
         $browser->assertSee('TAKE N GO');
         $browser->assertSee('SITE MAP');
         $browser->assertSee('FIND US');
         $browser->assertSee('2017 © Take N Go All Rights Reserved.');
-        
-        $browser->keys('#login-form form input[name=email]', $email);
-        $browser->pause(500);
-        $browser->assertValue('#login-form form input[name=email]', $email);
-        $browser->keys('#login-form form input[name=password]', 'helloveronica');
-        $browser->pause(500);
-        $browser->assertValue('#login-form form input[name=password]', 'helloveronica');
-        $browser->click('#login-btn');
-        $browser->waitFor('#login-err-msg', 10);
-        $browser->click('#login-form-signup');
+        $browser->assertSee('DETAILS');
+        $browser->assertSeeLink('Book Now');
+        $browser->click('.book-btn');
+        $browser->waitForText('Sign in to your account', 10);
 
+        $browser->click('#login-form-signup');
+        
         $browser->pause(500);
 
         $browser->assertSee('Create An Account');
@@ -76,20 +72,35 @@ class HomeDesktop extends BasePage
         $browser->keys('#signup-form form input[name=password]', 'helloveronica');
         $browser->pause(500);
         $browser->assertValue('#signup-form form input[name=password]', 'helloveronica');
-        $browser->keys('#signup-form form input[name=password_confirmation]', 'nothelloveronica');
-        $browser->pause(500);
-        $browser->assertValue('#signup-form form input[name=password_confirmation]', 'nothelloveronica');
-        $browser->click('#sign-up-btn');
-        $browser->assertSee('Password does not match');
-        $browser->clear('password_confirmation');
         $browser->keys('#signup-form form input[name=password_confirmation]', 'helloveronica');
         $browser->pause(500);
         $browser->assertValue('#signup-form form input[name=password_confirmation]', 'helloveronica');
         $browser->click('#sign-up-btn');
         $browser->waitForText('Sign up successful!', 10);
         $browser->click('#sign-up-success .close');
-        $browser->waitUntilMissing('#sign-up-success');
-        $browser->waitForText('Veronica', 10);
+        $browser->click('.details-btn');
+        $browser->waitForText('CAR DETAILS', 5);
+        $browser->assertSee('BOOK NOW');
+        $browser->click('#book-now');
+        
+        $browser->waitFor('#book-now');
+        $browser->assertSee('BOOK A CAR');
+        $browser->assertSee('/ day');
+        $browser->assertSee('CAR TYPE');
+        $browser->assertSee('TRANSITION MODE');
+        $browser->assertSee('RELEASE YEAR');
+        $browser->assertSee('CAPACITY');
+        $browser->assertSee('LARGE BAGS');
+        $browser->assertSee('DOORS');
+        $browser->assertSee('SMALL BAGS');
+        $browser->assertSee('AIR CONDITIONED');
+        $browser->assertSee('MILEAGE');
+        $browser->assertSee('FUEL POLICY');
+        $browser->click('#book-now');
+        $browser->waitForText('BOOKING HISTORY', 10);
+        $browser->assertSee('Stop');
+        $browser->click('.stop-btn');
+        $browser->waitForText('Stopped');
     }
 
     /**

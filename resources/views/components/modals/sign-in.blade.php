@@ -58,7 +58,7 @@
             </div>
             <div class="modal-footer c-no-border">                
                 <span class="c-text-account">Don't Have An Account Yet ?</span>
-                <a href="javascript:;" data-toggle="modal" data-target="#signup-form" data-dismiss="modal" class="btn c-btn-dark-1 btn c-btn-uppercase c-btn-bold c-btn-slim c-btn-border-2x c-btn-square c-btn-signup">Signup!</a>
+                <a href="javascript:;" id="login-form-signup" data-toggle="modal" data-target="#signup-form" data-dismiss="modal" class="btn c-btn-dark-1 btn c-btn-uppercase c-btn-bold c-btn-slim c-btn-border-2x c-btn-square c-btn-signup">Signup!</a>
             </div>
         </div>
     </div>

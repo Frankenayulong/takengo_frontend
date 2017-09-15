@@ -74,7 +74,7 @@ Booking History
                 <div id="{{$item->ohid}}-action" ng-if="request_id != {{$item->ohid}}">
                     <!-- <a href="javascript:;" ng-click="pay({{$item->ohid}})" class="btn c-btn-blue c-btn-square">Pay</a>
                     <br/> -->
-                    <a href="javascript:;" ng-click="cancel({{$item->ohid}})" class="btn c-btn-blue c-btn-square">Stop</a>
+                    <a href="javascript:;" ng-click="cancel({{$item->ohid}})" class="stop-btn btn c-btn-blue c-btn-square">Stop</a>
                 </div>
                 <div ng-if="request_id == {{$item->ohid}}">
                     @component('components.shared.spinner')

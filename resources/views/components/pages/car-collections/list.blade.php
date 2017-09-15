@@ -13,10 +13,10 @@
             </div>
             <div class="btn-group btn-group-justified" role="group">
                 <div class="btn-group c-border-right c-border-top" role="group">
-                    <a href="javascript:;" ng-click="book('{{url('/cars/book')}}/' + item.cid + '?lat=' + ((metadata.current_location || {}).latitude) + '&amp;long=' + ((metadata.current_location || {}).longitude) )" class="btn btn-lg c-btn-white c-btn-uppercase c-btn-square c-font-grey-3 c-font-white-hover c-bg-red-2-hover c-btn-product">Book Now</a>
+                    <a href="javascript:;" ng-click="book('{{url('/cars/book')}}/' + item.cid + '?lat=' + ((metadata.current_location || {}).latitude) + '&amp;long=' + ((metadata.current_location || {}).longitude) )" class="book-btn btn btn-lg c-btn-white c-btn-uppercase c-btn-square c-font-grey-3 c-font-white-hover c-bg-red-2-hover c-btn-product">Book Now</a>
                 </div>
                 <div class="btn-group c-border-left c-border-top" role="group">
-                    <a href="{{url('/cars')}}/@{{item.cid}}?lat=@{{(metadata.current_location || {}).latitude}}&amp;long=@{{(metadata.current_location || {}).longitude}}" class="btn btn-lg c-btn-white c-btn-uppercase c-btn-square c-font-grey-3 c-font-white-hover c-bg-green-2-hover c-btn-product">Details</a>
+                    <a href="{{url('/cars')}}/@{{item.cid}}?lat=@{{(metadata.current_location || {}).latitude}}&amp;long=@{{(metadata.current_location || {}).longitude}}" class="details-btn btn btn-lg c-btn-white c-btn-uppercase c-btn-square c-font-grey-3 c-font-white-hover c-bg-green-2-hover c-btn-product">Details</a>
                 </div>
             </div>
         </div>

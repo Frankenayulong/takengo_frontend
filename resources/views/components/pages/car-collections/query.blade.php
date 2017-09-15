@@ -57,7 +57,6 @@
     <div class="col-md-3">
         <div class="form-group" role="group">
             <button ng-click="retrieve()" type="button" class="btn btn-lg c-theme-btn c-btn-square c-btn-uppercase c-btn-bold"><i class="fa fa-search"></i>Search</button>
-            <button type="button" class="btn btn-lg btn-default c-btn-square c-btn-uppercase c-btn-bold">Clear</button>
         </div>
     </div>
 </div>

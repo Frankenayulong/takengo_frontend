@@ -75,7 +75,7 @@
                             <div class="row c-center">
                                 <div class="form-group c-margin-t-40">
                                     <div class="col-sm-12">
-                                        {!! Form::submit('Book Now', ['style'=>'padding: 20px 50px;','class' => 'btn c-btn-green-2 c-btn-square c-btn-lg c-btn-uppercase c-btn-bold', 'ng-disabled' => '!book_error.valid || !book_form.book_start_date || !book_form.book_end_date']) !!}
+                                        {!! Form::submit('Book Now', ['id'=> 'book-now','style'=>'padding: 20px 50px;','class' => 'btn c-btn-green-2 c-btn-square c-btn-lg c-btn-uppercase c-btn-bold', 'ng-disabled' => '!book_error.valid || !book_form.book_start_date || !book_form.book_end_date']) !!}
                                         <p ng-if="book_metadata.error" class="c-font-red c-font-10">Whoops! Something went wrong</p>
                                         <p ng-if="!book_error.valid" class="c-font-red c-font-10">Someone has booked for that date</p>
                                     </div>
