@@ -18,35 +18,35 @@
                 <form ng-submit="signup()">
                     <div class="form-group" ng-class="signup_error.first_name ? 'has-error' : ''">
                         <label for="signup-first-name" class="hide">First Name</label>
-                        <input ng-model="signup_information.first_name" type="text" class="form-control input-lg c-square" id="signup-first-name" placeholder="First Name">
+                        <input name="first_name" ng-model="signup_information.first_name" type="text" class="form-control input-lg c-square" id="signup-first-name" placeholder="First Name">
                         <span ng-if="signup_error.first_name" class="help-block">
-                            <strong ng-repeat="item in signup_error.message.first_name | limitTo:1">@{{item}}</strong>
+                            <strong id="sign-up-err-msg" ng-repeat="item in signup_error.message.first_name | limitTo:1">@{{item}}</strong>
                         </span>
                     </div>
                     <div class="form-group" ng-class="signup_error.last_name ? 'has-error' : ''">
                         <label for="signup-last-name" class="hide">Last Name</label>
-                        <input ng-model="signup_information.last_name" type="text" class="form-control input-lg c-square" id="signup-last-name" placeholder="Last Name">
+                        <input name="last_name" ng-model="signup_information.last_name" type="text" class="form-control input-lg c-square" id="signup-last-name" placeholder="Last Name">
                         <span ng-if="signup_error.last_name" class="help-block">
                             <strong ng-repeat="item in signup_error.message.last_name | limitTo:1">@{{item}}</strong>
                         </span>
                     </div>
                     <div class="form-group" ng-class="signup_error.email ? 'has-error' : ''">
                         <label for="signup-email" class="hide">Email</label>
-                        <input ng-model="signup_information.email" type="email" class="form-control input-lg c-square" id="signup-email" placeholder="Email">
+                        <input name="email" ng-model="signup_information.email" type="email" class="form-control input-lg c-square" id="signup-email" placeholder="Email">
                         <span ng-if="signup_error.email" class="help-block">
                             <strong ng-repeat="item in signup_error.message.email | limitTo:1">@{{item}}</strong>
                         </span>
                     </div>
                     <div class="form-group" ng-class="signup_error.password ? 'has-error' : ''">
                         <label for="signup-password" class="hide">Password</label>
-                        <input ng-model="signup_information.password" type="password" class="form-control input-lg c-square" id="signup-password" placeholder="Password">
+                        <input name="password" ng-model="signup_information.password" type="password" class="form-control input-lg c-square" id="signup-password" placeholder="Password">
                         <span ng-if="signup_error.password" class="help-block">
                             <strong ng-repeat="item in signup_error.message.password | limitTo:1">@{{item}}</strong>
                         </span>
                     </div>
                     <div class="form-group" ng-class="signup_error.password_confirmation ? 'has-error' : ''">
                         <label for="signup-password-confirmation" class="hide">Password Confirmation</label>
-                        <input ng-model="signup_information.password_confirmation" type="password" class="form-control input-lg c-square" id="signup-password-confirmation" placeholder="Password Confirmation">
+                        <input name="password_confirmation" ng-model="signup_information.password_confirmation" type="password" class="form-control input-lg c-square" id="signup-password-confirmation" placeholder="Password Confirmation">
                         <span ng-if="signup_error.password_confirmation" class="help-block">
                             <strong ng-repeat="item in signup_error.message.password_confirmation | limitTo:1">@{{item}}</strong>
                         </span>

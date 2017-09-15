@@ -15,7 +15,7 @@
             <div class="modal-body">
                 <h3 class="c-font-24 c-font-sbold">Sign in to your account</h3>
                 <p ng-if="!signin_error.error">Please provide your login credentials</p>
-                <p ng-if="signin_error.error" class="c-font-red" style="margin:0" ng-repeat="item in signin_error.message.error | limitTo: 1">@{{item}}</p>
+                <p ng-if="signin_error.error" class="c-font-red" id="login-err-msg" style="margin:0" ng-repeat="item in signin_error.message.error | limitTo: 1">@{{item}}</p>
                 <form ng-submit="signin()">
                     <div class="form-group" ng-class="signin_error.email ? 'has-error' : ''">
                         <label for="login-email" class="hide">Email</label>
@@ -32,8 +32,8 @@
                         </span>
                     </div>
                     <div class="form-group">
-                        <button type="submit" class="btn c-theme-btn btn-md c-btn-uppercase c-btn-bold c-btn-square c-btn-login">Login</button>
-                        <a href="javascript:;" data-toggle="modal" data-target="#forget-password-form" data-dismiss="modal" class="c-btn-forgot">Forgot Your Password ?</a>
+                        <button type="submit" id="login-btn" class="btn c-theme-btn btn-md c-btn-uppercase c-btn-bold c-btn-square c-btn-login">Login</button>
+                        <!-- <a href="javascript:;" data-toggle="modal" data-target="#forget-password-form" data-dismiss="modal" class="c-btn-forgot">Forgot Your Password ?</a> -->
                     </div>
                     <div class="clearfix">
                         <div class="c-content-divider c-divider-sm c-icon-bg c-bg-grey c-margin-b-20">
