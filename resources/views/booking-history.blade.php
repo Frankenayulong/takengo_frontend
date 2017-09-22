@@ -48,11 +48,15 @@ Booking History
             </div>
             <div class="col-md-2 col-sm-6 col-xs-6 c-cart-desc">
                 <p class="c-cart-sub-title c-theme-font c-font-uppercase c-font-bold">Price</p>
-                @if($item->started)
-                <p class="c-cart-price c-font-bold">${{number_format(max(\Carbon\Carbon::now()->diffInHours(\Carbon\Carbon::parse($item->start_date)), 1) * $item->car_price / 24, 2, ',', '.')}}</p>
-                @else
-                <p class="c-cart-price c-font-bold"><span class="c-font-bold">Expected</span> ${{number_format(max(\Carbon\Carbon::parse($item->end_date)->diffInHours(\Carbon\Carbon::parse($item->start_date)), 1) * $item->car_price / 24, 2, ',', '.')}}</p>
+                <input type="hidden" value="{{$item->car_price}}" id="{{$item->ohid}}-single-price" />
+                
+                <p class="c-cart-price c-font-bold" id="{{$item->ohid}}-price">
+                @if($item->started && $item->active)
+                <span class="c-font-bold">Expected</span> 
                 @endif
+                ${{number_format(max(\Carbon\Carbon::parse($item->end_date)->diffInHours(\Carbon\Carbon::parse($item->start_date)), 1) * $item->car_price / 24, 2, '.', ',')}}
+                </p>
+                
             </div>
             <div class="clearfix col-md-2 col-sm-3 col-xs-6 c-cart-price">
                 <p class="c-cart-sub-title c-theme-font c-font-uppercase c-font-bold">Date</p>
@@ -60,13 +64,13 @@ Booking History
             </div>		
             <div class="col-md-2 col-sm-6 col-xs-6 c-cart-total">
                 <p class="c-cart-sub-title c-theme-font c-font-uppercase c-font-bold">Booked Time</p>
-                <p style="margin-bottom:0;" id="{{$item->ohid}}-start-date">{{\Carbon\Carbon::parse($item->start_date)->format('h:i:s A')}}</p>
+                <p style="margin-bottom:0;" id="{{$item->ohid}}-start-date">{{\Carbon\Carbon::parse($item->start_date)->format('h:i A')}}</p>
                 <p style="margin:0;" class="c-font-bold">until</p>
                 @if(\Carbon\Carbon::now()->gt(\Carbon\Carbon::parse($item->end_date)) && $item->started && $item->active)
-                <p style="margin-bottom:0" class="c-font-red" id="{{$item->ohid}}-end-date">{{\Carbon\Carbon::parse($item->end_date)->format('h:i:s A')}}</p>
+                <p style="margin-bottom:0" class="c-font-red" id="{{$item->ohid}}-end-date">{{\Carbon\Carbon::parse($item->end_date)->format('h:i A')}}</p>
                 <p style="margin:0"><a href="javascript:;" class="c-font-blue">Extends</a></p>
                 @else
-                <p style="margin-bottom:0" id="{{$item->ohid}}-end-date">{{\Carbon\Carbon::parse($item->end_date)->format('h:i:s A')}}</p>
+                <p style="margin-bottom:0" id="{{$item->ohid}}-end-date">{{\Carbon\Carbon::parse($item->end_date)->format('h:i A')}}</p>
                 @endif
                 
             </div>

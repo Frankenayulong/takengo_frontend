@@ -74,8 +74,16 @@ app.controller('bookingHistoryController', ['$scope', '$rootScope', '$http', 'EN
                 });
                 var start_date = moment(data.data.start_date.date);
                 var end_date = moment(data.data.end_date.date);
-                $('#'+id+'-start-date').html(start_date.format('hh:mm:ss A'))
-                $('#'+id+'-end-date').html(end_date.format('hh:mm:ss A'))
+                var duration = moment.duration(moment().diff(start_date));
+                var hours = duration.asHours();
+                hours = Math.max(hours, 1);
+                var price = data.data.price;
+                price = (price / 24) * hours;
+                console.log(price);
+                console.log(data.data.price);
+                $('#'+id+'-price').html("$" + new Intl.NumberFormat().format(price.toFixed(2)))
+                $('#'+id+'-start-date').html(start_date.format('hh:mm A'))
+                $('#'+id+'-end-date').html(end_date.format('hh:mm A'))
             }, (data)=>{
                 console.log(data);
                 $scope.requesting = false;
@@ -118,8 +126,18 @@ app.controller('bookingHistoryController', ['$scope', '$rootScope', '$http', 'EN
                     $('#'+id+'-action').hide();
                     $('#'+id+'-start').hide();
                 });
+                var start_date = moment(data.data.start_date.date);
                 var end_date = moment(data.data.end_date.date);
-                $('#'+id+'-end-date').html(end_date.format('hh:mm:ss A'))
+                $('#'+id+'-end-date').html(end_date.format('hh:mm A'))
+
+                var duration = moment.duration(end_date.diff(start_date));
+                var hours = duration.asHours();
+                hours = Math.max(hours, 1);
+                var price = data.data.price;
+                price = parseFloat(price);
+                console.log(hours);
+                price = price / 24 * hours;
+                $('#'+id+'-price').html("$" + new Intl.NumberFormat().format(price.toFixed(2)))
             }, (data)=>{
                 console.log(data);
                 $scope.requesting = false;
