@@ -40,6 +40,52 @@ app.controller('bookingHistoryController', ['$scope', '$rootScope', '$http', 'EN
         }
     }
 
+    $scope.start = (id) => {
+        if($scope.requesting){
+            $.snackbar({content: "Please wait..."});
+            return;
+        }else{
+            $scope.requesting = true;
+            $scope.request_id = id;
+            $http.post(ENV.API_URL + 'booking/'+id+'/start', {
+                latitude: ($rootScope.metadata.current_location || {}).latitude,
+                longitude: ($rootScope.metadata.current_location || {}).longitude
+            }, {
+                headers:{
+                    'X-TKNG-UID': $rootScope.metadata.auth.uid,
+                    'X-TKNG-TKN': $rootScope.metadata.auth.token,
+                    'X-TKNG-EM': $rootScope.metadata.auth.email
+                }
+            })
+            .then((data)=>{
+                console.log(data.data); 
+                let response = data.data;
+                
+                $scope.requesting = false;
+                $scope.request_id = -1;
+                if(response.status != 'OK'){
+                    return;
+                }
+                $scope.digest(()=>{
+                    $('#'+id+'-canceled').hide();
+                    $('#'+id+'-completed').hide();
+                    $('#'+id+'-action').show();
+                    $('#'+id+'-start').hide();
+                });
+                var start_date = moment(data.data.start_date.date);
+                var end_date = moment(data.data.end_date.date);
+                $('#'+id+'-start-date').html(start_date.format('hh:mm:ss A'))
+                $('#'+id+'-end-date').html(end_date.format('hh:mm:ss A'))
+            }, (data)=>{
+                console.log(data);
+                $scope.requesting = false;
+                $scope.request_id = -1;
+                $scope.digest();
+            });
+            
+        }
+    }
+
     $scope.cancel = (id) => {
         if($scope.requesting){
             $.snackbar({content: "Please wait..."});
@@ -60,13 +106,20 @@ app.controller('bookingHistoryController', ['$scope', '$rootScope', '$http', 'EN
             .then((data)=>{
                 console.log(data.data); 
                 let response = data.data;
+                
                 $scope.requesting = false;
                 $scope.request_id = -1;
+                if(response.status != 'OK'){
+                    return;
+                }
                 $scope.digest(()=>{
                     $('#'+id+'-canceled').show();
                     $('#'+id+'-completed').hide();
                     $('#'+id+'-action').hide();
+                    $('#'+id+'-start').hide();
                 });
+                var end_date = moment(data.data.end_date.date);
+                $('#'+id+'-end-date').html(end_date.format('hh:mm:ss A'))
             }, (data)=>{
                 console.log(data);
                 $scope.requesting = false;

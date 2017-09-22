@@ -48,10 +48,10 @@ Booking History
             </div>
             <div class="col-md-2 col-sm-6 col-xs-6 c-cart-desc">
                 <p class="c-cart-sub-title c-theme-font c-font-uppercase c-font-bold">Price</p>
-                @if($item->active)
+                @if($item->started)
                 <p class="c-cart-price c-font-bold">${{number_format(max(\Carbon\Carbon::now()->diffInHours(\Carbon\Carbon::parse($item->start_date)), 1) * $item->car_price / 24, 2, ',', '.')}}</p>
                 @else
-                <p class="c-cart-price c-font-bold">${{number_format(max(\Carbon\Carbon::parse($item->end_date)->diffInHours(\Carbon\Carbon::parse($item->start_date)), 1) * $item->car_price / 24, 2, ',', '.')}}</p>
+                <p class="c-cart-price c-font-bold"><span class="c-font-bold">Expected</span> ${{number_format(max(\Carbon\Carbon::parse($item->end_date)->diffInHours(\Carbon\Carbon::parse($item->start_date)), 1) * $item->car_price / 24, 2, ',', '.')}}</p>
                 @endif
             </div>
             <div class="clearfix col-md-2 col-sm-3 col-xs-6 c-cart-price">
@@ -60,13 +60,13 @@ Booking History
             </div>		
             <div class="col-md-2 col-sm-6 col-xs-6 c-cart-total">
                 <p class="c-cart-sub-title c-theme-font c-font-uppercase c-font-bold">Booked Time</p>
-                <p style="margin-bottom:0;">{{\Carbon\Carbon::parse($item->start_date)->format('h:i:s A')}}</p>
+                <p style="margin-bottom:0;" id="{{$item->ohid}}-start-date">{{\Carbon\Carbon::parse($item->start_date)->format('h:i:s A')}}</p>
                 <p style="margin:0;" class="c-font-bold">until</p>
-                @if(\Carbon\Carbon::now()->gt(\Carbon\Carbon::parse($item->end_date)) && $item->active)
-                <p style="margin-bottom:0" class="c-font-red">{{\Carbon\Carbon::parse($item->end_date)->format('h:i:s A')}}</p>
+                @if(\Carbon\Carbon::now()->gt(\Carbon\Carbon::parse($item->end_date)) && $item->started && $item->active)
+                <p style="margin-bottom:0" class="c-font-red" id="{{$item->ohid}}-end-date">{{\Carbon\Carbon::parse($item->end_date)->format('h:i:s A')}}</p>
                 <p style="margin:0"><a href="javascript:;" class="c-font-blue">Extends</a></p>
                 @else
-                <p style="margin-bottom:0">{{\Carbon\Carbon::parse($item->end_date)->format('h:i:s A')}}</p>
+                <p style="margin-bottom:0" id="{{$item->ohid}}-end-date">{{\Carbon\Carbon::parse($item->end_date)->format('h:i:s A')}}</p>
                 @endif
                 
             </div>
@@ -75,10 +75,15 @@ Booking History
                 <p id="{{$item->ohid}}-canceled" style="{{!$item->active ? '' : 'display:none;'}}" class="c-font-red c-font-sbold">Stopped</p>
                 <p id="{{$item->ohid}}-completed" style="{{$item->active && $item->transactions_count > 0 ? '' : 'display:none;'}}" class="c-font-green c-font-sbold">Completed</p>
                 @if($item->transactions_count <= 0 && $item->active)
-                <div id="{{$item->ohid}}-action" ng-if="request_id != {{$item->ohid}}">
+                <div id="{{$item->ohid}}-action" style="{{$item->started ? '' : 'display:none'}}" ng-if="request_id != {{$item->ohid}}">
                     <!-- <a href="javascript:;" ng-click="pay({{$item->ohid}})" class="btn c-btn-blue c-btn-square">Pay</a>
                     <br/> -->
-                    <a href="javascript:;" ng-click="cancel({{$item->ohid}})" class="stop-btn btn c-btn-blue c-btn-square">Stop</a>
+                    <a href="javascript:;" ng-click="cancel({{$item->ohid}})" class="stop-btn btn c-btn-red c-btn-square">Stop</a>
+                </div>
+                <div id="{{$item->ohid}}-start" style="{{$item->started ? 'display:none' : ''}}" ng-if="request_id != {{$item->ohid}}">
+                    <!-- <a href="javascript:;" ng-click="pay({{$item->ohid}})" class="btn c-btn-blue c-btn-square">Pay</a>
+                    <br/> -->
+                    <a href="javascript:;" ng-click="start({{$item->ohid}})" class="stop-btn btn c-btn-blue c-btn-square">Start</a>
                 </div>
                 <div ng-if="request_id == {{$item->ohid}}">
                     @component('components.shared.spinner')
