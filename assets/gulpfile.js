@@ -13,6 +13,7 @@ gulp.task('css', function(){
     var css_files = [
         'plugins/snackbarjs/dist/snackbar.css',
         'plugins/snackbarjs/themes-css/material.css',
+        'plugins/timepicker/jquery.timepicker.css',
         'app.css',
         'spinner.css',
         'plugins/caleran.min.css',
@@ -51,6 +52,7 @@ gulp.task('js', function(){
         'plugins/jquery.min.js',
         'plugins/moment.min.js',
         'plugins/snackbarjs/src/snackbar.js',
+        'plugins/timepicker/jquery.timepicker.js',
         'plugins/jquery-migrate.min.js',
         'plugins/bootstrap/js/bootstrap.js',
         'plugins/jquery.easing.min.js',

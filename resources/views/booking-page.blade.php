@@ -72,6 +72,17 @@
                             </div>
                         </div>
                         <div class="row">
+                            <div class="form-group col-sm-12 col-lg-12">
+                                <label for="start-time">When do you want to start?</label>
+                                <input type="text" class="form-control c-square c-theme" id="start-time"/>
+                            </div>
+
+                            <div ng-show="booking_time.start_time != null" class="form-group col-sm-12 col-lg-12">
+                                <label for="start-time">When do you want to stop?</label>
+                                <input type="text" class="form-control c-square c-theme" id="end-time"/>
+                            </div>
+                        </div>
+                        <div class="row">
                             <div class="row c-center">
                                 <div class="form-group c-margin-t-40">
                                     <div class="col-sm-12">

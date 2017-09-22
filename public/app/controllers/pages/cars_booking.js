@@ -43,6 +43,72 @@ app.controller('carsBookingController', ['$scope', '$rootScope', '$http', 'ENV',
         return true;
     }
 
+    $scope.booking_time = {
+        start_time: null,
+        end_time: null
+    }
+
+    var start_time = new Date((new Date(0,0,0,0,0,0,0)).setHours(((new Date()).getHours() + 1) % 24));
+    console.log(start_time)
+
+    $('#end-time').timepicker({
+        timeFormat: 'h:mm p',
+        interval: 60,
+        minTime: '0',
+        maxTime: '11:00pm',
+        defaultTime: start_time,
+        dynamic: true,
+        dropdown: true,
+        scrollbar: true,
+        change: function(time){
+            if(!$scope.booking_time.start_time){
+                return;
+            }
+            var hours = time.getHours();
+            var minutes = time.getMinutes();
+            if(hours < $scope.booking_time.start_time.hours || (hours == $scope.booking_time.start_time.hours && minutes + 30 < $scope.booking_time.start_time.minutes)){
+                $('#end-time').timepicker('setTime', new Date(0,0,0,$scope.booking_time.start_time.hours, $scope.booking_time.start_time.minutes + 30))
+            }else{
+                $scope.booking_time.end_time = {
+                    hours: hours,
+                    minutes: minutes
+                }
+                $scope.book_form.book_end_date.hours(hours);
+                $scope.book_form.book_end_date.minutes(minutes);
+            }
+        }
+    });
+
+    $('#start-time').timepicker({
+        timeFormat: 'h:mm p',
+        interval: 60,
+        minTime: start_time,
+        maxTime: '11:59pm',
+        defaultTime: start_time,
+        dynamic: true,
+        dropdown: true,
+        scrollbar: true,
+        change: function(time){
+            var hours = time.getHours();
+            var minutes = time.getMinutes();
+            if(hours < start_time.getHours()){
+                $('#start-time').timepicker('setTime', start_time);
+            }else{
+                $scope.booking_time.start_time = {
+                    hours: hours,
+                    minutes: minutes
+                }
+                $scope.book_form.book_start_date.hours(hours);
+                $scope.book_form.book_start_date.minutes(minutes);
+                $scope.digest(_=>{
+                    $('#end-time').timepicker().option('minTime', new Date(0,0,0,hours,minutes+30,0,0));
+                    $('#end-time').timepicker('setTime', new Date(0,0,0,hours,minutes+30,0,0));
+                })
+            }
+            
+        }
+    });
+
     $scope.digest(()=>{
         console.log($scope.book_other);
         var disabledRanges = [];
@@ -133,8 +199,8 @@ app.controller('carsBookingController', ['$scope', '$rootScope', '$http', 'ENV',
         }
         $scope.book_metadata.loading.booking = true;
         var req_payload = Object.assign({}, $scope.book_form, $rootScope.metadata.current_location);
-        req_payload.book_end_date = req_payload.book_end_date.format('DD MMMM YYYY')
-        req_payload.book_start_date = req_payload.book_start_date.format('DD MMMM YYYY')
+        req_payload.book_end_date = req_payload.book_end_date.format('DD MMMM YYYY HH:mm:ss')
+        req_payload.book_start_date = req_payload.book_start_date.format('DD MMMM YYYY HH:mm:ss')
         $http.post(ENV.API_URL + 'book', req_payload, {
             headers:{
                 'X-TKNG-UID': $rootScope.metadata.auth.uid,

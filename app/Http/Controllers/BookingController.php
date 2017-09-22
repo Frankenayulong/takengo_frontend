@@ -16,33 +16,41 @@ class BookingController extends Controller
         $email = $request->cookie('fe_email');
         $uid = $request->cookie('fe_uid');
         $client = new Client();
-        $result = $client->post(config('api.api_url') . 'cars/'.$cid.'/book', [
-            'verify' => false,
-            'headers' => [
-                'X-TKNG-UID' => $uid,
-                'X-TKNG-TKN' => $token,
-                'X-TKNG-EM'  => $email
-            ],
-            'form_params' => [
-                'lat' => $request->input('lat'),
-                'long' => $request->input('long')
-            ]
-        ]);
-        $response = json_decode((string)$result->getBody());
-        if($response->status != 'OK'){
-            return back()->withInput();
+        try{
+            $result = $client->post(config('api.api_url') . 'cars/'.$cid.'/book', [
+                'verify' => false,
+                'headers' => [
+                    'X-TKNG-UID' => $uid,
+                    'X-TKNG-TKN' => $token,
+                    'X-TKNG-EM'  => $email
+                ],
+                'form_params' => [
+                    'lat' => $request->input('lat'),
+                    'long' => $request->input('long')
+                ]
+            ]);
+            $response = json_decode((string)$result->getBody());
+            if($response->status != 'OK'){
+                return back()->withInput();
+            }
+            $response->bookings = array_filter($response->bookings, function($item){
+                return $item !== null;
+            });
+            if(count($response->bookings) > 0){
+                return redirect()->back();
+            }
+            return view('booking-page')->with([
+                'car' => $response->car,
+                'user' => $response->user,
+                'bookings' => $response->bookings
+            ]);
+        }catch(GuzzleException $e){
+            $responseBody = $e->getResponse()->getBody(true);
+            return $responseBody;
         }
-        $response->bookings = array_filter($response->bookings, function($item){
-            return $item !== null;
-        });
-        if(count($response->bookings) > 0){
-            return redirect()->back();
-        }
-        return view('booking-page')->with([
-            'car' => $response->car,
-            'user' => $response->user,
-            'bookings' => $response->bookings
-        ]);
+        
+        
+        
     }
 
     public function history(Request $request){
