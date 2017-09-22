@@ -21,12 +21,12 @@ Booking History
                 <h3 class="c-font-uppercase c-font-bold c-font-16 c-font-grey-2">Price</h3>
             </div>
             <div class="col-md-2 c-cart-price">
-                <h3 class="c-font-uppercase c-font-bold c-font-16 c-font-grey-2">Start Date</h3>
+                <h3 class="c-font-uppercase c-font-bold c-font-16 c-font-grey-2">Date</h3>
             </div>
             <div class="col-md-2 c-cart-total">
-                <h3 class="c-font-uppercase c-font-bold c-font-16 c-font-grey-2">End Date</h3>
+                <h3 class="c-font-uppercase c-font-bold c-font-16 c-font-grey-2">Booked Time</h3>
             </div>
-            <div class="col-md-2 c-cart-qty c-center">
+            <div class="col-md-2 c-cart-qty">
                 <h3 class="c-font-uppercase c-font-bold c-font-16 c-font-grey-2">Status</h3>
             </div>
         </div>
@@ -55,18 +55,22 @@ Booking History
                 @endif
             </div>
             <div class="clearfix col-md-2 col-sm-3 col-xs-6 c-cart-price">
-                <p class="c-cart-sub-title c-theme-font c-font-uppercase c-font-bold">Start Date</p>
-                <p>{{\Carbon\Carbon::parse($item->start_date)->format('d M Y h:i:s A')}}</p>
+                <p class="c-cart-sub-title c-theme-font c-font-uppercase c-font-bold">Date</p>
+                <p>{{\Carbon\Carbon::parse($item->start_date)->format('d M Y')}}</p>
             </div>		
             <div class="col-md-2 col-sm-6 col-xs-6 c-cart-total">
-                <p class="c-cart-sub-title c-theme-font c-font-uppercase c-font-bold">End Date</p>
-                @if($item->active)
-                <p>{{\Carbon\Carbon::now()->format('d M Y h:i:s A')}}</p>
+                <p class="c-cart-sub-title c-theme-font c-font-uppercase c-font-bold">Booked Time</p>
+                <p style="margin-bottom:0;">{{\Carbon\Carbon::parse($item->start_date)->format('h:i:s A')}}</p>
+                <p style="margin:0;" class="c-font-bold">until</p>
+                @if(\Carbon\Carbon::now()->gt(\Carbon\Carbon::parse($item->end_date)) && $item->active)
+                <p style="margin-bottom:0" class="c-font-red">{{\Carbon\Carbon::parse($item->end_date)->format('h:i:s A')}}</p>
+                <p style="margin:0"><a href="javascript:;" class="c-font-blue">Extends</a></p>
                 @else
-                <p>{{\Carbon\Carbon::parse($item->end_date)->format('d M Y h:i:s A')}}</p>
+                <p style="margin-bottom:0">{{\Carbon\Carbon::parse($item->end_date)->format('h:i:s A')}}</p>
                 @endif
+                
             </div>
-            <div class="col-md-2 col-sm-12 col-xs-6 c-cart-qty c-center">
+            <div class="col-md-2 col-sm-12 col-xs-6 c-cart-qty">
                 <p class="c-cart-sub-title c-theme-font c-font-uppercase c-font-bold">Status</p>
                 <p id="{{$item->ohid}}-canceled" style="{{!$item->active ? '' : 'display:none;'}}" class="c-font-red c-font-sbold">Stopped</p>
                 <p id="{{$item->ohid}}-completed" style="{{$item->active && $item->transactions_count > 0 ? '' : 'display:none;'}}" class="c-font-green c-font-sbold">Completed</p>
