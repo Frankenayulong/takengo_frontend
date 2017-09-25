@@ -37,7 +37,7 @@ Booking History
         </div>
         @endif
         @foreach($history as $index => $item)
-        <div class="row c-cart-table-row">
+        <div class="row c-cart-table-row" style="margin-left:0!important;margin-right:0!important;">
             <h2 class="c-font-uppercase c-font-bold c-theme-bg c-font-white c-cart-item-title c-cart-item-first">#{{$index + 1}}</h2>
             <div class="col-md-2 col-sm-6 col-xs-5 c-cart-image">
                 <img src="{{config('api.api_url') . 'img/cars/' . $item->car->cid}}"/>
@@ -51,10 +51,14 @@ Booking History
                 <input type="hidden" value="{{$item->car_price}}" id="{{$item->ohid}}-single-price" />
                 
                 <p class="c-cart-price c-font-bold" id="{{$item->ohid}}-price">
-                @if($item->started && $item->active)
-                <span class="c-font-bold">Expected</span> 
+                @if(\Carbon\Carbon::parse($item->end_date)->isToday())
+                    @if($item->started && $item->active)
+                    <span class="c-font-bold">Expected</span> 
+                    @endif
+                    ${{number_format(max(\Carbon\Carbon::parse($item->end_date)->diffInHours(\Carbon\Carbon::parse($item->start_date)), 1) * $item->car_price / 24, 2, '.', ',')}}
+                @else
+                ${{number_format(max(\Carbon\Carbon::tomorrow()->diffInHours(\Carbon\Carbon::parse($item->start_date)), 1) * $item->car_price / 24, 2, '.', ',')}}
                 @endif
-                ${{number_format(max(\Carbon\Carbon::parse($item->end_date)->diffInHours(\Carbon\Carbon::parse($item->start_date)), 1) * $item->car_price / 24, 2, '.', ',')}}
                 </p>
                 
             </div>
@@ -68,11 +72,12 @@ Booking History
                 <p style="margin:0;" class="c-font-bold">until</p>
                 @if(\Carbon\Carbon::now()->gt(\Carbon\Carbon::parse($item->end_date)) && $item->started && $item->active)
                 <p style="margin-bottom:0" class="c-font-red" id="{{$item->ohid}}-end-date">{{\Carbon\Carbon::parse($item->end_date)->format('h:i A')}}</p>
-                <p style="margin:0"><a href="javascript:;" class="c-font-blue">Extends</a></p>
+                    @if(\Carbon\Carbon::parse($item->end_date)->isToday())
+                    <p style="margin:0"><a href="javascript:;" data-toggle="modal" data-target="#extendModal" data-ohid="{{$item->ohid}}" data-cid="{{$item->cid}}" data-uid="@{{metadata.auth.uid}}" data-end="{{$item->end_date}}" class="c-font-blue">Extends</a></p>
+                    @endif
                 @else
                 <p style="margin-bottom:0" id="{{$item->ohid}}-end-date">{{\Carbon\Carbon::parse($item->end_date)->format('h:i A')}}</p>
                 @endif
-                
             </div>
             <div class="col-md-2 col-sm-12 col-xs-6 c-cart-qty">
                 <p class="c-cart-sub-title c-theme-font c-font-uppercase c-font-bold">Status</p>
@@ -82,7 +87,11 @@ Booking History
                 <div id="{{$item->ohid}}-action" style="{{$item->started ? '' : 'display:none'}}" ng-if="request_id != {{$item->ohid}}">
                     <!-- <a href="javascript:;" ng-click="pay({{$item->ohid}})" class="btn c-btn-blue c-btn-square">Pay</a>
                     <br/> -->
+                    @if(\Carbon\Carbon::parse($item->end_date)->isToday())
                     <a href="javascript:;" ng-click="cancel({{$item->ohid}})" class="stop-btn btn c-btn-red c-btn-square">Stop</a>
+                    @else
+                    <p class="c-font-red c-font-sbold">Expired</p>
+                    @endif
                 </div>
                 <div id="{{$item->ohid}}-start" style="{{$item->started ? 'display:none' : ''}}" ng-if="request_id != {{$item->ohid}}">
                     <!-- <a href="javascript:;" ng-click="pay({{$item->ohid}})" class="btn c-btn-blue c-btn-square">Pay</a>
@@ -117,5 +126,6 @@ Booking History
     </div>
     @endif
 </div>
-
+@component('components.modals.extend-booking')
+@endcomponent
 @endsection

@@ -219,3 +219,103 @@ app.controller('carsBookingController', ['$scope', '$rootScope', '$http', 'ENV',
         });
     }
 }]);
+
+app.controller('extendModalController', ['$scope', '$rootScope', '$http', 'ENV', function($scope, $rootScope, $http, ENV){
+    $scope.$watchGroup(['metadata.signed_in', 'metadata.signing'], function(newVal, oldVal) {
+        if(newVal[0] == false && newVal[1] == false){
+            //close modal
+        }
+    });
+
+    $scope.extend_loading = false;
+    $scope.extend_error = false;
+    $scope.modal_booking_time = {
+        end_time: null
+    }
+
+    $scope.modal_book_form = {
+        book_end_date: moment(),
+        cid: '',
+        uid: '',
+        ohid: ''
+    };
+
+    var end_time = new Date((new Date(0,0,0,0,0,0,0)).setHours(((new Date()).getHours() + 1) % 24));
+    console.log(end_time)
+
+    var minimum_time = {
+        hours: end_time.getHours(),
+        minutes: end_time.getMinutes()
+    }
+
+    $('#end-time').timepicker({
+        timeFormat: 'h:mm p',
+        interval: 60,
+        minTime: '0',
+        maxTime: '11:00pm',
+        defaultTime: end_time,
+        dynamic: false,
+        dropdown: false,
+        scrollbar: false,
+        change: function(time){
+            if(!minimum_time){
+                return;
+            }
+            var hours = time.getHours();
+            var minutes = time.getMinutes();
+            if(hours < minimum_time.hours || (hours == minimum_time.hours && minutes + 30 < minimum_time.minutes)){
+                $('#end-time').timepicker('setTime', new Date(0,0,0,minimum_time.hours, minimum_time.minutes + 30))
+            }else{
+                $scope.modal_booking_time.end_time = {
+                    hours: hours,
+                    minutes: minutes
+                }
+                $scope.modal_book_form.book_end_date.hours(hours);
+                $scope.modal_book_form.book_end_date.minutes(minutes);
+            }
+        }
+    });
+
+    $scope.submitExtension = () => {
+        console.log($scope.modal_book_form);
+        $scope.extend_loading = true;
+        var req_payload = Object.assign({}, $scope.modal_book_form);
+        req_payload.book_end_date = req_payload.book_end_date.format('DD MMMM YYYY HH:mm:ss')
+        $http.post(ENV.API_URL + 'booking/'+req_payload.ohid+'/extend', req_payload, {
+            headers:{
+                'X-TKNG-UID': $rootScope.metadata.auth.uid,
+                'X-TKNG-TKN': $rootScope.metadata.auth.token,
+                'X-TKNG-EM': $rootScope.metadata.auth.email
+            }
+        })
+        .then((data)=>{
+            console.log(data);
+            $scope.extend_loading = false;
+            if(data.data.status == 'OK'){
+                $scope.extend_error = false;
+                $('#extendModal').modal('hide');
+            }else{
+                $scope.extend_error = true;
+            }
+            
+        }, (data)=>{
+            $scope.extend_loading = false;
+            $scope.extend_error = true;
+            console.log(data);
+        });
+    }
+
+    $('#extendModal').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget) // Button that triggered the modal
+        var endDate = button.data('end')
+        var uid = button.data('uid');
+        var cid = button.data('cid');
+        var ohid = button.data('ohid');
+        console.log(endDate, uid, cid);
+        $scope.modal_book_form.uid = uid;
+        $scope.modal_book_form.cid = cid;
+        $scope.modal_book_form.ohid = ohid;
+        $scope.modal_book_form.book_end_date = moment(endDate, "YYYY-MM-DD HH:mm:ss");
+        console.log($scope.modal_book_form)
+  });
+}]);
