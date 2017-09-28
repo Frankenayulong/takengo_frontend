@@ -72,11 +72,11 @@ Booking History
                 <p style="margin:0;" class="c-font-bold">until</p>
                 @if(\Carbon\Carbon::now()->gt(\Carbon\Carbon::parse($item->end_date)) && $item->started && $item->active)
                 <p style="margin-bottom:0" class="c-font-red" id="{{$item->ohid}}-end-date">{{\Carbon\Carbon::parse($item->end_date)->format('h:i A')}}</p>
-                    @if(\Carbon\Carbon::parse($item->end_date)->isToday())
-                    <p style="margin:0"><a href="javascript:;" data-toggle="modal" data-target="#extendModal" data-ohid="{{$item->ohid}}" data-cid="{{$item->cid}}" data-uid="@{{metadata.auth.uid}}" data-end="{{$item->end_date}}" class="c-font-blue">Extends</a></p>
-                    @endif
                 @else
                 <p style="margin-bottom:0" id="{{$item->ohid}}-end-date">{{\Carbon\Carbon::parse($item->end_date)->format('h:i A')}}</p>
+                @endif
+                @if(\Carbon\Carbon::parse($item->end_date)->isToday() && $item->started && $item->active)
+                <p style="margin:0"><a href="javascript:;" data-toggle="modal" data-target="#extendModal" data-ohid="{{$item->ohid}}" data-cid="{{$item->cid}}" data-uid="@{{metadata.auth.uid}}" data-end="{{$item->end_date}}" class="c-font-blue">Extends</a></p>
                 @endif
             </div>
             <div class="col-md-2 col-sm-12 col-xs-6 c-cart-qty">
