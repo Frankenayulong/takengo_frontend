@@ -13,7 +13,7 @@
 			<div class="c-content-title-1">
 				<h3 class="c-font-uppercase c-center c-font-bold">Main Features</h3>
 				<div class="c-line-center c-theme-bg"></div>
-				<p class="c-font-center">Lorem ipsum dolor consetuer elit adipicing sed diam ticidut erat votpat dolore</p>
+				<p class="c-font-center">Get a car in your pocket</p>
 			</div>
 			<!-- End-->
 			<ul class="c-list">
@@ -21,9 +21,9 @@
 					<div class="c-card c-font-right wow animate fadeInLeft">
 						<i class="icon-trophy c-font-27 c-theme-font c-float-right c-border c-border-opacity"></i>
 						<div class="c-content c-content-right">
-							<h3 class="c-font-uppercase c-font-bold">25 Totally Unique Homepages</h3>
+							<h3 class="c-font-uppercase c-font-bold">Fast Booking</h3>
 							<p>
-								Lorem ipsum dolor consetuer adipicing sed diam ticidut erat votpat dolore
+								Just book for a car and that's it! No hassle dazzle!
 							</p>
 						</div>
 					</div>	
@@ -34,9 +34,9 @@
 					<div class="c-card wow animate fadeInRight">
 						<i class="icon-rocket c-font-27 c-theme-font c-float-left c-border c-border-opacity"></i>
 						<div class="c-content c-content-left">
-							<h3 class="c-font-uppercase c-font-bold">Intuitive Code Structure</h3>					
+							<h3 class="c-font-uppercase c-font-bold">Competitive Price</h3>					
 							<p>
-								Lorem ipsum dolor consetuer adipicing sed diam ticidut erat votpat dolore
+								We research for the lowest price everyday and go lower than that
 							</p>
 						</div>
 					</div>	
@@ -48,9 +48,9 @@
 					<div class="c-card c-font-right wow animate fadeInLeft">
 						<i class="icon-layers c-font-27 c-theme-font c-float-right c-border c-border-opacity"></i>
 						<div class="c-content c-content-right">
-							<h3 class="c-font-uppercase c-font-bold">10 Exclusive Slideshows</h3>
+							<h3 class="c-font-uppercase c-font-bold">Quality is our Interest</h3>
 							<p>
-								Lorem ipsum dolor consetuer adipicing sed diam ticidut erat votpat dolore
+								We make sure that our car is comfortable enough for you
 							</p>
 						</div>
 					</div>	
@@ -61,9 +61,9 @@
 					<div class="c-card wow animate fadeInRight">
 						<i class="icon-present c-font-27 c-theme-font c-float-left c-border c-border-opacity"></i>
 						<div class="c-content c-content-left">
-							<h3 class="c-font-uppercase c-font-bold">Huge & Unlimited Updates</h3>					
+							<h3 class="c-font-uppercase c-font-bold">Best Dealership across the world</h3>					
 							<p>
-								Lorem ipsum dolor consetuer adipicing sed diam ticidut erat votpat dolore
+								We are a global service running across the world. Be a part of us!
 							</p>
 						</div>
 					</div>	
@@ -75,9 +75,9 @@
 					<div class="c-card c-font-right wow animate fadeInLeft">
 						<i class="icon-book-open c-font-27 c-theme-font c-float-right c-border c-border-opacity"></i>
 						<div class="c-content c-content-right">
-							<h3 class="c-font-uppercase c-font-bold">16 Unique Header Designs</h3>
+							<h3 class="c-font-uppercase c-font-bold">Unique Cars</h3>
 							<p>
-								Lorem ipsum dolor consetuer adipicing sed diam ticidut erat votpat dolore
+								If you want something out of the shelf, just contact us and get the best deal in an instance!
 							</p>
 						</div>
 					</div>	
@@ -90,7 +90,7 @@
 						<div class="c-content c-content-left">
 							<h3 class="c-font-uppercase c-font-bold">Stunning Customer Support</h3>					
 							<p>
-								Lorem ipsum dolor consetuer adipicing sed diam ticidut erat votpat dolore
+								We are here for you. Any time. Any place
 							</p>
 						</div>
 					</div>	
@@ -108,20 +108,16 @@
 		<div class="row">
 			<div class="col-md-offset-4 col-md-8 col-xs-12">
 				<div class="c-feature-15-container c-bg-dark">
-					<h2 class="c-feature-15-title c-font-bold c-font-uppercase c-theme-border c-font-white">JANGO Works around the clock</h2>
+					<h2 class="c-feature-15-title c-font-bold c-font-uppercase c-theme-border c-font-white">TAKE N GO is here for you</h2>
 					<div class="row">
 						<div class="col-md-4 col-xs-12">
 							<img src="../../assets/base/img/content/shop8/02.jpg" class="c-feature-15-img"/>
 						</div>
 						<div class="col-md-8 col-xs-12">
 							<p class="c-feature-15-desc c-font-grey">
-								Lorem ipsum dolor sit amet, consectetuer
-								adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore
-								magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud
-								exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo
-								consequat. Lorem ipsum dolor sit amet, consectetuer
+								We are the best car market around and we provide the best deals everyday. Tell us what we lack of and we'll fix it in a second. Grab a car, grab a life, and have fun!
 							</p>
-							<a class="c-feature-15-btn btn c-btn btn-lg c-theme-btn c-font-uppercase c-btn-circle c-font-bold c-btn-square" href="https://themeforest.net/item/jango-highly-flexible-component-based-html5-template/11987314" alt="Purchase JANGO">Purchase Now</a>
+							<a class="c-feature-15-btn btn c-btn btn-lg c-theme-btn c-font-uppercase c-btn-circle c-font-bold c-btn-square" href="{{url('/cars')}}" alt="Purchase JANGO">Explore</a>
 						</div>
 					</div>
 				</div>
@@ -141,8 +137,8 @@
 						<div class="c-icon-wrapper">
 							<div class="c-content-line-icon c-theme c-icon-screen-chart"></div>
 						</div>
-						<h3 class="c-font-uppercase c-font-bold c-title">Web Design</h3>
-						<p>Lorem ipsum consectetuer dolore elit diam</p>
+						<h3 class="c-font-uppercase c-font-bold c-title">Development</h3>
+						<p>We are improving our services to make you more comfortable</p>
 					</div>
 				</div>
 				<div class="col-md-4 col-sm-6">
@@ -150,8 +146,8 @@
 						<div class="c-icon-wrapper">
 							<div class="c-content-line-icon c-theme c-icon-support"></div>
 						</div>
-						<h3 class="c-font-uppercase c-font-bold c-title">Mobile Apps</h3>
-						<p>Lorem ipsum consectetuer dolore elit diam</p>
+						<h3 class="c-font-uppercase c-font-bold c-title">Comfort</h3>
+						<p>We are here for YOU. Please give us feedback to serve you better!</p>
 					</div>
 				</div>
 				<div class="col-md-4 col-sm-6">
@@ -160,7 +156,7 @@
 							<div class="c-content-line-icon c-theme c-icon-comment"></div>
 						</div>
 						<h3 class="c-font-uppercase c-font-bold c-title">Consulting</h3>
-						<p>Lorem ipsum consectetuer dolore elit diam</p>
+						<p>Ask us about anything! Yes, ANYTHING!</p>
 					</div>
 				</div>
 				<div class="col-md-4 col-sm-6">
@@ -168,8 +164,8 @@
 						<div class="c-icon-wrapper">
 							<div class="c-content-line-icon c-theme c-icon-bulb"></div>
 						</div>
-						<h3 class="c-font-uppercase c-font-bold c-title">Campaigns</h3>
-						<p>Lorem ipsum consectetuer dolore elit diam</p>
+						<h3 class="c-font-uppercase c-font-bold c-title">Be the BEST</h3>
+						<p>We are aiming to be the number one car rental company in the world</p>
 					</div>
 				</div>
 				<div class="col-md-4 col-sm-6">
@@ -191,7 +187,7 @@
 							<div class="c-content-line-icon c-theme c-icon-globe"></div>
 						</div>
 						<h3 class="c-font-uppercase c-font-bold c-title">Hosting</h3>
-						<p>Lorem ipsum consectetuer dolore elit diam</p>
+						<p>We host your car! Just contact us!</p>
 					</div>
 				</div>
 			</div>
@@ -199,92 +195,6 @@
 	</div> 
 </div><!-- END: CONTENT/MISC/SERVICES-1 -->
 
-<!-- BEGIN: CONTENT/STATS/COUNTER-3 -->
-<div class="c-content-box c-size-md c-bg-parallax" style="background-image: url(../../assets/base/img/content/backgrounds/bg-29.jpg)">
-	<div class="container">
-		<div class="c-content-counter-1">
-			<div class="c-content-title-1">
-				<h3 class="c-center c-font-uppercase c-font-white c-font-bold">We never stop improving</h3>
-				<div class="c-line-center c-bg-white"></div>
-			</div>
-			<div class="row c-margin-t-60">
-				<div class="col-md-4">
-					<div class="c-counter c-font-white c-bordered c-border-red c-font-white" data-counter="counterup">130</div>
-					<h4 class="c-title c-first c-font-white c-font-uppercase c-font-bold">Current Pages</h4>
-					<p class="c-content c-font-white c-opacity-08">..and growing. We will never stop improving and updating JANGO. Expect more.</p>
-				</div>
-				<div class="col-md-4">
-					<div class="c-counter c-font-white c-bordered c-border-blue c-font-white" data-counter="counterup">35,500</div>
-					<h4 class="c-title c-font-white c-font-uppercase c-font-bold">Satisfied Customers</h4>
-					<p class="c-content c-font-white c-opacity-08">Our Professional and dedicated team are on stand by to server your every concern.</p>
-				</div>
-				<div class="col-md-4">
-					<div class="c-counter c-font-white c-bordered c-border-green c-font-white" data-counter="counterup">101,865</div>
-					<h4 class="c-title c-font-white c-font-uppercase c-font-bold">Total Downloads</h4>
-					<p class="c-content c-font-white c-opacity-08">Join the community of over 101,865 users.</p>
-				</div>
-			</div>
-		</div>
-	</div>
-</div><!-- END: CONTENT/STATS/COUNTER-3 -->
-
-<!-- BEGIN: CONTENT/SLIDERS/CLIENT-LOGOS-2 -->
-<div class="c-content-box c-size-md c-bg-white">
-	<div class="container">
-		<!-- Begin: Testimonals 1 component -->
-		<div class="c-content-client-logos-slider-1  c-bordered" data-slider="owl">
-			<!-- Begin: Title 1 component -->
-			<div class="c-content-title-1">
-				<h3 class="c-center c-font-uppercase c-font-bold">Happy Customers</h3>
-				<div class="c-line-center c-theme-bg"></div>
-			</div>
-			<!-- End-->
-
-			<!-- Begin: Owlcarousel -->
-
-			<div class="owl-carousel owl-theme c-theme owl-bordered1 c-owl-nav-center" data-items="6" data-desktop-items="4" data-desktop-small-items="3" data-tablet-items="3" data-mobile-small-items="2" data-slide-speed="5000" data-rtl="false">
-			 	<div class="item">
-			  		<a href="#"><img src="../../assets/base/img/content/client-logos/client1.jpg" alt=""/></a>
-			  	</div>
-			  	<div class="item">
-			  		<a href="#"><img src="../../assets/base/img/content/client-logos/client2.jpg" alt=""/></a>
-			  	</div>
-			  	<div class="item">
-			  		<a href="#"><img src="../../assets/base/img/content/client-logos/client3.jpg" alt=""/></a>
-			  	</div>
-			  	<div class="item">
-			  		<a href="#"><img src="../../assets/base/img/content/client-logos/client4.jpg" alt=""/></a>
-			  	</div>
-			  	<div class="item">
-			  		<a href="#"><img src="../../assets/base/img/content/client-logos/client5.jpg" alt=""/></a>
-			  	</div>
-			  	<div class="item">
-			  		<a href="#"><img src="../../assets/base/img/content/client-logos/client6.jpg" alt=""/></a>
-			  	</div>
-			  	<div class="item">
-			  		<a href="#"><img src="../../assets/base/img/content/client-logos/client5.jpg" alt=""/></a>
-			  	</div>
-			  	<div class="item">
-			  		<a href="#"><img src="../../assets/base/img/content/client-logos/client6.jpg" alt=""/></a>
-			  	</div>
-			  	<div class="item">
-			  		<a href="#"><img src="../../assets/base/img/content/client-logos/client5.jpg" alt=""/></a>
-			  	</div>
-			  	<div class="item">
-			  		<a href="#"><img src="../../assets/base/img/content/client-logos/client6.jpg" alt=""/></a>
-			  	</div>
-			  	<div class="item">
-			  		<a href="#"><img src="../../assets/base/img/content/client-logos/client5.jpg" alt=""/></a>
-			  	</div>
-			  	<div class="item">
-			  		<a href="#"><img src="../../assets/base/img/content/client-logos/client6.jpg" alt=""/></a>
-			  	</div>
-			</div>
-	        <!-- End-->
-	    </div>
-	    <!-- End-->
-	</div>
-</div><!-- END: CONTENT/SLIDERS/CLIENT-LOGOS-2 -->
 @endsection
 
 @section('script')

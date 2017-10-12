@@ -3,7 +3,7 @@
 @section('content')
 
 <!-- START BREADCRUMBS -->
-<div class="c-layout-breadcrumbs-1 c-bgimage-full  c-centered  c-fonts-uppercase c-fonts-bold   c-bg-img-center" style="background-image: url({{asset('assets/base/img/content/banner8.jpg')}}); background-position:center 70%">
+<div class="c-layout-breadcrumbs-1 c-bgimage-full  c-centered  c-fonts-uppercase c-fonts-bold   c-bg-img-center" style="background-image: url({{asset('assets/base/img/content/backgrounds/bg-12.jpg')}}); background-position:center 70%">
     <div class="container">
         <div class="c-page-title c-pull-left">
             <h2 class="c-font-uppercase c-font-bold c-font-white c-font-35 c-font-slim c-opacity-09">FAQ</h2>
@@ -27,10 +27,10 @@
                         All
                     </div>
                     <div data-filter=".buying" class="cbp-filter-item">
-                        Buying
+                        Cars
                     </div>
                     <div data-filter=".author" class="cbp-filter-item">
-                        Author
+                        Booking
                     </div>
                     <div data-filter=".account" class="cbp-filter-item">
                         Account
@@ -47,11 +47,11 @@
                     <div class="cbp-item buying">
                         <div class="cbp-caption">
                             <div class="cbp-caption-defaultWrap">
-                                <i class="fa fa-check-circle-o"></i> Where can I find JANGO?
+                                <i class="fa fa-check-circle-o"></i> Where can I find TAKE N GO?
                             </div>
                             <div class="cbp-caption-activeWrap">
                                 <div class="cbp-l-caption-body">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br/>Aenean justo velit, vulputate a posuere ac, laoreet sed urna. Suspendisse posuere blandit diam condimentum vestibulum.
+                                    We're located at 119 Swanston St in Melbourne CBD<br/>Come by to see our work life. Anyone is welcome!
                                 </div>
                             </div>
                         </div>
@@ -59,11 +59,11 @@
                     <div class="cbp-item community">
                         <div class="cbp-caption">
                             <div class="cbp-caption-defaultWrap">
-                                <i class="fa fa-life-ring"></i> JANGO Feedback
+                                <i class="fa fa-life-ring"></i> Take N Go Feedback
                             </div>
                             <div class="cbp-caption-activeWrap">
                                 <div class="cbp-l-caption-body">
-                                    Praesent at maximus massa. Vivamus aliquet tincidunt erat et tempus. Sed venenatis ut tortor malesuada condimentum. <br/>Donec rhoncus, dolor id luctus feugiat, justo tortor blandit orci, non ullamcorper velit lectus porta mauris. Mauris imperdiet in mauris cursus pretium. Proin nisi libero, commodo vitae lob.
+                                    You can email us about your feedback and we'll might have something sweet for you!
                                 </div>
                             </div>
                         </div>
@@ -71,11 +71,11 @@
                     <div class="cbp-item buying">
                         <div class="cbp-caption">
                             <div class="cbp-caption-defaultWrap">
-                                <i class="fa fa-question"></i> How Do I Get Support From JANGO?
+                                <i class="fa fa-question"></i> What if I get a faulty car?
                             </div>
                             <div class="cbp-caption-activeWrap">
                                 <div class="cbp-l-caption-body">
-                                    Sed venenatis ut tortor malesuada condimentum. Donec rhoncus, dolor id luctus feugiat, justo tortor blandit orci, non ullamcorper velit lectus porta mauris.
+                                    Just contact us! We'll make sure the car is fixed later on and we'll give your money back!
                                 </div>
                             </div>
                         </div>
@@ -83,12 +83,12 @@
                     <div class="cbp-item author">
                         <div class="cbp-caption">
                             <div class="cbp-caption-defaultWrap">
-                                <i class="fa fa-credit-card"></i> Which Payment Option Do I Choose?
+                                <i class="fa fa-credit-card"></i> How do I book a car?
                             </div>
                             <div class="cbp-caption-activeWrap">
                                 <div class="cbp-l-caption-body">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br/>Aenean justo velit, vulputate a posuere ac, laoreet sed urna. Suspendisse posuere blandit diam condimentum vestibulum.
-                                    Aenean justo velit, vulputate a posuere ac, laoreet sed urna. Suspendisse posuere blandit diam condimentum vestibulum.
+                                    Just book by selecting your preferred car.<br/>Provide a starting time and a termination time.
+                                    You can extend your renting period in your dashboard.
                                 </div>
                             </div>
                         </div>
@@ -96,12 +96,11 @@
                     <div class="cbp-item copyright">
                         <div class="cbp-caption">
                             <div class="cbp-caption-defaultWrap">
-                                <i class="fa fa-copyright"></i> Can I use trademarked names in my items?
+                                <i class="fa fa-copyright"></i> Can I use Take N Go for my work?
                             </div>
                             <div class="cbp-caption-activeWrap">
                                 <div class="cbp-l-caption-body">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br/>Aenean justo velit, vulputate a posuere ac, laoreet sed urna. Suspendisse posuere blandit diam condimentum vestibulum.
-                                    Sed venenatis ut tortor malesuada condimentum. Donec rhoncus, dolor id luctus feugiat, justo tortor blandit orci, non ullamcorper velit lectus porta mauris.
+                                    We are happy if you mention us!<br/>Just make sure you refer us, not anybody else!
                                 </div>
                             </div>
                         </div>
@@ -109,11 +108,11 @@
                     <div class="cbp-item author">
                         <div class="cbp-caption">
                             <div class="cbp-caption-defaultWrap">
-                                <i class="fa fa-history"></i> Historical Payment Rates
+                                <i class="fa fa-history"></i> Price Rates
                             </div>
                             <div class="cbp-caption-activeWrap">
                                 <div class="cbp-l-caption-body">
-                                    Sed venenatis ut tortor malesuada condimentum. Donec rhoncus, dolor id luctus feugiat, justo tortor blandit orci, non ullamcorper velit lectus porta mauris. Sed venenatis ut tortor malesuada condimentum. Donec rhoncus, dolor id luctus feugiat, justo tortor blandit orci, non ullamcorper velit lectus porta mauris.
+                                    We provide the cheapest rates available. If you found a cheaper one, tell us and we update our price!
                                 </div>
                             </div>
                         </div>
@@ -121,11 +120,11 @@
                     <div class="cbp-item account">
                         <div class="cbp-caption">
                             <div class="cbp-caption-defaultWrap">
-                                <i class="fa fa-user"></i> How Do I Change My Username?
+                                <i class="fa fa-user"></i> How Do I Change My Email?
                             </div>
                             <div class="cbp-caption-activeWrap">
                                 <div class="cbp-l-caption-body">
-                                    Nulla condimentum nunc a euismod sodales. Aenean congue risus sed finibus ultricies. Proin porttitor, arcu eu eleifend faucibus, odio nisi faucibusNulla condimentum nunc a euismod sodales. Aenean congue risus sed finibus ultricies. Proin porttitor, arcu eu eleifend faucibus, odio nisi faucibus
+                                    You can change your email in your profile page
                                 </div>
                             </div>
                         </div>
@@ -133,11 +132,11 @@
                     <div class="cbp-item author">
                         <div class="cbp-caption">
                             <div class="cbp-caption-defaultWrap">
-                                <i class="fa fa-columns"></i> Author Collaboration
+                                <i class="fa fa-columns"></i> Business Collaboration
                             </div>
                             <div class="cbp-caption-activeWrap">
                                 <div class="cbp-l-caption-body">
-                                    Donec blandit, felis eu lobortis accumsan, felis justo hendrerit turpis, at dapibus arcu quam pellentesque quam. Donec ullamcorper nibh eu nunc sagittis fringilla. Integer tortor dui, vulputate eu fermentum congue, egestas id risus. Maecenas congue augue non lectus consequat lacinia.
+                                    If you're a business and want to make a deal with us, just give us a call! We are working with thousands of businesses to create immensely great service!
                                 </div>
                             </div>
                         </div>
@@ -149,81 +148,7 @@
                             </div>
                             <div class="cbp-caption-activeWrap">
                                 <div class="cbp-l-caption-body">
-                                    Donec blandit, felis eu lobortis accumsan, felis justo hendrerit turpis, at dapibus arcu quam pellentesque quam. Donec ullamcorper nibh eu nunc sagittis fringilla. Integer tortor dui, vulputate eu fermentum congue, egestas id risus. <br/>Maecenas congue augue non lectus consequat lacinia.
-                                    Nulla condimentum nunc a euismod sodales. Aenean congue risus sed finibus ultricies. Proin porttitor, arcu eu eleifend faucibus, odio nisi faucibusNulla condimentum nunc a euismod sodales. Aenean congue risus sed finibus ultricies. Proin porttitor, arcu eu eleifend faucibus, odio nisi faucibus
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="cbp-item author">
-                        <div class="cbp-caption">
-                            <div class="cbp-caption-defaultWrap">
-                                <i class="fa fa-map-marker"></i> An Author’s Introduction to JANGO
-                            </div>
-                            <div class="cbp-caption-activeWrap">
-                                <div class="cbp-l-caption-body">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br/>Aenean justo velit, vulputate a posuere ac, laoreet sed urna. Suspendisse posuere blandit diam condimentum vestibulum.
-                                    Sed venenatis ut tortor malesuada condimentum. Donec rhoncus, dolor id luctus feugiat, justo tortor blandit orci, non ullamcorper velit lectus porta mauris.
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="cbp-item copyright">
-                        <div class="cbp-caption">
-                            <div class="cbp-caption-defaultWrap">
-                                <i class="fa fa-keyboard-o"></i> How to use the Whois Lookup Tool
-                            </div>
-                            <div class="cbp-caption-activeWrap">
-                                <div class="cbp-l-caption-body">
-                                    Praesent at maximus massa. Vivamus aliquet tincidunt erat et tempus. Sed venenatis ut tortor malesuada condimentum. <br/>Donec rhoncus, dolor id luctus feugiat, justo tortor blandit orci, non ullamcorper velit lectus porta mauris. Mauris imperdiet in mauris cursus pretium. Proin nisi libero, commodo vitae lob.
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="cbp-item copyright">
-                        <div class="cbp-caption">
-                            <div class="cbp-caption-defaultWrap">
-                                <i class="fa fa-file-excel-o"></i> Illegal Distribution Of Files
-                            </div>
-                            <div class="cbp-caption-activeWrap">
-                                <div class="cbp-l-caption-body">
-                                    Nulla condimentum nunc a euismod sodales. Aenean congue risus sed finibus ultricies. Proin porttitor, arcu eu eleifend faucibus, odio nisi faucibusNulla condimentum nunc a euismod sodales. Aenean congue risus sed finibus ultricies. Proin porttitor, arcu eu eleifend faucibus, odio nisi faucibus. Nulla condimentum nunc a euismod sodales. Aenean congue risus sed finibus ultricies. Proin porttitor, arcu eu eleifend faucibus, odio nisi faucibusNulla condimentum nunc a euismod sodales.
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="cbp-item copyright">
-                        <div class="cbp-caption">
-                            <div class="cbp-caption-defaultWrap">
-                                <i class="fa fa-exclamation-circle"></i> Protecting Your Copyright
-                            </div>
-                            <div class="cbp-caption-activeWrap">
-                                <div class="cbp-l-caption-body">
-                                    Proin porttitor, arcu eu eleifend faucibus, odio nisi faucibusNulla condimentum nunc a euismod sodales. Aenean congue risus sed finibus ultricies. Proin porttitor, arcu eu eleifend faucibus, odio nisi faucibus. Nulla condimentum nunc a euismod sodales. Aenean congue risus sed finibus ultricies.
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="cbp-item buying">
-                        <div class="cbp-caption">
-                            <div class="cbp-caption-defaultWrap">
-                                <i class="fa fa-bookmark-o"></i> Guide to YouTube Content ID & Copyright Notices
-                            </div>
-                            <div class="cbp-caption-activeWrap">
-                                <div class="cbp-l-caption-body">
-                                    Suspendisse venenatis cursus elit quis vestibulum. Duis convallis, eros eleifend fermentum luctus, enim dolor ornare metus, eget iaculis eros nibh. Suspendisse venenatis cursus elit quis vestibulum. Duis convallis, eros eleifend fermentum luctus, enim dolor ornare metus, eget iaculis eros nibh
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="cbp-item community">
-                        <div class="cbp-caption">
-                            <div class="cbp-caption-defaultWrap">
-                                <i class="fa fa-comments-o"></i> Forum and Community Rules
-                            </div>
-                            <div class="cbp-caption-activeWrap">
-                                <div class="cbp-l-caption-body">
-                                    Curabitur posuere accumsan elementum. Duis id porttitor augue. Nulla sagittis ultricies mi, ut rhoncus tellus egestas sit amet. Quisque felis mauris, porta nec mauris sagittis, tincidunt tincidunt elit. Aliquam pharetra faucibus orci, quis sollicitudin lacus fringilla a. Nulla ipsum nibh, eleifend sed condimentum quis, blandit nec mauris.
+                                You can change your password in your profile page
                                 </div>
                             </div>
                         </div>

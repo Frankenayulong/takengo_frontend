@@ -24,11 +24,11 @@
                 <div class="col-md-12">
                     <div class="c-content-title-1 c-margin-b-60">
                         <h3 class="c-center c-font-uppercase c-font-bold">
-                            How We Optimize Your Business
+                            How we ease your booking
                         </h3>
                         <div class="c-line-center"></div>
                         <p class="c-center c-font-uppercase c-font-17">
-                            Lorem ipsum dolor sit amet consectetuer dolore
+                            These are the only steps you need!
                         </p>
                     </div>
                 </div>
@@ -40,10 +40,9 @@
                         <div class="c-icon"><span class="c-hr c-hr-first"><span class="c-content-line-icon c-icon-14 c-theme"></span></span></div>
                         <div class="c-title c-font-20 c-font-bold c-font-uppercase">1. First Important STEP</div>
                         <div class="c-description c-font-17">
-                            Lorem ipsum dolor sit consectetuer
-                            adipiscing elit et diam nonummy.
+                            Join our community.
+                            Just click register and you're all done!
                         </div>
-                        <button class="btn c-btn-square c-theme-btn c-btn-border1-2x c-btn-uppercase c-btn-bold">EXPLORE</button>
                     </div>
                 </div>
                 <div class="col-md-4 col-sm-6 wow animate fadeInLeft" data-wow-delay="0.2s">
@@ -51,10 +50,10 @@
                         <div class="c-icon"><span class="c-hr"><span class="c-content-line-icon c-icon-21 c-theme"></span></span></div>
                         <div class="c-title c-font-20 c-font-bold c-font-uppercase">2. Second Phase</div>
                         <div class="c-description c-font-17">
-                            Lorem ipsum dolor sit consectetuer
-                            adipiscing elit et diam nonummy.
+                            Pick your car!
+                            There are lots of them!
                         </div>
-                        <button class="btn c-btn-square c-theme-btn c-btn-uppercase c-btn-bold">EXPLORE</button>
+                        <a class="btn c-btn-square c-theme-btn c-btn-uppercase c-btn-bold" href="{{url('/cars')}}">EXPLORE</a>
                     </div>
                 </div>
                 <div class="col-md-4 col-sm-12 wow animate fadeInLeft" data-wow-delay="0.4s">
@@ -62,10 +61,8 @@
                         <div class="c-icon"><span class="c-hr c-hr-last"><span class="c-content-line-icon c-icon-32 c-theme"></span></span></div>
                         <div class="c-title c-font-20 c-font-bold c-font-uppercase">3. Final Action</div>
                         <div class="c-description c-font-17">
-                            Lorem ipsum dolor sit consectetuer
-                            adipiscing elit et diam nonummy.
+                            Book the car! You just need to provide your starting time and a termination time. That's all!
                         </div>
-                        <button class="btn c-btn-square c-theme-btn c-btn-uppercase c-btn-bold">EXPLORE</button>
                     </div>
                 </div>
             </div>

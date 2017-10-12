@@ -34,7 +34,7 @@
 						<div class="c-content-title-1">
 							<h3 class="c-font-uppercase c-font-bold c-font-white">Find us</h3>
 							<div class="c-line-left hide"></div>
-							<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed elit diam nonummy ad minim.</p>
+							<p>Get in touch! We will welcome you!</p>
 						</div>
 						<ul class="c-socials">
 							<li><a href="#"><i class="icon-social-facebook"></i></a></li>
@@ -43,9 +43,9 @@
 							<li><a href="#"><i class="icon-social-tumblr"></i></a></li>
 						</ul>
 						<ul class="c-address">
-							<li><i class="icon-pointer c-theme-font"></i> One Boulevard, Beverly Hills</li>
-							<li><i class="icon-call-end c-theme-font"></i> +1800 1234 5678</li>
-							<li><i class="icon-envelope c-theme-font"></i> email@example.com</li>
+							<li><i class="icon-pointer c-theme-font"></i> 119, Swanston St, VIC, 3000</li>
+							<li><i class="icon-call-end c-theme-font"></i> +6141 684 2836</li>
+							<li><i class="icon-envelope c-theme-font"></i> here@takengo.io</li>
 						</ul>
 					</div>
 				</div>

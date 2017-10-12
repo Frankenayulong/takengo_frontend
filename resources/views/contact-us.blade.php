@@ -27,7 +27,7 @@
                             <div class="c-content-title-1 c-inverse">
                                 <h3 class="c-font-uppercase c-font-bold">Need to know more?</h3>
                                 <div class="c-line-left"></div>
-                                <p class="c-font-lowercase">Try visiting our FAQ page to learn more about our greatest ever expanding theme, JANGO.</p>
+                                <p class="c-font-lowercase">Try visiting our FAQ page to learn more about our greatest ever expanding theme, Take N Go.</p>
                                 <a href="{{url('/faq')}}" class="btn btn-md c-btn-border-2x c-btn-white c-btn-uppercase c-btn-square c-btn-bold">Learn More</a>
                             </div>
                         </div>
