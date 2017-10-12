@@ -78,6 +78,7 @@ Booking History
                 @if(\Carbon\Carbon::parse($item->end_date)->isToday() && $item->started && $item->active)
                 <p style="margin:0"><a href="javascript:;" data-toggle="modal" data-target="#extendModal" data-ohid="{{$item->ohid}}" data-cid="{{$item->cid}}" data-uid="@{{metadata.auth.uid}}" data-end="{{$item->end_date}}" class="c-font-blue">Extends</a></p>
                 @endif
+                <p id="{{$item->ohid}}-extends-optional" style="margin:0;display:none;"><a href="javascript:;" data-toggle="modal" data-target="#extendModal" data-ohid="{{$item->ohid}}" data-cid="{{$item->cid}}" data-uid="@{{metadata.auth.uid}}" data-end="{{$item->end_date}}" class="c-font-blue">Extends</a></p>
             </div>
             <div class="col-md-2 col-sm-12 col-xs-6 c-cart-qty">
                 <p class="c-cart-sub-title c-theme-font c-font-uppercase c-font-bold">Status</p>
