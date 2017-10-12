@@ -71,7 +71,7 @@ app.controller('bookingHistoryController', ['$scope', '$rootScope', '$http', 'EN
                     $('#'+id+'-completed').hide();
                     $('#'+id+'-action').show();
                     $('#'+id+'-start').hide();
-                    $('#'+id+'-extends-optionalt').show();
+                    $('#'+id+'-extends-optional').show();
                 });
                 var start_date = moment(data.data.start_date.date);
                 var end_date = moment(data.data.end_date.date);
