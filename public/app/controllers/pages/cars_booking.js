@@ -240,6 +240,8 @@ app.controller('extendModalController', ['$scope', '$rootScope', '$http', 'ENV',
         ohid: ''
     };
 
+    $scope.ref_id = '';
+
     var end_time = new Date((new Date(0,0,0,0,0,0,0)).setHours(((new Date()).getHours() + 1) % 24));
     console.log(end_time)
 
@@ -294,6 +296,7 @@ app.controller('extendModalController', ['$scope', '$rootScope', '$http', 'ENV',
             if(data.data.status == 'OK'){
                 $scope.extend_error = false;
                 $('#extendModal').modal('hide');
+                $($scope.ref_id).html(moment(data.data.date.date).format('hh:mm A'));
             }else{
                 $scope.extend_error = true;
             }
@@ -311,6 +314,9 @@ app.controller('extendModalController', ['$scope', '$rootScope', '$http', 'ENV',
         var uid = button.data('uid');
         var cid = button.data('cid');
         var ohid = button.data('ohid');
+        var ref_id = button.data('refid');
+
+        $scope.ref_id = ref_id;
         console.log(endDate, uid, cid);
         $scope.modal_book_form.uid = uid;
         $scope.modal_book_form.cid = cid;
