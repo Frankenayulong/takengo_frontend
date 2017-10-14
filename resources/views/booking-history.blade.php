@@ -51,14 +51,10 @@ Booking History
                 <input type="hidden" value="{{$item->car_price}}" id="{{$item->ohid}}-single-price" />
                 
                 <p class="c-cart-price c-font-bold" id="{{$item->ohid}}-price">
-                @if(\Carbon\Carbon::parse($item->end_date)->isToday())
-                    @if($item->started && $item->active)
-                    <span class="c-font-bold">Expected</span> 
-                    @endif
-                    ${{number_format(max(\Carbon\Carbon::parse($item->end_date)->diffInHours(\Carbon\Carbon::parse($item->start_date)), 1) * $item->car_price / 24, 2, '.', ',')}}
-                @else
-                ${{number_format(max(\Carbon\Carbon::tomorrow()->diffInHours(\Carbon\Carbon::parse($item->start_date)), 1) * $item->car_price / 24, 2, '.', ',')}}
+                @if($item->started && $item->active)
+                <span class="c-font-bold">Expected</span> 
                 @endif
+                ${{number_format(max(\Carbon\Carbon::parse($item->end_date)->diffInHours(\Carbon\Carbon::parse($item->start_date)), 1) * $item->car_price / 24, 2, '.', ',')}}
                 </p>
                 
             </div>
